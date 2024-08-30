@@ -388,8 +388,19 @@ def downs():
     pygame.display.flip()
     playero_position[0] = playero_position[0]
     playero_position[1] = 300
+    time.sleep(3)
 
-    time.sleep(2)
+def outofbounds():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('OUT', True, red)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (window_x/2, 300)
+    game_window.blit(downs_surface, downs_rect)
+    pygame.display.flip()
+    playero_position[0] = playero_position[0]
+    playero_position[1] = 300
+    time.sleep(3)
 
 def game_over():
   
@@ -736,6 +747,17 @@ while True:
 
     if playero_position[1] > 620:
         playero_position[1] = 620
+
+    if playero_position[1] < 50:
+        playero_position[1] = 50
+        outofbounds()
+        direction = 'RIGHT'
+
+    
+    if playero_position[1] > 600:
+        playero_position[1] = 600
+        outofbounds()
+        direction = 'RIGHT'
 
     if speedmeter > 9:
         for pos in speedmeterMax_body:
