@@ -450,7 +450,7 @@ while True:
 
     # if play == '0':
     for pos in ball_body:
-        impball = pygame.image.load("football.png").convert()
+        impball = pygame.image.load("madden25_imgs/football.png").convert()
         game_window.blit(impball, pygame.Rect(ball_position[0], ball_position[1], 10, 10))
         pygame.display.flip()
 
@@ -530,9 +530,9 @@ while True:
     
     for pos in playero_body:
         if direction == 'RIGHT':
-            imp = pygame.image.load("player0_raider.png").convert()
+            imp = pygame.image.load("madden25_imgs/raider0.png").convert()
         elif direction == 'LEFT':
-            imp = pygame.image.load("player0_raider_flip.png").convert()
+            imp = pygame.image.load("madden25_imgs/raider0_flip.png").convert()
         game_window.blit(imp, pygame.Rect(pos[0], pos[1], 10, 10))
         pygame.display.flip()
 
@@ -655,9 +655,9 @@ while True:
     if compx == 1:
         for pos in compx_body:
             if compx_direction == 'RIGHT':
-                impx = pygame.image.load("playerx_rams.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx.png").convert()
             elif compx_direction == 'LEFT':
-                impx = pygame.image.load("playerx_rams_flip.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
 
             game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
             pygame.display.flip()
@@ -665,9 +665,9 @@ while True:
     if compx1 == 1:
         for pos in compx1_body:
             if compx1_direction == 'RIGHT':
-                impx = pygame.image.load("playerx_rams.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx.png").convert()
             elif compx1_direction == 'LEFT':
-                impx = pygame.image.load("playerx_rams_flip.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
 
             game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
             pygame.display.flip()
@@ -675,9 +675,9 @@ while True:
     if compx2 == 1:
         for pos in compx2_body:
             if compx2_direction == 'RIGHT':
-                impx = pygame.image.load("playerx_rams.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx.png").convert()
             elif compx2_direction == 'LEFT':
-                impx = pygame.image.load("playerx_rams_flip.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
 
             game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
             pygame.display.flip()
@@ -685,9 +685,9 @@ while True:
     if compx3 == 1:
         for pos in compx3_body:
             if compx3_direction == 'RIGHT':
-                impx = pygame.image.load("playerx_rams.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx.png").convert()
             elif compx3_direction == 'LEFT':
-                impx = pygame.image.load("playerx_rams_flip.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
 
             game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
             pygame.display.flip()
@@ -695,9 +695,9 @@ while True:
     if compx == 4:
         for pos in compx4_body:
             if compx4_direction == 'RIGHT':
-                impx = pygame.image.load("playerx_rams.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx.png").convert()
             elif compx4_direction == 'LEFT':
-                impx = pygame.image.load("playerx_rams_flip.png").convert()
+                impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
 
             game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
             pygame.display.flip()
