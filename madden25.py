@@ -57,8 +57,8 @@ compx4_body = [random.randrange(1, (window_x//10)) * 10,
 compx4 = random.randint(0,1)
 compx4_down = 0
 
-ball_body = [100, random.randrange(1, (window_y//10)) * 10]
-ball_position = [100, random.randrange(1, (window_y//10)) * 10]
+ball_body = [200, random.randrange(1, (window_y//10)) * 10]
+ball_position = [200, random.randrange(1, (window_y//10)) * 10]
 
 field_lines_body = [[120, 60],
                [120, 70],
@@ -274,8 +274,8 @@ direction = 'RIGHT'
 change_to = direction
 ball_direction = [1, 2, 3]
 score = [0, 0] 
-play = '0'
-down = 4
+play = 0
+down = 1
 yardline = 10
 yard = '0'
 
@@ -368,19 +368,17 @@ def show_nextyardline(choice, color, font, size):
         goallinel_rect.midtop = (1225, 460)
         game_window.blit( goallinel_surface,  goallinel_rect)
 
-
-
 def downs():
 
     my_font = pygame.font.SysFont('Arial', 70)
     if down == 1:
         downs_surface = my_font.render(str(down) + 'ST DOWN', True, red)
     elif down == 2:
-         downs_surface = my_font.render(str(down) + 'ND DOWN', True, red)
+        downs_surface = my_font.render(str(down) + 'ND DOWN', True, red)
     elif down == 3:
-         downs_surface = my_font.render(str(down) + 'RD DOWN', True, red)
+        downs_surface = my_font.render(str(down) + 'RD DOWN', True, red)
     elif down == 4:
-         downs_surface = my_font.render(str(down) + 'TH DOWN', True, red)
+        downs_surface = my_font.render(str(down) + 'TH DOWN', True, red)
        
     downs_rect = downs_surface.get_rect()
     downs_rect.midtop = (window_x/2, 300)
@@ -400,6 +398,26 @@ def outofbounds():
     pygame.display.flip()
     playero_position[0] = playero_position[0]
     playero_position[1] = 300
+    time.sleep(3)
+
+def incompletion():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('INCOMPLETE PASS', True, red)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (window_x/2, 280)
+    game_window.blit(downs_surface, downs_rect)
+    pygame.display.flip()
+    time.sleep(3)
+
+def catch():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('NICE CATCH', True, green)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (window_x/2, 300)
+    game_window.blit(downs_surface, downs_rect)
+    pygame.display.flip()
     time.sleep(3)
 
 def game_over():
@@ -459,26 +477,31 @@ while True:
     if direction == 'RIGHT':
         playero_position[0] += 10 + speedmeter
 
-    # if play == '0':
-    for pos in ball_body:
-        impball = pygame.image.load("madden25_imgs/football.png").convert()
-        game_window.blit(impball, pygame.Rect(ball_position[0], ball_position[1], 10, 10))
-        pygame.display.flip()
-
-    ball_direction_start = random.choice(ball_direction)
-    ball_position[0] += 10 
-    if ball_direction_start == 2:
-        ball_position[1] += 10 
-    elif ball_direction_start == 3:
-        ball_position[1] -= 10 
-
-
-
+    #football code
+    if play == 0:
+        for pos in ball_body:
+            impball = pygame.image.load("madden25_imgs/football.png").convert()
+            game_window.blit(impball, pygame.Rect(ball_position[0], ball_position[1], 10, 10))
+            pygame.display.flip()
+        ball_direction_start = random.choice(ball_direction)
+        ball_position[0] += 5 
+        if ball_direction_start == 2:
+            ball_position[1] += 5 
+        elif ball_direction_start == 3:
+            ball_position[1] -= 5 
+        
+        if ball_position [0] > 1300:
+            incompletion()
+        
+        if (((ball_position[0] <= playero_position[0] + 5) or (ball_position[0] >= playero_position[0])) and (ball_position[1] <= playero_position[1])):
+            catch()
+            play = 1
 
     if playero_position[0] == compx_position[0] and playero_position[1] == compx_position[1]:
-        if down <= 4:
+        if down <= 5:
             if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
                 downs()
+                play = 0
                 compx_down = 1
                 down = down + 1
             change_to ='RIGHT'
@@ -486,9 +509,10 @@ while True:
             game_over()     
 
     if playero_position[0] == compx1_position[0] and playero_position[1] == compx1_position[1]:
-        if down <= 4:
+        if down <= 5:
             if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
                 downs()
+                play = 0
                 compx1_down = 1
                 down = down + 1
             change_to ='RIGHT'
@@ -496,9 +520,10 @@ while True:
             game_over()   
 
     if playero_position[0] == compx2_position[0] and playero_position[1] == compx2_position[1]:
-        if down <= 4:
+        if down <= 5:
             if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:
                 downs()
+                play = 0
                 compx2_down = 1
                 down = down + 1
             change_to ='RIGHT'
@@ -506,9 +531,10 @@ while True:
             game_over()   
 
     if playero_position[0] == compx3_position[0] and playero_position[1] == compx3_position[1]:
-        if down <= 4:
+        if down <= 5:
             if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:
                 downs()
+                play = 0
                 compx3_down = 1
                 down = down + 1
             change_to ='RIGHT'
@@ -516,14 +542,16 @@ while True:
             game_over()   
 
     if playero_position[0] == compx4_position[0] and playero_position[1] == compx4_position[1]:
-        if down <= 4:
+        if down <= 5:
             if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:
                 downs()
                 compx4_down = 1
                 down = down + 1
             change_to ='RIGHT'
         else:
+            down = 1
             game_over()   
+
 
 
     playero_body.insert(0, list(playero_position))
@@ -541,9 +569,16 @@ while True:
     
     for pos in playero_body:
         if direction == 'RIGHT':
-            imp = pygame.image.load("madden25_imgs/raider0.png").convert()
+            if play == 0:
+                imp = pygame.image.load("madden25_imgs/raider_catch.png").convert()
+            else:
+                imp = pygame.image.load("madden25_imgs/raider0.png").convert()
         elif direction == 'LEFT':
-            imp = pygame.image.load("madden25_imgs/raider0_flip.png").convert()
+            if play == 0:
+                imp = pygame.image.load("madden25_imgs/raider_catch_flip.png").convert()
+            else:
+                imp = pygame.image.load("madden25_imgs/raider0_flip.png").convert()
+
         game_window.blit(imp, pygame.Rect(pos[0], pos[1], 10, 10))
         pygame.display.flip()
 
@@ -823,8 +858,6 @@ while True:
     show_downs(1, white, 'Arial', 30)
     show_score(1, white, 'Arial', 30)
 
-    # Refresh game screen
     pygame.display.update()
 
-    # Frame Per Second /Refresh Rate
     fps.tick(playero_speed)
