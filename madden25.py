@@ -2,6 +2,9 @@
 import pygame
 import time
 import random
+import pygame.freetype
+from pygame.sprite import Sprite
+from pygame.rect import Rect
 
 playero_speed = 15
 
@@ -57,8 +60,8 @@ compx4_body = [random.randrange(1, (window_x//10)) * 10,
 compx4 = random.randint(0,1)
 compx4_down = 0
 
-ball_body = [200, random.randrange(1, (window_y//10)) * 10]
-ball_position = [200, random.randrange(1, (window_y//10)) * 10]
+ball_body = [300, random.randrange(1, (window_y//10)) * 10]
+ball_position = [300, random.randrange(1, (window_y//10)) * 10]
 
 field_lines_body = [[120, 60],
                [120, 70],
@@ -408,7 +411,7 @@ def incompletion():
     downs_rect.midtop = (window_x/2, 280)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
-    time.sleep(3)
+    time.sleep(2)
 
 def catch():
 
@@ -419,6 +422,46 @@ def catch():
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
     time.sleep(3)
+
+def create_surface_with_text(text, font_size, text_rgb, bg_rgb):
+    """ Returns surface with text written on """
+    font = pygame.freetype.SysFont("Courier", font_size, bold=True)
+    surface, _ = font.render(text=text, fgcolor=text_rgb, bgcolor=bg_rgb)
+    return surface.convert_alpha()
+
+class UIElement(Sprite):
+    """ An user interface element that can be added to a surface """
+
+    def __init__(self, center_position, text, font_size, bg_rgb, text_rgb):
+        """
+        Args:
+            center_position - tuple (x, y)
+            text - string of text to write
+            font_size - int
+            bg_rgb (background colour) - tuple (r, g, b)
+            text_rgb (text colour) - tuple (r, g, b)
+        """
+        self.mouse_over = False  # indicates if the mouse is over the element
+
+        # create the default image
+        default_image = create_surface_with_text(
+            text=text, font_size=font_size, text_rgb=text_rgb, bg_rgb=bg_rgb
+        )
+
+        # create the image that shows when mouse is over the element
+        highlighted_image = create_surface_with_text(
+            text=text, font_size=font_size * 1.2, text_rgb=text_rgb, bg_rgb=bg_rgb
+        )
+
+        # add both images and their rects to lists
+        self.images = [default_image, highlighted_image]
+        self.rects = [
+            default_image.get_rect(center=center_position),
+            highlighted_image.get_rect(center=center_position),
+        ]
+
+        # calls the init method of the parent sprite class
+        super().__init__()    
 
 def game_over():
   
@@ -490,10 +533,21 @@ while True:
         elif ball_direction_start == 3:
             ball_position[1] -= 5 
         
-        if ball_position [0] > 1300:
+        if ball_position[0] > 1300:
             incompletion()
-        
-        if (((ball_position[0] <= playero_position[0] + 5) or (ball_position[0] >= playero_position[0])) and (ball_position[1] <= playero_position[1])):
+            down = down + 1
+            ball_position[0] = 200
+
+        if ball_position[1] < 50:
+            ball_position[1] = 50
+
+        if ball_position[1] > 500:
+            ball_position[1] = 500
+
+        if ((ball_body[0] <= playero_position[0] and ball_position[0] >= playero_position[0] + 30) and (ball_position[1] <= playero_position[1] and ball_position[1] >= playero_position[1] + 30)):
+            catch()
+            play = 1
+        if ((ball_position[0] >= playero_position[0] and ball_position[0] <= playero_position[0] - 30) and (ball_position[1] >= playero_position[1] and ball_position[1] <= playero_position[1] - 30)):
             catch()
             play = 1
 
