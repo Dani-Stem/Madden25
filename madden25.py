@@ -698,9 +698,9 @@ while True:
                         goal()
                         play_promt = '0'
                         fieldgoalball_position[0] = 680
-                        fieldgoalball_position = 630
+                        fieldgoalball_position[1] = 630
                         spacebar_count = 0
-                        timer_position[1] = 710
+                        timer_position[0] = 0
 
                 elif spacebar_count < 7 and spacebar_count > 3 and fieldgoalball_position[1] > 250:
                     fieldgoalball_position[0] -= 5
@@ -709,9 +709,9 @@ while True:
                         miss()
                         play_promt = '0'
                         fieldgoalball_position[0] = 680
-                        fieldgoalball_position = 630
+                        fieldgoalball_position[1] = 630
                         spacebar_count = 0
-                        timer_position[1] = 710
+                        timer_position[0] = 0
 
                 elif spacebar_count < 4 and fieldgoalball_position[1] > 270:
                     fieldgoalball_position[0] += 5
@@ -720,9 +720,9 @@ while True:
                         miss()
                         play_promt = '0'
                         fieldgoalball_position[0] = 680
-                        fieldgoalball_position = 630
+                        fieldgoalball_position[1] = 630
                         spacebar_count = 0
-                        timer_position[1] = 710
+                        timer_position[0] = 0
 
             power_range = [0,0,1]
             power = random.choice(power_range)
