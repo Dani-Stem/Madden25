@@ -634,7 +634,12 @@ while True:
                 direction = 'RIGHT'
 
             for pos in fieldgoalball_body:
-                impball = pygame.image.load("madden25_imgs/fieldgoalball.png").convert()
+                if fieldgoalball_position[1] >= 300 and fieldgoalball_position[1] < 410:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball.png").convert()
+                if fieldgoalball_position[1] > 410 and fieldgoalball_position[1] < 520:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball1.png").convert()  
+                if fieldgoalball_position[1] >= 520 and fieldgoalball_position[1] <= 630:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball2.png").convert()      
                 game_window.blit(impball, pygame.Rect(fieldgoalball_position[0], fieldgoalball_position[1], 10, 10))
 
             if speedmeter > -2:
@@ -717,7 +722,7 @@ while True:
                     fieldgoalball_position[0] += 5
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 270:
-                        miss()
+                        miss()  
                         play_promt = '0'
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
