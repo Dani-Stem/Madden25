@@ -114,6 +114,18 @@ field_lines_body = [[120, 60],
                [1200, 90],
                [1200, 100]]
 
+yl1 = 120
+yl2 = 240
+yl3 = 360
+yl4 = 480
+yl5 = 600
+yl6 = 720
+yl7 = 840
+yl8 = 960
+yl9 = 1080
+yl10 = 1200
+
+
 
 speedmeter1_body = [[160, 13],
                     [160, 23],]
@@ -303,10 +315,19 @@ selection_body = [[325, 360],
                   [600, 360],
                   [610, 360],
                   [615, 360],]
-
 selection_position = [325, 360]
 
+fieldgoal_body = [560, 250]
+fieldgoal_position = [560, 250]
+
+fieldgoalball_body = [680, 630]
+fieldgoalball_position = [680, 630]
+
+timer_body = [0, 710]
+timer_position = [0, 710]
+
 direction = 'RIGHT'
+key = ''
 change_to = direction
 ball_direction = [1, 2, 3]
 score = [0, 0] 
@@ -318,7 +339,8 @@ field_goal = '0'
 play_promt = '0'
 speedmeter = 0
 play = 0 
-
+power = 0
+spacebar_count = 0
 
 def show_playoptions(choice, color, font, size):
 
@@ -338,6 +360,16 @@ def show_score(choice, color, font, size):
     score_rect.midtop = (1100, 5)
     game_window.blit(score_surface, score_rect)
 
+
+def show_scorefieldgoal(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 30)
+    score_surface = my_font.render(
+        'SCORE: ' + str(score[0]) + ' vs ' + str(score[1]), True, white)
+    score_rect = score_surface.get_rect()
+    score_rect.midtop = (1200, 655)
+    game_window.blit(score_surface, score_rect)
+
 def show_downs(choice, color, font, size):
   
     my_font = pygame.font.SysFont('Arial', 30)
@@ -351,8 +383,41 @@ def show_downs(choice, color, font, size):
         down_surface = my_font.render(str(down) + 'TH & ' + yard, True, white)
 
     down_rect = down_surface.get_rect()
-    down_rect.midtop = (600, 5)
+    down_rect.midtop = (500, 5)
     game_window.blit(down_surface, down_rect)
+
+def show_downspo(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 30)
+    if down == 1:
+        down_surface = my_font.render(str(down) + 'ST & ' + yard, True, white)
+    elif down == 2:
+        down_surface = my_font.render(str(down) + 'ND & ' + yard, True, white)
+    elif down == 3:
+        down_surface = my_font.render(str(down) + 'RD & ' + yard, True, white)
+    elif down == 4:
+        down_surface = my_font.render(str(down) + 'TH & ' + yard, True, white)
+
+    down_rect = down_surface.get_rect()
+    down_rect.midtop = (210, 5)
+    game_window.blit(down_surface, down_rect)
+
+def show_downsfieldgoal(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 30)
+    if down == 1:
+        down_surface = my_font.render(str(down) + 'ST & ' + yard, True, white)
+    elif down == 2:
+        down_surface = my_font.render(str(down) + 'ND & ' + yard, True, white)
+    elif down == 3:
+        down_surface = my_font.render(str(down) + 'RD & ' + yard, True, white)
+    elif down == 4:
+        down_surface = my_font.render(str(down) + 'TH & ' + yard, True, white)
+
+    down_rect = down_surface.get_rect()
+    down_rect.midtop = (105, 655)
+    game_window.blit(down_surface, down_rect)
+
 
 def show_speed(choice, color, font, size):
   
@@ -363,6 +428,14 @@ def show_speed(choice, color, font, size):
     speed_rect.midtop = (100, 5)
     game_window.blit(speed_surface, speed_rect)
 
+def show_fieldgoal(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 30)
+    speed_surface = my_font.render(
+        'QUICKLY & REPEATEDLY TAP THE SPACE BAR' , True, white)
+    speed_rect = speed_surface.get_rect()
+    speed_rect.midtop = (670, 25)
+    game_window.blit(speed_surface, speed_rect)
 
 def show_yardline(choice, color, font, size):
   
@@ -377,13 +450,9 @@ def show_nextyardline(choice, color, font, size):
     if yardline < 90:
 
         nextyardline_font = pygame.font.SysFont(font, size)
-        
         nextyardline_surface = nextyardline_font.render(str(yardline + 10), True, color)
-        
-    
         nextyardline_rect = nextyardline_surface.get_rect()
         nextyardline_rect.midtop = (1225, 300)
-
         game_window.blit(nextyardline_surface, nextyardline_rect)
     
     else:
@@ -433,7 +502,7 @@ def downs():
     pygame.display.flip()
     playero_position[0] = playero_position[0]
     playero_position[1] = 300
-    time.sleep(3)
+    time.sleep(2)
 
 def outofbounds():
 
@@ -445,7 +514,7 @@ def outofbounds():
     pygame.display.flip()
     playero_position[0] = playero_position[0]
     playero_position[1] = 300
-    time.sleep(3)
+    time.sleep(2)
 
 def incompletion():
 
@@ -465,7 +534,18 @@ def catch():
     downs_rect.midtop = (window_x/2, 300)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
-    time.sleep(3)
+    time.sleep(2)
+
+
+def kickoff():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('KICK OFF', True, white)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (window_x/2, 300)
+    game_window.blit(downs_surface, downs_rect)
+    pygame.display.flip()
+    time.sleep(2)
 
 def game_over():
   
@@ -487,31 +567,21 @@ def goal():
     my_font = pygame.font.SysFont('Arial', 70)
     downs_surface = my_font.render('GOAL', True, green)
     downs_rect = downs_surface.get_rect()
-    downs_rect.midtop = (window_x/2, 300)
+    downs_rect.midtop = (window_x/2, 600)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
-    time.sleep(3)
+    time.sleep(2)
+
+def miss():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('MISS', True, red)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (window_x/2, 600)
+    game_window.blit(downs_surface, downs_rect)
+    pygame.display.flip()
+    time.sleep(2)
    
-def catch():
-
-    my_font = pygame.font.SysFont('Arial', 70)
-    downs_surface = my_font.render('NICE CATCH', True, green)
-    downs_rect = downs_surface.get_rect()
-    downs_rect.midtop = (window_x/2, 300)
-    game_window.blit(downs_surface, downs_rect)
-    pygame.display.flip()
-    time.sleep(3)
-
-def catch():
-
-    my_font = pygame.font.SysFont('Arial', 70)
-    downs_surface = my_font.render('NICE CATCH', True, green)
-    downs_rect = downs_surface.get_rect()
-    downs_rect.midtop = (window_x/2, 300)
-    game_window.blit(downs_surface, downs_rect)
-    pygame.display.flip()
-    time.sleep(3) 
-
 
 while True:
     game_window.fill(black)
@@ -530,12 +600,15 @@ while True:
             if event.key == pygame.K_RIGHT:
                 change_to = 'RIGHT'
             if event.key == pygame.K_SPACE:
+                change_to = 'SPACE'
                 if speedmeter < 10:
-                    speedmeter = speedmeter + 1
+                    speedmeter += 1
+                    spacebar_count += 1
             if event.key != pygame.K_SPACE:
                 if speedmeter > -2:
-                    speedmeter = speedmeter - 1
-
+                    speedmeter -= 1
+            if event.key == pygame.K_p:
+                play_promt = 'p'
 
         if change_to == 'UP':
             direction = 'UP'
@@ -546,15 +619,15 @@ while True:
         if change_to == 'RIGHT':
             direction = 'RIGHT'
         if change_to == 'ENTER':
-            direction = 'ENTER'
+            key = 'ENTER'
+        if change_to == 'SPACE':
+            key = 'SPACE'
 
     if play_promt == '0':
-        show_playoptions(1, white, 'Arial', 100)
 
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1], 10, 10))
-        
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))
@@ -562,20 +635,142 @@ while True:
         if direction == 'RIGHT':
             if selection_position[0] <= 624:
                 selection_position[0] += 93
-
         if direction == 'LEFT':
                 if selection_position[0] > 325:
                     selection_position[0] -= 93
         
-        if direction == 'ENTER' and selection_position[0] > 624:
+        if key == 'ENTER' and selection_position[0] > 624:
+            play_promt = '2'
+        if key == 'ENTER' and selection_position[0] < 624:
             play_promt = '1'
-            direction ='RIGHT'
 
         for pos in selection_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(selection_position[0], pos[1], 300, 10))
-    
+        show_downspo(1, white, 'Arial', 100)    
+        show_score(1, white, 'Arial', 100)    
+        show_playoptions(1, white, 'Arial', 100)
+            
     if play_promt == '1':
+            
+            for pos in fieldgoal_body:
+                impgoal = pygame.image.load("madden25_imgs/fieldgoal.png").convert()
+                game_window.blit(impgoal, pygame.Rect(fieldgoal_position[0], fieldgoal_position[1], 10, 10))
+
+            if key == 'SPACE':
+                direction = 'RIGHT'
+
+            for pos in fieldgoalball_body:
+                if fieldgoalball_position[1] >= 300 and fieldgoalball_position[1] < 410:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball.png").convert()
+                if fieldgoalball_position[1] > 410 and fieldgoalball_position[1] < 520:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball1.png").convert()  
+                if fieldgoalball_position[1] >= 520 and fieldgoalball_position[1] <= 630:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball2.png").convert()      
+                game_window.blit(impball, pygame.Rect(fieldgoalball_position[0], fieldgoalball_position[1], 10, 10))
+                
+
+            if speedmeter > -2:
+                for pos in speedmeter1_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
+            if speedmeter > -1:
+                for pos in speedmeter2_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
+            if speedmeter > 0:
+                for pos in speedmeter3_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))               
+            if speedmeter > 1:
+                for pos in speedmeter4_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 2:
+                for pos in speedmeter5_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 3:
+                for pos in speedmeter6_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 4:
+                for pos in speedmeter7_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 5:
+                for pos in speedmeter8_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 6:
+                for pos in speedmeter9_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 7:
+                for pos in speedmeter10_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 8:
+                for pos in speedmeter11_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10)) 
+            if speedmeter > 9:
+                for pos in speedmeterMax_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))    
+            for pos in timer_body:
+                pygame.draw.rect(game_window, white,
+                                pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
+            timer_position[0] += 10      
+            if timer_position[0] > 1300:
+                if spacebar_count >= 7 and fieldgoalball_position[1] >= 300:
+                    fieldgoalball_position[1] -= 10
+                    if fieldgoalball_position[1] <= 300:
+                        goal()
+                        fieldgoalball_position[0] = 680
+                        fieldgoalball_position[1] = 630
+                        timer_position[0] = 0
+                        timer_position[1] = 710
+                        play_promt = '0'
+                        speedmeter = 0
+                elif spacebar_count < 7 and spacebar_count > 3 and fieldgoalball_position[1] >= 250:
+                    fieldgoalball_position[0] -= 5
+                    fieldgoalball_position[1] -= 10
+                    if fieldgoalball_position[1] <= 250:
+                        miss()
+                        fieldgoalball_position[0] = 680
+                        fieldgoalball_position[1] = 630
+                        timer_position[0] = 0
+                        timer_position[1] = 710
+                        play_promt = '0'
+                        speedmeter = 0
+
+                elif spacebar_count < 4 and fieldgoalball_position[1] >= 270:
+                    fieldgoalball_position[0] += 5
+                    fieldgoalball_position[1] -= 10
+                    if fieldgoalball_position[1] <= 270:
+                        miss()
+                        fieldgoalball_position[0] = 680
+                        fieldgoalball_position[1] = 630
+                        timer_position[0] = 0
+                        timer_position[1] = 710
+                        play_promt = '0'
+                        speedmeter = 0
+
+            power_range = [0,0,1]
+            power = random.choice(power_range)
+
+            if power == 1:
+                if timer_position[0] < 1300:
+                    if speedmeter > -2:
+                        speedmeter -=1
+                        spacebar_count -= 1
+
+            show_fieldgoal(1, white, 'Arial', 30)
+            show_downsfieldgoal(1, white, 'Arial', 30)
+            show_scorefieldgoal(1, white, 'Arial', 30)
+    
+    if play_promt == '2':
 
         # Moving the playero
         if direction == 'UP':
@@ -592,7 +787,7 @@ while True:
             for pos in ball_body:
                 impball = pygame.image.load("madden25_imgs/football.png").convert()
                 game_window.blit(impball, pygame.Rect(ball_position[0], ball_position[1], 10, 10))
-                # pygame.display.flip()
+
             ball_direction_start = random.choice(ball_direction)
             ball_position[0] += 5 
             if ball_direction_start == 2:
@@ -619,6 +814,7 @@ while True:
             if down <= 5:
                 if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
                     downs()
+                    currentpos0 = playero_position[0]
                     play = 0
                     compx_down = 1
                     down = down + 1
@@ -630,6 +826,7 @@ while True:
             if down <= 5:
                 if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
                     downs()
+                    currentpos0 = playero_position[0]
                     play = 0
                     compx1_down = 1
                     down = down + 1
@@ -641,6 +838,7 @@ while True:
             if down <= 5:
                 if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:
                     downs()
+                    currentpos0 = playero_position[0]
                     play = 0
                     compx2_down = 1
                     down = down + 1
@@ -652,6 +850,7 @@ while True:
             if down <= 5:
                 if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:
                     downs()
+                    currentpos0 = playero_position[0]
                     play = 0
                     compx3_down = 1
                     down = down + 1
@@ -663,6 +862,7 @@ while True:
             if down <= 5:
                 if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:
                     downs()
+                    currentpos0 = playero_position[0]
                     compx4_down = 1
                     down = down + 1
                 change_to ='RIGHT'
@@ -681,7 +881,6 @@ while True:
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))
-        
         
         for pos in playero_body:
             if direction == 'RIGHT':
