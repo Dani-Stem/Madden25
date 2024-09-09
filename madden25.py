@@ -346,6 +346,7 @@ snapx6_body = [225, 520]
 snapx6_position = [225, 520]
 
 direction = 'RIGHT'
+gb_move = 'UP'
 key = ''
 change_to = direction
 ball_direction = [1, 2, 3]
@@ -888,6 +889,11 @@ while True:
                 impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
                 game_window.blit(impball, pygame.Rect(snapx5_position[0], snapx5_position[1], 10, 10))
             
+            if gb_move == 'DOWN':
+                gb_position[1] += 10
+            if gb_move == 'UP':
+                gb_position[1] -= 10
+                
             timer_position[0] = 0
             if snapo1_position[0] < 170 and snapo1_position[0] >= 155:
                 snapo1_position[0] += 10 
@@ -938,7 +944,6 @@ while True:
                 snapx6_position[0] -= 10 
             elif snapx6_position[0] <= 200:
                 snapx6_position[0] += 10
-
 
 
         if snap == 2:
