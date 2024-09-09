@@ -114,7 +114,6 @@ field_lines_body = [[120, 60],
                [1200, 90],
                [1200, 100]]
 
-
 speedmeter1_body = [[160, 13],
                     [160, 23],]
 speedmeter2_body = [[160, 13],
@@ -314,6 +313,38 @@ fieldgoalball_position = [680, 630]
 timer_body = [0, 710]
 timer_position = [0, 710]
 
+gb_body = [10, 305]
+gb_position = [10, 305]
+
+center_body = [80, 305]
+center_position = [80, 305]
+
+snapo1_body = [160, 160]
+snapo1_position = [160, 160]
+snapo2_body = [160, 230]
+snapo2_position = [160, 230]
+snapo3_body = [160, 300]
+snapo3_position = [160, 300]
+snapo4_body = [160, 375]
+snapo4_position = [160, 375]
+snapo5_body = [160, 450]
+snapo5_position = [160, 450]
+snapo6_body = [160, 520]
+snapo6_position = [160, 520]
+
+snapx1_body = [225, 160]
+snapx1_position = [225, 160]
+snapx2_body = [225, 230]
+snapx2_position = [225, 230]
+snapx3_body = [225, 300]
+snapx3_position = [225, 300]
+snapx4_body = [225, 375]
+snapx4_position = [225, 375]
+snapx5_body = [225, 450]
+snapx5_position = [225, 450]
+snapx6_body = [225, 520]
+snapx6_position = [225, 520]
+
 direction = 'RIGHT'
 key = ''
 change_to = direction
@@ -329,6 +360,7 @@ speedmeter = 0
 play = 0 
 power = 0
 spacebar_count = 0
+snap = 0
 
 
 def show_playoptions(choice, color, font, size):
@@ -597,14 +629,13 @@ while True:
             key = 'SPACE'
 
     if play_promt == '0':
-
+            
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1], 10, 10))
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
-                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))
-            
+                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))    
         if direction == 'RIGHT':
             if selection_position[0] <= 624:
                 selection_position[0] += 93
@@ -634,12 +665,18 @@ while True:
                 direction = 'RIGHT'
 
             for pos in fieldgoalball_body:
-                if fieldgoalball_position[1] >= 300 and fieldgoalball_position[1] < 410:
+                if fieldgoalball_position[1] >= 300 and fieldgoalball_position[1] < 355:
                     impball = pygame.image.load("madden25_imgs/fieldgoalball.png").convert()
-                if fieldgoalball_position[1] > 410 and fieldgoalball_position[1] < 520:
+                if fieldgoalball_position[1] > 355 and fieldgoalball_position[1] < 410:
                     impball = pygame.image.load("madden25_imgs/fieldgoalball1.png").convert()  
-                if fieldgoalball_position[1] >= 520 and fieldgoalball_position[1] <= 630:
-                    impball = pygame.image.load("madden25_imgs/fieldgoalball2.png").convert()      
+                if fieldgoalball_position[1] >= 410 and fieldgoalball_position[1] <= 465:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball2.png").convert()  
+                if fieldgoalball_position[1] >= 465 and fieldgoalball_position[1] <= 520:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball3.png").convert()  
+                if fieldgoalball_position[1] >= 520 and fieldgoalball_position[1] <= 575:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball4.png").convert()  
+                if fieldgoalball_position[1] >= 575 and fieldgoalball_position[1] <= 630:
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball5.png").convert()  
                 game_window.blit(impball, pygame.Rect(fieldgoalball_position[0], fieldgoalball_position[1], 10, 10))
 
             if speedmeter > -2:
@@ -754,385 +791,535 @@ while True:
         if direction == 'RIGHT':
             playero_position[0] += 10 + speedmeter
 
-        #football code
-        if play == 0:
-            for pos in ball_body:
-                impball = pygame.image.load("madden25_imgs/football.png").convert()
-                game_window.blit(impball, pygame.Rect(ball_position[0], ball_position[1], 10, 10))
-
-            ball_direction_start = random.choice(ball_direction)
-            ball_position[0] += 5 
-            if ball_direction_start == 2:
-                ball_position[1] += 5 
-            elif ball_direction_start == 3:
-                ball_position[1] -= 5 
+        if snap == 0:
             
-            if ball_position[0] > 1300:
-                incompletion()
-                down = down + 1
-                ball_position[0] = 200
+            for pos in field_lines_body:
+                pygame.draw.rect(game_window, white,
+                                pygame.Rect(pos[0] + 100, pos[1], 10, 10))
+            for pos in field_lines_body:
+                pygame.draw.rect(game_window, white,
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))   
+            for pos in gb_body:
+                impball = pygame.image.load("madden25_imgs/raidergb0.png").convert()
+                game_window.blit(impball, pygame.Rect(gb_position[0], gb_position[1], 10, 10))
+            for pos in center_body:
+                impball = pygame.image.load("madden25_imgs/raidercenter.png").convert()
+                game_window.blit(impball, pygame.Rect(center_position[0], center_position[1], 10, 10))
+            for pos in snapo1_body:
+                impball = pygame.image.load("madden25_imgs/raidercenter.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo1_position[0], snapo1_position[1], 10, 10))
+            for pos in snapo2_body:
+                impball = pygame.image.load("madden25_imgs/raidercenter.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo2_position[0], snapo2_position[1], 10, 10))
+            for pos in snapo3_body:
+                impball = pygame.image.load("madden25_imgs/raidercenter.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo3_position[0], snapo3_position[1], 10, 10))
+            for pos in snapo4_body:
+                impball = pygame.image.load("madden25_imgs/raidercenter.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo4_position[0], snapo4_position[1], 10, 10))
+            for pos in snapo5_body:
+                impball = pygame.image.load("madden25_imgs/raidercenter.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo5_position[0], snapo5_position[1], 10, 10))
+            for pos in snapx1_body:
+                impball = pygame.image.load("madden25_imgs/ramcenter_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx1_position[0], snapx1_position[1], 10, 10))
+            for pos in snapx2_body:
+                impball = pygame.image.load("madden25_imgs/ramcenter_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx2_position[0], snapx2_position[1], 10, 10))
+            for pos in snapx3_body:
+                impball = pygame.image.load("madden25_imgs/ramcenter_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx3_position[0], snapx3_position[1], 10, 10))
+            for pos in snapx4_body:
+                impball = pygame.image.load("madden25_imgs/ramcenter_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx4_position[0], snapx4_position[1], 10, 10))
+            for pos in snapx5_body:
+                impball = pygame.image.load("madden25_imgs/ramcenter_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx5_position[0], snapx5_position[1], 10, 10))
+            for pos in timer_body:
+                pygame.draw.rect(game_window, black,
+                                pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
 
-            if ball_position[1] < 50:
-                ball_position[1] = 50
+            timer_position[0] += 40 
+            if timer_position[0] > 1300:
+                snap = 1
 
-            if ball_position[1] > 500:
-                ball_position[1] = 500
+        if snap == 1:
+            
+            for pos in field_lines_body:
+                pygame.draw.rect(game_window, white,
+                                pygame.Rect(pos[0] + 100, pos[1], 10, 10))
+            for pos in field_lines_body:
+                pygame.draw.rect(game_window, white,
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))   
+            for pos in gb_body:
+                impball = pygame.image.load("madden25_imgs/raidergb.png").convert()
+                game_window.blit(impball, pygame.Rect(gb_position[0], gb_position[1], 10, 10))
+            for pos in center_body:
+                impball = pygame.image.load("madden25_imgs/raiderx.png").convert()
+                game_window.blit(impball, pygame.Rect(center_position[0], center_position[1], 10, 10))
+            for pos in snapo1_body:
+                impball = pygame.image.load("madden25_imgs/raiderx.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo1_position[0], snapo1_position[1], 10, 10))
+            for pos in snapo2_body:
+                impball = pygame.image.load("madden25_imgs/raiderx.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo2_position[0], snapo2_position[1], 10, 10))
+            for pos in snapo3_body:
+                impball = pygame.image.load("madden25_imgs/raiderx.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo3_position[0], snapo3_position[1], 10, 10))
+            for pos in snapo4_body:
+                impball = pygame.image.load("madden25_imgs/raiderx.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo4_position[0], snapo4_position[1], 10, 10))
+            for pos in snapo5_body:
+                impball = pygame.image.load("madden25_imgs/raiderx.png").convert()
+                game_window.blit(impball, pygame.Rect(snapo5_position[0], snapo5_position[1], 10, 10))
+            for pos in snapx1_body:
+                impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx1_position[0], snapx1_position[1], 10, 10))
+            for pos in snapx2_body:
+                impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx2_position[0], snapx2_position[1], 10, 10))
+            for pos in snapx3_body:
+                impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx3_position[0], snapx3_position[1], 10, 10))
+            for pos in snapx4_body:
+                impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx4_position[0], snapx4_position[1], 10, 10))
+            for pos in snapx5_body:
+                impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx5_position[0], snapx5_position[1], 10, 10))
+            
+            timer_position[0] = 0
+            if snapo1_position[0] < 170 and snapo1_position[0] >= 155:
+                snapo1_position[0] += 10 
+            elif snapo1_position[0] >= 170:
+                snapo1_position[0] -= 10
+            if snapo2_position[0] < 170 and snapo1_position[0] >= 155:
+                snapo2_position[0] += 10 
+            elif snapo2_position[0] >= 170:
+                snapo2_position[0] -= 10
+            if snapo3_position[0] < 170 and snapo1_position[0] >= 155:
+                snapo3_position[0] += 10 
+            elif snapo3_position[0] >= 170:
+                snapo3_position[0] -= 10
+            if snapo4_position[0] < 170 and snapo1_position[0] >= 155:
+                snapo4_position[0] += 10 
+            elif snapo4_position[0] >= 170:
+                snapo4_position[0] -= 10
+            if snapo5_position[0] < 170 and snapo1_position[0] >= 155:
+                snapo5_position[0] += 10 
+            elif snapo5_position[0] >= 170:
+                snapo5_position[0] -= 10
+            if snapo6_position[0] < 170 and snapo1_position[0] >= 155:
+                snapo6_position[0] += 10 
+            elif snapo6_position[0] >= 170:
+                snapo6_position[0] -= 10
 
-            if (ball_position[0] == playero_position[0] - 7 or ball_position[0] < playero_position[0] + 30) and (ball_position[1] > playero_position[1] - 5 and ball_position[1] < playero_position[1] + 80):
-                catch()
-                play = 1
+            if snapx1_position[0] > 200 and snapx1_position[0] <= 225:
+                snapx1_position[0] -= 10 
+            elif snapx1_position[0] <= 200:
+                snapx1_position[0] += 10
+            if snapx2_position[0] > 200 and snapx1_position[0] <= 225:
+                snapx2_position[0] -= 10 
+            elif snapx2_position[0] <= 200:
+                snapx2_position[0] += 10
+            if snapx3_position[0] > 200 and snapx1_position[0] <= 225:
+                snapx3_position[0] -= 10 
+            elif snapx3_position[0] <= 200:
+                snapx3_position[0] += 10
+            if snapx4_position[0] > 200 and snapx1_position[0] <= 225:
+                snapx4_position[0] -= 10 
+            elif snapx4_position[0] <= 200:
+                snapx4_position[0] += 10
+            if snapx5_position[0] > 200 and snapx1_position[0] <= 225:
+                snapx5_position[0] -= 10 
+            elif snapx5_position[0] <= 200:
+                snapx5_position[0] += 10
+            if snapx6_position[0] > 200 and snapx1_position[0] <= 225:
+                snapx6_position[0] -= 10 
+            elif snapx6_position[0] <= 200:
+                snapx6_position[0] += 10
 
-        if playero_position[0] == compx_position[0] and playero_position[1] == compx_position[1]:
-            if down <= 5:
-                if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
-                    downs()
-                    play = 0
-                    compx_down = 1
+
+
+        if snap == 2:
+
+            #football code
+            if play == 0:
+                for pos in ball_body:
+                    impball = pygame.image.load("madden25_imgs/football.png").convert()
+                    game_window.blit(impball, pygame.Rect(ball_position[0], ball_position[1], 10, 10))
+
+                ball_direction_start = random.choice(ball_direction)
+                ball_position[0] += 5 
+                if ball_direction_start == 2:
+                    ball_position[1] += 5 
+                elif ball_direction_start == 3:
+                    ball_position[1] -= 5 
+                
+                if ball_position[0] > 1300:
+                    incompletion()
                     down = down + 1
-                change_to ='RIGHT'
-            else:
-                game_over()     
+                    ball_position[0] = 200
 
-        if playero_position[0] == compx1_position[0] and playero_position[1] == compx1_position[1]:
-            if down <= 5:
-                if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
-                    downs()
-                    play = 0
-                    compx1_down = 1
-                    down = down + 1
-                change_to ='RIGHT'
-            else:
-                game_over()   
+                if ball_position[1] < 50:
+                    ball_position[1] = 50
 
-        if playero_position[0] == compx2_position[0] and playero_position[1] == compx2_position[1]:
-            if down <= 5:
-                if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:
-                    downs()
-                    play = 0
-                    compx2_down = 1
-                    down = down + 1
-                change_to ='RIGHT'
-            else:
-                game_over()   
+                if ball_position[1] > 500:
+                    ball_position[1] = 500
 
-        if playero_position[0] == compx3_position[0] and playero_position[1] == compx3_position[1]:
-            if down <= 5:
-                if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:
-                    downs()
-                    play = 0
-                    compx3_down = 1
-                    down = down + 1
-                change_to ='RIGHT'
-            else:
-                game_over()   
+                if (ball_position[0] == playero_position[0] - 7 or ball_position[0] < playero_position[0] + 30) and (ball_position[1] > playero_position[1] - 5 and ball_position[1] < playero_position[1] + 80):
+                    catch()
+                    play = 1
 
-        if playero_position[0] == compx4_position[0] and playero_position[1] == compx4_position[1]:
-            if down <= 5:
-                if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:
-                    downs()
-                    compx4_down = 1
-                    down = down + 1
-                change_to ='RIGHT'
-            else:
+            if playero_position[0] == compx_position[0] and playero_position[1] == compx_position[1]:
+                if down <= 5:
+                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
+                        downs()
+                        play = 0
+                        compx_down = 1
+                        down = down + 1
+                    change_to ='RIGHT'
+                else:
+                    game_over()     
+
+            if playero_position[0] == compx1_position[0] and playero_position[1] == compx1_position[1]:
+                if down <= 5:
+                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
+                        downs()
+                        play = 0
+                        compx1_down = 1
+                        down = down + 1
+                    change_to ='RIGHT'
+                else:
+                    game_over()   
+
+            if playero_position[0] == compx2_position[0] and playero_position[1] == compx2_position[1]:
+                if down <= 5:
+                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:
+                        downs()
+                        play = 0
+                        compx2_down = 1
+                        down = down + 1
+                    change_to ='RIGHT'
+                else:
+                    game_over()   
+
+            if playero_position[0] == compx3_position[0] and playero_position[1] == compx3_position[1]:
+                if down <= 5:
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:
+                        downs()
+                        play = 0
+                        compx3_down = 1
+                        down = down + 1
+                    change_to ='RIGHT'
+                else:
+                    game_over()   
+
+            if playero_position[0] == compx4_position[0] and playero_position[1] == compx4_position[1]:
+                if down <= 5:
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:
+                        downs()
+                        compx4_down = 1
+                        down = down + 1
+                    change_to ='RIGHT'
+                else:
+                    down = 1
+                    game_over()   
+
+            playero_body.insert(0, list(playero_position))
+            playero_body.pop() 
+
+            for pos in field_lines_body:
+                pygame.draw.rect(game_window, white,
+                                pygame.Rect(pos[0] + 20, pos[1], 10, 10))
+                
+            for pos in field_lines_body:
+                pygame.draw.rect(game_window, white,
+                                pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))
+            
+            for pos in playero_body:
+                if direction == 'RIGHT':
+                    if play == 0:
+                        imp = pygame.image.load("madden25_imgs/raider_catch.png").convert()
+                    else:
+                        imp = pygame.image.load("madden25_imgs/raider0.png").convert()
+                elif direction == 'LEFT':
+                    if play == 0:
+                        imp = pygame.image.load("madden25_imgs/raider_catch_flip.png").convert()
+                    else:
+                        imp = pygame.image.load("madden25_imgs/raider0_flip.png").convert()
+
+                game_window.blit(imp, pygame.Rect(pos[0], pos[1], 10, 10))
+                pygame.display.flip()
+
+            #making the computer follow the player by coordinants 
+            if compx_position[0] > playero_position[0]:
+                if yardline < 50:
+                    compx_position[0] -= random.randint(5,8)
+                else:
+                    compx_position[0] -= random.randint(7,10)
+                compx_direction = 'LEFT'
+            if compx_position[0] < playero_position[0]:
+                if yardline < 50:
+                    compx_position[0] += random.randint(5,8)
+                else:
+                    compx_position[0] += random.randint(7,10)
+                compx_direction = 'RIGHT'
+            if compx_position[1] > playero_position[1]:
+                if yardline < 50:
+                    compx_position[1] -= random.randint(5,8)
+                else:
+                    compx_position[1] -= random.randint(7,10)
+            if compx_position[1] < playero_position[1]:
+                if yardline < 50:
+                    compx_position[1] += random.randint(5,8)
+                else:
+                    compx_position[1] += random.randint(7,10)
+
+            if compx1_position[0] > playero_position[0]:
+                if yardline < 50:
+                    compx1_position[0] -= random.randint(5,8)
+                else:
+                    compx1_position[0] -= random.randint(7,10)
+                compx1_direction = 'LEFT'
+            if compx1_position[0] < playero_position[0]:
+                if yardline < 50:
+                    compx1_position[0] += random.randint(5,8)
+                else:
+                    compx1_position[0] += random.randint(7,10)
+                compx1_direction = 'RIGHT'
+            if compx1_position[1] > playero_position[1]:
+                if yardline < 50:
+                    compx1_position[1] -= random.randint(5,8)
+                else:
+                    compx1_position[1] -= random.randint(7,10)
+            if compx1_position[1] < playero_position[1]:
+                if yardline < 50:
+                    compx1_position[1] += random.randint(5,8)
+                else:
+                    compx1_position[1] += random.randint(7,10)
+
+            if compx2_position[0] > playero_position[0]:
+                if yardline < 50:
+                    compx2_position[0] -= random.randint(5,8)
+                else:
+                    compx2_position[0] -= random.randint(7,10)
+                compx2_direction = 'LEFT'
+            if compx2_position[0] < playero_position[0]:
+                if yardline < 50:
+                    compx2_position[0] += random.randint(5,8)
+                else:
+                    compx2_position[0] += random.randint(7,10)
+                compx2_direction = 'RIGHT'
+            if compx2_position[1] > playero_position[1]:
+                if yardline < 50:
+                    compx2_position[1] -= random.randint(5,8)
+                else:
+                    compx2_position[1] -= random.randint(7,10)
+            if compx2_position[1] < playero_position[1]:
+                if yardline < 50:
+                    compx2_position[1] += random.randint(5,8)
+                else:
+                    compx2_position[1] += random.randint(7,10)
+
+            if compx3_position[0] > playero_position[0]:
+                if yardline < 50:
+                    compx3_position[0] -= random.randint(5,8)
+                else:
+                    compx3_position[0] -= random.randint(7,10)
+                compx3_direction = 'LEFT'
+            if compx3_position[0] < playero_position[0]:
+                if yardline < 50:
+                    compx3_position[0] += random.randint(5,8)
+                else:
+                    compx3_position[0] += random.randint(7,10)
+                compx3_direction = 'RIGHT'
+            if compx3_position[1] > playero_position[1]:
+                if yardline < 50:
+                    compx3_position[1] -= random.randint(5,8)
+                else:
+                    compx3_position[1] -= random.randint(7,10)
+            if compx3_position[1] < playero_position[1]:
+                if yardline < 50:
+                    compx3_position[1] += random.randint(5,8)
+                else:
+                    compx3_position[1] += random.randint(7,10)
+
+            if compx4_position[0] > playero_position[0]:
+                if yardline < 50:
+                    compx4_position[0] -= random.randint(5,8)
+                else:
+                    compx4_position[0] -= random.randint(7,10)
+                compx4_direction = 'LEFT'
+            if compx4_position[0] < playero_position[0]:
+                if yardline < 50:
+                    compx4_position[0] += random.randint(5,8)
+                else:
+                    compx4_position[0] += random.randint(7,10)
+                compx4_direction = 'RIGHT'
+            if compx4_position[1] > playero_position[1]:
+                if yardline < 50:
+                    compx4_position[1] -= random.randint(5,8)
+                else:
+                    compx4_position[1] -= random.randint(7,10)
+            if compx4_position[1] < playero_position[1]:
+                if yardline < 50:
+                    compx4_position[1] += random.randint(5,8)
+                else:
+                    compx4_position[1] += random.randint(7,10)
+
+            if compx == 1:
+                for pos in compx_body:
+                    if compx_direction == 'RIGHT':
+                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                    elif compx_direction == 'LEFT':
+                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+
+                    game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
+
+            if compx1 == 1:
+                for pos in compx1_body:
+                    if compx1_direction == 'RIGHT':
+                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                    elif compx1_direction == 'LEFT':
+                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+
+                    game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
+
+            if compx2 == 1:
+                for pos in compx2_body:
+                    if compx2_direction == 'RIGHT':
+                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                    elif compx2_direction == 'LEFT':
+                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+
+                    game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
+
+            if compx3 == 1:
+                for pos in compx3_body:
+                    if compx3_direction == 'RIGHT':
+                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                    elif compx3_direction == 'LEFT':
+                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+
+                    game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
+
+            if compx == 4:
+                for pos in compx4_body:
+                    if compx4_direction == 'RIGHT':
+                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                    elif compx4_direction == 'LEFT':
+                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+
+                    game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
+
+            if playero_position[0] < 0:
+                playero_position[0] = 0
+
+            if playero_position[0] > 1300:
+                speedmeter = 0
+                compx = random.randint(0,1)
+                compx_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                compx1 = random.randint(0,1)
+                compx1_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                compx2 = random.randint(0,1)
+                compx2_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                compx3 = random.randint(0,1)
+                compx3_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                compx4 = random.randint(0,1)
+                compx4_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+
+                if yardline > 80:
+                    playero_position[0] >= 1000
+                    goal()
+                    score = score + 6
+
+                playero_position[0] = 0
+                yardline = yardline + 10
                 down = 1
-                game_over()   
 
+            if playero_position[1] < 0:
+                playero_position[1] = 0
 
-        playero_body.insert(0, list(playero_position))
-        playero_body.pop() 
+            if playero_position[1] > 620:
+                playero_position[1] = 620
 
-        for pos in field_lines_body:
-            pygame.draw.rect(game_window, white,
-                            pygame.Rect(pos[0] + 20, pos[1], 10, 10))
+            if playero_position[1] < 50:
+                playero_position[1] = 50
+                outofbounds()
+                direction = 'RIGHT'
+
             
-        for pos in field_lines_body:
-            pygame.draw.rect(game_window, white,
-                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))
-        
-        
-        for pos in playero_body:
-            if direction == 'RIGHT':
-                if play == 0:
-                    imp = pygame.image.load("madden25_imgs/raider_catch.png").convert()
-                else:
-                    imp = pygame.image.load("madden25_imgs/raider0.png").convert()
-            elif direction == 'LEFT':
-                if play == 0:
-                    imp = pygame.image.load("madden25_imgs/raider_catch_flip.png").convert()
-                else:
-                    imp = pygame.image.load("madden25_imgs/raider0_flip.png").convert()
+            if playero_position[1] > 600:
+                playero_position[1] = 600
+                outofbounds()
+                direction = 'RIGHT'
 
-            game_window.blit(imp, pygame.Rect(pos[0], pos[1], 10, 10))
-            pygame.display.flip()
+            if speedmeter > 9:
+                for pos in speedmeterMax_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+            
+            if speedmeter > -2:
+                for pos in speedmeter1_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+                    
+            if speedmeter > -1:
+                for pos in speedmeter2_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+                    
+            if speedmeter > 0:
+                for pos in speedmeter3_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+                    
+            if speedmeter > 1:
+                for pos in speedmeter4_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+                    
+            if speedmeter > 2:
+                for pos in speedmeter5_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+                    
+            if speedmeter > 3:
+                for pos in speedmeter6_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+                    
+            if speedmeter > 4:
+                for pos in speedmeter7_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+                    
+            if speedmeter > 5:
+                for pos in speedmeter8_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+                    
+            if speedmeter > 6:
+                for pos in speedmeter9_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+            if speedmeter > 7:
+                for pos in speedmeter10_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
+            if speedmeter > 8:
+                for pos in speedmeter11_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0], pos[1], 10, 10))
 
-        #making the computer follow the player by coordinants 
-        if compx_position[0] > playero_position[0]:
-            if yardline < 50:
-                compx_position[0] -= random.randint(5,8)
-            else:
-                compx_position[0] -= random.randint(7,10)
-            compx_direction = 'LEFT'
-        if compx_position[0] < playero_position[0]:
-            if yardline < 50:
-                compx_position[0] += random.randint(5,8)
-            else:
-                compx_position[0] += random.randint(7,10)
-            compx_direction = 'RIGHT'
-        if compx_position[1] > playero_position[1]:
-            if yardline < 50:
-                compx_position[1] -= random.randint(5,8)
-            else:
-                compx_position[1] -= random.randint(7,10)
-        if compx_position[1] < playero_position[1]:
-            if yardline < 50:
-                compx_position[1] += random.randint(5,8)
-            else:
-                compx_position[1] += random.randint(7,10)
-
-        if compx1_position[0] > playero_position[0]:
-            if yardline < 50:
-                compx1_position[0] -= random.randint(5,8)
-            else:
-                compx1_position[0] -= random.randint(7,10)
-            compx1_direction = 'LEFT'
-        if compx1_position[0] < playero_position[0]:
-            if yardline < 50:
-                compx1_position[0] += random.randint(5,8)
-            else:
-                compx1_position[0] += random.randint(7,10)
-            compx1_direction = 'RIGHT'
-        if compx1_position[1] > playero_position[1]:
-            if yardline < 50:
-                compx1_position[1] -= random.randint(5,8)
-            else:
-                compx1_position[1] -= random.randint(7,10)
-        if compx1_position[1] < playero_position[1]:
-            if yardline < 50:
-                compx1_position[1] += random.randint(5,8)
-            else:
-                compx1_position[1] += random.randint(7,10)
-
-        if compx2_position[0] > playero_position[0]:
-            if yardline < 50:
-                compx2_position[0] -= random.randint(5,8)
-            else:
-                compx2_position[0] -= random.randint(7,10)
-            compx2_direction = 'LEFT'
-        if compx2_position[0] < playero_position[0]:
-            if yardline < 50:
-                compx2_position[0] += random.randint(5,8)
-            else:
-                compx2_position[0] += random.randint(7,10)
-            compx2_direction = 'RIGHT'
-        if compx2_position[1] > playero_position[1]:
-            if yardline < 50:
-                compx2_position[1] -= random.randint(5,8)
-            else:
-                compx2_position[1] -= random.randint(7,10)
-        if compx2_position[1] < playero_position[1]:
-            if yardline < 50:
-                compx2_position[1] += random.randint(5,8)
-            else:
-                compx2_position[1] += random.randint(7,10)
-
-        if compx3_position[0] > playero_position[0]:
-            if yardline < 50:
-                compx3_position[0] -= random.randint(5,8)
-            else:
-                compx3_position[0] -= random.randint(7,10)
-            compx3_direction = 'LEFT'
-        if compx3_position[0] < playero_position[0]:
-            if yardline < 50:
-                compx3_position[0] += random.randint(5,8)
-            else:
-                compx3_position[0] += random.randint(7,10)
-            compx3_direction = 'RIGHT'
-        if compx3_position[1] > playero_position[1]:
-            if yardline < 50:
-                compx3_position[1] -= random.randint(5,8)
-            else:
-                compx3_position[1] -= random.randint(7,10)
-        if compx3_position[1] < playero_position[1]:
-            if yardline < 50:
-                compx3_position[1] += random.randint(5,8)
-            else:
-                compx3_position[1] += random.randint(7,10)
-
-        if compx4_position[0] > playero_position[0]:
-            if yardline < 50:
-                compx4_position[0] -= random.randint(5,8)
-            else:
-                compx4_position[0] -= random.randint(7,10)
-            compx4_direction = 'LEFT'
-        if compx4_position[0] < playero_position[0]:
-            if yardline < 50:
-                compx4_position[0] += random.randint(5,8)
-            else:
-                compx4_position[0] += random.randint(7,10)
-            compx4_direction = 'RIGHT'
-        if compx4_position[1] > playero_position[1]:
-            if yardline < 50:
-                compx4_position[1] -= random.randint(5,8)
-            else:
-                compx4_position[1] -= random.randint(7,10)
-        if compx4_position[1] < playero_position[1]:
-            if yardline < 50:
-                compx4_position[1] += random.randint(5,8)
-            else:
-                compx4_position[1] += random.randint(7,10)
-
-        if compx == 1:
-            for pos in compx_body:
-                if compx_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-
-                game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
-
-        if compx1 == 1:
-            for pos in compx1_body:
-                if compx1_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx1_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-
-                game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
-
-        if compx2 == 1:
-            for pos in compx2_body:
-                if compx2_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx2_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-
-                game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
-
-        if compx3 == 1:
-            for pos in compx3_body:
-                if compx3_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx3_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-
-                game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
-
-        if compx == 4:
-            for pos in compx4_body:
-                if compx4_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx4_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-
-                game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
-
-        if playero_position[0] < 0:
-            playero_position[0] = 0
-
-        if playero_position[0] > 1300:
-            speedmeter = 0
-            compx = random.randint(0,1)
-            compx_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            compx1 = random.randint(0,1)
-            compx1_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            compx2 = random.randint(0,1)
-            compx2_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            compx3 = random.randint(0,1)
-            compx3_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            compx4 = random.randint(0,1)
-            compx4_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-
-            if yardline > 80:
-                playero_position[0] >= 1000
-                goal()
-                score = score + 6
-
-            playero_position[0] = 0
-            yardline = yardline + 10
-            down = 1
-
-        if playero_position[1] < 0:
-            playero_position[1] = 0
-
-        if playero_position[1] > 620:
-            playero_position[1] = 620
-
-        if playero_position[1] < 50:
-            playero_position[1] = 50
-            outofbounds()
-            direction = 'RIGHT'
-
-        
-        if playero_position[1] > 600:
-            playero_position[1] = 600
-            outofbounds()
-            direction = 'RIGHT'
-
-        if speedmeter > 9:
-            for pos in speedmeterMax_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-        
-        if speedmeter > -2:
-            for pos in speedmeter1_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
-        if speedmeter > -1:
-            for pos in speedmeter2_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
-        if speedmeter > 0:
-            for pos in speedmeter3_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
-        if speedmeter > 1:
-            for pos in speedmeter4_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
-        if speedmeter > 2:
-            for pos in speedmeter5_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
-        if speedmeter > 3:
-            for pos in speedmeter6_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
-        if speedmeter > 4:
-            for pos in speedmeter7_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
-        if speedmeter > 5:
-            for pos in speedmeter8_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
-        if speedmeter > 6:
-            for pos in speedmeter9_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-        if speedmeter > 7:
-            for pos in speedmeter10_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-        if speedmeter > 8:
-            for pos in speedmeter11_body:
-                pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-
-        show_yardline(1, white, 'Arial', 80)
-        show_nextyardline(1, white, 'Arial', 80)
+            show_yardline(1, white, 'Arial', 80)
+            show_nextyardline(1, white, 'Arial', 80)
         show_speed(1, white, 'Arial', 30)
         show_downs(1, white, 'Arial', 30)
         show_score(1, white, 'Arial', 30)
