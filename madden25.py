@@ -342,8 +342,10 @@ snapx4_body = [225, 375]
 snapx4_position = [225, 375]
 snapx5_body = [225, 450]
 snapx5_position = [225, 450]
-snapx6_body = [225, 520]
-snapx6_position = [225, 520]
+# snapx6_body = [225, 520]
+# snapx6_position = [225, 520]
+snapx6_body = [320, 300]
+snapx6_position = [320, 300]
 
 direction = 'RIGHT'
 gb_move = 'UP'
@@ -728,7 +730,7 @@ while True:
                 for pos in speedmeterMax_body:
                     pygame.draw.rect(game_window, green,
                                     pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))    
-
+                    
             for pos in timer_body:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
@@ -836,6 +838,9 @@ while True:
             for pos in snapx5_body:
                 impball = pygame.image.load("madden25_imgs/ramcenter_flip.png").convert()
                 game_window.blit(impball, pygame.Rect(snapx5_position[0], snapx5_position[1], 10, 10))
+            for pos in snapx5_body:
+                impball = pygame.image.load("madden25_imgs/ramcenter_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx6_position[0], snapx6_position[1], 10, 10))
             for pos in timer_body:
                 pygame.draw.rect(game_window, black,
                                 pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
@@ -888,10 +893,13 @@ while True:
             for pos in snapx5_body:
                 impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
                 game_window.blit(impball, pygame.Rect(snapx5_position[0], snapx5_position[1], 10, 10))
+            for pos in snapx6_body:
+                impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impball, pygame.Rect(snapx6_position[0], snapx6_position[1], 10, 10))
             
-            if gb_move == 'DOWN':
+            if gb_move == 'DOWN' and gb_position[1] > 100:
                 gb_position[1] += 10
-            if gb_move == 'UP':
+            if gb_move == 'UP' and gb_position[1] < 600:
                 gb_position[1] -= 10
                 
             timer_position[0] = 0
@@ -915,10 +923,6 @@ while True:
                 snapo5_position[0] += 10 
             elif snapo5_position[0] >= 170:
                 snapo5_position[0] -= 10
-            if snapo6_position[0] < 170 and snapo1_position[0] >= 155:
-                snapo6_position[0] += 10 
-            elif snapo6_position[0] >= 170:
-                snapo6_position[0] -= 10
 
             if snapx1_position[0] > 200 and snapx1_position[0] <= 225:
                 snapx1_position[0] -= 10 
@@ -940,10 +944,15 @@ while True:
                 snapx5_position[0] -= 10 
             elif snapx5_position[0] <= 200:
                 snapx5_position[0] += 10
-            if snapx6_position[0] > 200 and snapx1_position[0] <= 225:
+            if snapx6_position[0] > 135 and snapx1_position[0] <= 225:
                 snapx6_position[0] -= 10 
-            elif snapx6_position[0] <= 200:
+            elif snapx6_position[0] <= 135:
                 snapx6_position[0] += 10
+                if center_position[0] < 100 and snapo1_position[0] >= 135:
+                    center_position[0] += 10 
+                elif center_position[0] >= 100:
+                    center_position[0] -= 10
+
 
 
         if snap == 2:
