@@ -862,16 +862,19 @@ while True:
             if gb_position[1] == ball_position[1]:
                 play = 1
 
+
+            for pos in player_body:
+                if play == 0:
+                    impball = pygame.image.load("madden25_imgs/playersnap.png").convert()
+                if play == 1:
+                    impball = pygame.image.load("madden25_imgs/raider_catch.png").convert()
+                game_window.blit(impball, pygame.Rect(player_position[0], player_position[1], 10, 10))
             for pos in gb_body:
                 if play == 0:
                     impball = pygame.image.load("madden25_imgs/raidergb.png").convert()
                 if play == 1:
                     impball = pygame.image.load("madden25_imgs/raider_catch.png").convert()
                 game_window.blit(impball, pygame.Rect(gb_position[0], gb_position[1], 10, 10))
-
-            for pos in player_body:
-                impball = pygame.image.load("madden25_imgs/playersnap.png").convert()
-                game_window.blit(impball, pygame.Rect(player_position[0], player_position[1], 10, 10))
             for pos in center_body:
                 impball = pygame.image.load("madden25_imgs/raiderx.png").convert()
                 game_window.blit(impball, pygame.Rect(center_position[0], center_position[1], 10, 10))
