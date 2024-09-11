@@ -794,8 +794,8 @@ while True:
         if snap == 0:
             
             for pos in player_body:
-                impball = pygame.image.load("madden25_imgs/playercenter.png").convert()
-                game_window.blit(impball, pygame.Rect(player_position[0], player_position[1], 10, 10))
+                impplayer = pygame.image.load("madden25_imgs/playercenter.png").convert()
+                game_window.blit(impplayer, pygame.Rect(player_position[0], player_position[1], 10, 10))
             for pos in gb_body:
                 impball = pygame.image.load("madden25_imgs/raidergb0.png").convert()
                 game_window.blit(impball, pygame.Rect(gb_position[0], gb_position[1], 10, 10))
@@ -865,10 +865,16 @@ while True:
 
             for pos in player_body:
                 if play == 0:
-                    impball = pygame.image.load("madden25_imgs/playersnap.png").convert()
+                    if direction == 'LEFT':
+                        impplayer = pygame.image.load("madden25_imgs/playersnap_flip.png").convert()
+                    if direction == 'RIGHT':
+                        impplayer = pygame.image.load("madden25_imgs/playersnap.png").convert()
                 if play == 1:
-                    impball = pygame.image.load("madden25_imgs/raider_catch.png").convert()
-                game_window.blit(impball, pygame.Rect(player_position[0], player_position[1], 10, 10))
+                    if direction == 'LEFT':
+                        impplayer = pygame.image.load("madden25_imgs/raider_catch_flip.png").convert()
+                    if direction == 'RIGHT':
+                        impplayer = pygame.image.load("madden25_imgs/raider_catch.png").convert()
+                game_window.blit(impplayer, pygame.Rect(player_position[0], player_position[1], 10, 10))
             for pos in gb_body:
                 if play == 0:
                     impball = pygame.image.load("madden25_imgs/raidergb.png").convert()
