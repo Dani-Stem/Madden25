@@ -805,7 +805,7 @@ while True:
             if yardline > 80:
                 player_position[0] >= 1000
                 goal()
-                score = score + 6
+                score[0] += 6
 
             player_position[0] = 0
             yardline = yardline + 10
