@@ -57,8 +57,8 @@ compx4_body = [random.randrange(1, (window_x//10)) * 10,
 compx4 = random.randint(0,1)
 compx4_down = 0
 
-ball_body = [300, random.randrange(1, (window_y//10)) * 10]
-ball_position = [300, random.randrange(1, (window_y//10)) * 10]
+ball_body = [300, random.randrange(1, ((window_y - 50)//10)) * 10]
+ball_position = [300, random.randrange(1, ((window_y - 50)//10)) * 10]
 
 field_lines_body = [[120, 60],
                [120, 70],
@@ -570,7 +570,7 @@ def game_over():
 def goal():
 
     my_font = pygame.font.SysFont('Arial', 70)
-    downs_surface = my_font.render('GOAL', True, green)
+    downs_surface = my_font.render('ITS GOOD', True, green)
     downs_rect = downs_surface.get_rect()
     downs_rect.midtop = (window_x/2, 600)
     game_window.blit(downs_surface, downs_rect)
@@ -580,14 +580,13 @@ def goal():
 def miss():
 
     my_font = pygame.font.SysFont('Arial', 70)
-    downs_surface = my_font.render('MISS', True, red)
+    downs_surface = my_font.render('NO GOOD', True, red)
     downs_rect = downs_surface.get_rect()
     downs_rect.midtop = (window_x/2, 600)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
     time.sleep(2)
    
-
 while True:
     game_window.fill(black)
 
@@ -832,47 +831,38 @@ while True:
             for pos in speedmeterMax_body:
                 pygame.draw.rect(game_window, green,
                                 pygame.Rect(pos[0], pos[1], 10, 10))
-        
         if speedmeter > -2:
             for pos in speedmeter1_body:
                 pygame.draw.rect(game_window, green,
                                 pygame.Rect(pos[0], pos[1], 10, 10))
-                
         if speedmeter > -1:
             for pos in speedmeter2_body:
                 pygame.draw.rect(game_window, green,
                                 pygame.Rect(pos[0], pos[1], 10, 10))
-                
         if speedmeter > 0:
             for pos in speedmeter3_body:
                 pygame.draw.rect(game_window, green,
                                 pygame.Rect(pos[0], pos[1], 10, 10))
-                
         if speedmeter > 1:
             for pos in speedmeter4_body:
                 pygame.draw.rect(game_window, green,
                                 pygame.Rect(pos[0], pos[1], 10, 10))
-                
         if speedmeter > 2:
             for pos in speedmeter5_body:
                 pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
+                                pygame.Rect(pos[0], pos[1], 10, 10))    
         if speedmeter > 3:
             for pos in speedmeter6_body:
                 pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
+                                pygame.Rect(pos[0], pos[1], 10, 10))   
         if speedmeter > 4:
             for pos in speedmeter7_body:
                 pygame.draw.rect(game_window, green,
                                 pygame.Rect(pos[0], pos[1], 10, 10))
-                
         if speedmeter > 5:
             for pos in speedmeter8_body:
                 pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))
-                
+                                pygame.Rect(pos[0], pos[1], 10, 10)) 
         if speedmeter > 6:
             for pos in speedmeter9_body:
                 pygame.draw.rect(game_window, green,
@@ -885,7 +875,6 @@ while True:
             for pos in speedmeter11_body:
                 pygame.draw.rect(game_window, green,
                                 pygame.Rect(pos[0], pos[1], 10, 10))
-                
 
         if snap == 0:
             
@@ -965,54 +954,75 @@ while True:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))   
 
-            if player_position[0] == compx_position[0] and player_position[1] == compx_position[1]:
+            if (compx_position[0] == player_position[0] - 7 or compx_position[0] < player_position[0] + 30) and (compx_position[1] > player_position[1] - 5 and compx_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
+                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
+                        snap = 0  
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
                         compx_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()     
 
-            if player_position[0] == compx1_position[0] and player_position[1] == compx1_position[1]:
+            if (compx1_position[0] == player_position[0] - 7 or compx1_position[0] < player_position[0] + 30) and (compx1_position[1] > player_position[1] - 5 and compx1_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
+                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
+                        snap = 0  
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
                         compx1_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if player_position[0] == compx2_position[0] and player_position[1] == compx2_position[1]:
+            if (compx2_position[0] == player_position[0] - 7 or compx2_position[0] < player_position[0] + 30) and (compx2_position[1] > player_position[1] - 5 and compx2_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:
+                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
+                        snap = 0  
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
                         compx2_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if player_position[0] == compx3_position[0] and player_position[1] == compx3_position[1]:
+            if (compx3_position[0] == player_position[0] - 7 or compx3_position[0] < player_position[0] + 30) and (compx3_position[1] > player_position[1] - 5 and compx3_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
+                        snap = 0  
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
                         compx3_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if player_position[0] == compx4_position[0] and player_position[1] == compx4_position[1]:
+            if (compx4_position[0] == player_position[0] - 7 or compx4_position[0] < player_position[0] + 30) and (compx4_position[1] > player_position[1] - 5 and compx4_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
+                        play = 0
+                        snap = 0  
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
                         compx4_down = 1
                         down = down + 1
                     change_to ='RIGHT'
@@ -1166,7 +1176,7 @@ while True:
                     elif compx3_direction == 'LEFT':
                         impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
                     game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
-            if compx == 4:
+            if compx4 == 1:
                 for pos in compx4_body:
                     if compx4_direction == 'RIGHT':
                         impx = pygame.image.load("madden25_imgs/ramx.png").convert()
@@ -1366,54 +1376,73 @@ while True:
                     impplayer = pygame.image.load("madden25_imgs/raider0.png").convert()
                 game_window.blit(impplayer, pygame.Rect(player_position[0], player_position[1], 10, 10))
 
-            if player_position[0] == compx_position[0] and player_position[1] == compx_position[1]:
+            if (compx_position[0] == player_position[0] - 7 or compx_position[0] < player_position[0] + 30) and (compx_position[1] > player_position[1] - 5 and compx_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
+                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
+                        snap = 0  
+                        ballcatch = 0
                         compx_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()     
 
-            if player_position[0] == compx1_position[0] and player_position[1] == compx1_position[1]:
+            if (compx1_position[0] == player_position[0] - 7 or compx1_position[0] < player_position[0] + 30) and (compx1_position[1] > player_position[1] - 5 and compx1_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:
+                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
+                        snap = 0
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
                         compx1_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if player_position[0] == compx2_position[0] and player_position[1] == compx2_position[1]:
+            if (compx2_position[0] == player_position[0] - 7 or compx2_position[0] < player_position[0] + 30) and (compx2_position[1] > player_position[1] - 5 and compx2_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:
+                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
+                        snap = 0
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
                         compx2_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if player_position[0] == compx3_position[0] and player_position[1] == compx3_position[1]:
+            if (compx3_position[0] == player_position[0] - 7 or compx3_position[0] < player_position[0] + 30) and (compx3_position[1] > player_position[1] - 5 and compx3_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
+                        snap = 0  
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205                        
                         compx3_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if player_position[0] == compx4_position[0] and player_position[1] == compx4_position[1]:
+            if (compx4_position[0] == player_position[0] - 7 or compx4_position[0] < player_position[0] + 30) and (compx4_position[1] > player_position[1] - 5 and compx4_position[1] < player_position[1] + 80):
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
+                        play = 0 
+                        snap = 0  
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
                         compx4_down = 1
                         down = down + 1
                     change_to ='RIGHT'
