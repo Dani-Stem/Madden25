@@ -819,12 +819,14 @@ while True:
 
         if player_position[1] < 50:
             player_position[1] = 50
-            outofbounds()
+            if ballcatch == 1:
+                outofbounds()
             direction = 'RIGHT'
 
         if player_position[1] > 600:
             player_position[1] = 600
-            outofbounds()
+            if ballcatch == 1:
+                outofbounds()
             direction = 'RIGHT'
 
         if speedmeter > 9:
@@ -954,7 +956,7 @@ while True:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))   
 
-            if (compx_position[0] == player_position[0] - 7 or compx_position[0] < player_position[0] + 30) and (compx_position[1] > player_position[1] - 5 and compx_position[1] < player_position[1] + 80):
+            if ((compx_position[0] == player_position[0] - 7 or compx_position[0] < player_position[0] + 5) and (compx_position[1] > player_position[1] - 5 and compx_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -963,13 +965,14 @@ while True:
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
+                        gb_position[1] = 305
                         compx_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()     
 
-            if (compx1_position[0] == player_position[0] - 7 or compx1_position[0] < player_position[0] + 30) and (compx1_position[1] > player_position[1] - 5 and compx1_position[1] < player_position[1] + 80):
+            if ((compx1_position[0] == player_position[0] - 7 or compx1_position[0] < player_position[0] + 5) and (compx1_position[1] > player_position[1] - 5 and compx1_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -978,13 +981,14 @@ while True:
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
+                        gb_position[1] = 305
                         compx1_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if (compx2_position[0] == player_position[0] - 7 or compx2_position[0] < player_position[0] + 30) and (compx2_position[1] > player_position[1] - 5 and compx2_position[1] < player_position[1] + 80):
+            if ((compx2_position[0] == player_position[0] - 7 or compx2_position[0] < player_position[0] + 5) and (compx2_position[1] > player_position[1] - 5 and compx2_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -993,13 +997,14 @@ while True:
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
+                        gb_position[1] = 305
                         compx2_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if (compx3_position[0] == player_position[0] - 7 or compx3_position[0] < player_position[0] + 30) and (compx3_position[1] > player_position[1] - 5 and compx3_position[1] < player_position[1] + 80):
+            if ((compx3_position[0] == player_position[0] - 7 or compx3_position[0] < player_position[0] + 5) and (compx3_position[1] > player_position[1] - 5 and compx3_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1008,13 +1013,14 @@ while True:
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
+                        gb_position[1] = 305
                         compx3_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if (compx4_position[0] == player_position[0] - 7 or compx4_position[0] < player_position[0] + 30) and (compx4_position[1] > player_position[1] - 5 and compx4_position[1] < player_position[1] + 80):
+            if ((compx4_position[0] == player_position[0] - 7 or compx4_position[0] < player_position[0] + 5) and (compx4_position[1] > player_position[1] - 5 and compx4_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
@@ -1023,6 +1029,7 @@ while True:
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
+                        gb_position[1] = 305
                         compx4_down = 1
                         down = down + 1
                     change_to ='RIGHT'
@@ -1314,11 +1321,10 @@ while True:
                 if direction == 'RIGHT':
                         player_position[0] += 10 + speedmeter
 
-                if (ball_position[0] == player_position[0] - 7 or ball_position[0] < player_position[0] + 30) and (ball_position[1] > player_position[1] - 5 and ball_position[1] < player_position[1] + 80):
+                if ((ball_position[0] == player_position[0] - 7 or ball_position[0] < player_position[0] + 5) and (ball_position[1] > player_position[1] - 5 and ball_position[1] < player_position[1] + 5)):
                     if ball_position[0] >= 200:
                         catch()
                         ballcatch = 1
-                        ball_position[0] = -100
                         direction = 'RIGHT'
                 if ballcatch != 1:
                     for pos in ball_body:
@@ -1376,20 +1382,23 @@ while True:
                     impplayer = pygame.image.load("madden25_imgs/raider0.png").convert()
                 game_window.blit(impplayer, pygame.Rect(player_position[0], player_position[1], 10, 10))
 
-            if (compx_position[0] == player_position[0] - 7 or compx_position[0] < player_position[0] + 30) and (compx_position[1] > player_position[1] - 5 and compx_position[1] < player_position[1] + 80):
+            if ((compx_position[0] == player_position[0] - 7 or compx_position[0] < player_position[0] + 5) and (compx_position[1] > player_position[1] - 5 and compx_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
                         play = 0
                         snap = 0  
                         ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
+                        gb_position[1] = 305
                         compx_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()     
 
-            if (compx1_position[0] == player_position[0] - 7 or compx1_position[0] < player_position[0] + 30) and (compx1_position[1] > player_position[1] - 5 and compx1_position[1] < player_position[1] + 80):
+            if ((compx1_position[0] == player_position[0] - 7 or compx1_position[0] < player_position[0] + 5) and (compx1_position[1] > player_position[1] - 5 and compx1_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1398,13 +1407,14 @@ while True:
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
+                        gb_position[1] = 305
                         compx1_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if (compx2_position[0] == player_position[0] - 7 or compx2_position[0] < player_position[0] + 30) and (compx2_position[1] > player_position[1] - 5 and compx2_position[1] < player_position[1] + 80):
+            if ((compx2_position[0] == player_position[0] - 7 or compx2_position[0] < player_position[0] + 5) and (compx2_position[1] > player_position[1] - 5 and compx2_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1413,13 +1423,14 @@ while True:
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
+                        gb_position[1] = 305
                         compx2_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if (compx3_position[0] == player_position[0] - 7 or compx3_position[0] < player_position[0] + 30) and (compx3_position[1] > player_position[1] - 5 and compx3_position[1] < player_position[1] + 80):
+            if ((compx3_position[0] == player_position[0] - 7 or compx3_position[0] < player_position[0] + 5) and (compx3_position[1] > player_position[1] - 5 and compx3_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1427,14 +1438,15 @@ while True:
                         snap = 0  
                         ballcatch = 0
                         player_position[0] = 50
-                        player_position[1] = 205                        
+                        player_position[1] = 205   
+                        gb_position[1] = 305                     
                         compx3_down = 1
                         down = down + 1
                     change_to ='RIGHT'
                 else:
                     game_over()   
 
-            if (compx4_position[0] == player_position[0] - 7 or compx4_position[0] < player_position[0] + 30) and (compx4_position[1] > player_position[1] - 5 and compx4_position[1] < player_position[1] + 80):
+            if ((compx4_position[0] == player_position[0] - 7 or compx4_position[0] < player_position[0] + 5) and (compx4_position[1] > player_position[1] - 5 and compx4_position[1] < player_position[1] + 5)):
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
@@ -1443,6 +1455,7 @@ while True:
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
+                        gb_position[1] = 305
                         compx4_down = 1
                         down = down + 1
                     change_to ='RIGHT'
