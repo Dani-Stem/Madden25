@@ -784,32 +784,33 @@ while True:
             player_position[0] = 0
 
         if player_position[0] > 1300:
-            speedmeter = 0
-            compx = random.randint(0,1)
-            compx_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            compx1 = random.randint(0,1)
-            compx1_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            compx2 = random.randint(0,1)
-            compx2_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            compx3 = random.randint(0,1)
-            compx3_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            compx4 = random.randint(0,1)
-            compx4_position = [random.randrange(1, (window_x//10)) * 10, 
-                    random.randrange(1, (window_y//10)) * 10]
-            snap = 2
+            player_position[0] = 1200
+            if ballcatch == 1:
+                speedmeter = 0
+                compx = random.randint(0,1)
+                compx_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                compx1 = random.randint(0,1)
+                compx1_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                compx2 = random.randint(0,1)
+                compx2_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                compx3 = random.randint(0,1)
+                compx3_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                compx4 = random.randint(0,1)
+                compx4_position = [random.randrange(1, (window_x//10)) * 10, 
+                        random.randrange(1, (window_y//10)) * 10]
+                snap = 2
 
-            if yardline > 80:
-                player_position[0] >= 1000
-                goal()
-                score[0] += 6
-
-            player_position[0] = 0
-            yardline = yardline + 10
-            down = 1
+                if yardline > 80:
+                    player_position[0] >= 1000
+                    goal()
+                    score[0] += 6
+                player_position[0] = 0
+                yardline = yardline + 10
+                down = 1
 
         if player_position[1] < 0:
             player_position[1] = 0
@@ -955,8 +956,9 @@ while True:
             for pos in field_lines_body:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))   
-
-            if ((compx_position[0] == player_position[0] - 7 or compx_position[0] < player_position[0] + 5) and (compx_position[1] > player_position[1] - 5 and compx_position[1] < player_position[1] + 5)):
+   
+            compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
+            if compx_dist < 10:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -970,9 +972,9 @@ while True:
                         down = down + 1
                     change_to ='RIGHT'
                 else:
-                    game_over()     
-
-            if ((compx1_position[0] == player_position[0] - 7 or compx1_position[0] < player_position[0] + 5) and (compx1_position[1] > player_position[1] - 5 and compx1_position[1] < player_position[1] + 5)):
+                    game_over()        
+            compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
+            if compx1_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -986,9 +988,9 @@ while True:
                         down = down + 1
                     change_to ='RIGHT'
                 else:
-                    game_over()   
-
-            if ((compx2_position[0] == player_position[0] - 7 or compx2_position[0] < player_position[0] + 5) and (compx2_position[1] > player_position[1] - 5 and compx2_position[1] < player_position[1] + 5)):
+                    game_over()      
+            compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
+            if compx2_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1002,9 +1004,9 @@ while True:
                         down = down + 1
                     change_to ='RIGHT'
                 else:
-                    game_over()   
-
-            if ((compx3_position[0] == player_position[0] - 7 or compx3_position[0] < player_position[0] + 5) and (compx3_position[1] > player_position[1] - 5 and compx3_position[1] < player_position[1] + 5)):
+                    game_over()      
+            compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
+            if compx3_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1018,9 +1020,9 @@ while True:
                         down = down + 1
                     change_to ='RIGHT'
                 else:
-                    game_over()   
-
-            if ((compx4_position[0] == player_position[0] - 7 or compx4_position[0] < player_position[0] + 5) and (compx4_position[1] > player_position[1] - 5 and compx4_position[1] < player_position[1] + 5)):
+                    game_over()      
+            compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
+            if compx_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
@@ -1321,7 +1323,8 @@ while True:
                 if direction == 'RIGHT':
                         player_position[0] += 10 + speedmeter
 
-                if ((ball_position[0] == player_position[0] - 7 or ball_position[0] < player_position[0] + 5) and (ball_position[1] > player_position[1] - 5 and ball_position[1] < player_position[1] + 5)):
+                ball_dist = pygame.Vector2(player_position).distance_to(ball_position)
+                if ball_dist < 10:
                     if ball_position[0] >= 200:
                         catch()
                         ballcatch = 1
@@ -1356,7 +1359,7 @@ while True:
                     snap = 2
                     yardline += 10
                     
-        if snap == 2:
+        if snap == 2 and ballcatch == 1:
 
             # Moving the player 
             if direction == 'UP':
@@ -1382,7 +1385,8 @@ while True:
                     impplayer = pygame.image.load("madden25_imgs/raider0.png").convert()
                 game_window.blit(impplayer, pygame.Rect(player_position[0], player_position[1], 10, 10))
 
-            if ((compx_position[0] == player_position[0] - 7 or compx_position[0] < player_position[0] + 5) and (compx_position[1] > player_position[1] - 5 and compx_position[1] < player_position[1] + 5)):
+            compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
+            if compx_dist < 10:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1397,8 +1401,8 @@ while True:
                     change_to ='RIGHT'
                 else:
                     game_over()     
-
-            if ((compx1_position[0] == player_position[0] - 7 or compx1_position[0] < player_position[0] + 5) and (compx1_position[1] > player_position[1] - 5 and compx1_position[1] < player_position[1] + 5)):
+            compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
+            if compx1_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1412,9 +1416,9 @@ while True:
                         down = down + 1
                     change_to ='RIGHT'
                 else:
-                    game_over()   
-
-            if ((compx2_position[0] == player_position[0] - 7 or compx2_position[0] < player_position[0] + 5) and (compx2_position[1] > player_position[1] - 5 and compx2_position[1] < player_position[1] + 5)):
+                    game_over()      
+            compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
+            if compx2_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1428,9 +1432,9 @@ while True:
                         down = down + 1
                     change_to ='RIGHT'
                 else:
-                    game_over()   
-
-            if ((compx3_position[0] == player_position[0] - 7 or compx3_position[0] < player_position[0] + 5) and (compx3_position[1] > player_position[1] - 5 and compx3_position[1] < player_position[1] + 5)):
+                    game_over()      
+            compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
+            if compx3_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
@@ -1444,9 +1448,9 @@ while True:
                         down = down + 1
                     change_to ='RIGHT'
                 else:
-                    game_over()   
-
-            if ((compx4_position[0] == player_position[0] - 7 or compx4_position[0] < player_position[0] + 5) and (compx4_position[1] > player_position[1] - 5 and compx4_position[1] < player_position[1] + 5)):
+                    game_over()      
+            compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
+            if compx4_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
