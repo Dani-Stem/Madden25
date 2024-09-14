@@ -822,12 +822,14 @@ while True:
             player_position[1] = 50
             if ballcatch == 1:
                 outofbounds()
+                play_promt = '0'
             direction = 'RIGHT'
 
         if player_position[1] > 600:
             player_position[1] = 600
             if ballcatch == 1:
                 outofbounds()
+                play_promt = '0'
             direction = 'RIGHT'
 
         if speedmeter > 9:
@@ -962,6 +964,7 @@ while True:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0  
                         ballcatch = 0
@@ -978,6 +981,7 @@ while True:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0  
                         ballcatch = 0
@@ -994,6 +998,7 @@ while True:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0  
                         ballcatch = 0
@@ -1010,6 +1015,7 @@ while True:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0  
                         ballcatch = 0
@@ -1026,6 +1032,7 @@ while True:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0  
                         ballcatch = 0
@@ -1343,6 +1350,7 @@ while True:
                     
                     if ball_position[0] > 1300:
                         incompletion()
+                        play_promt = '0'
                         play = 0
                         snap = 0
                         ballcatch = 0
@@ -1397,6 +1405,7 @@ while True:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0  
                         ballcatch = 0
@@ -1413,6 +1422,7 @@ while True:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0
                         ballcatch = 0
@@ -1429,6 +1439,7 @@ while True:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0
                         ballcatch = 0
@@ -1445,6 +1456,7 @@ while True:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0
                         snap = 0  
                         ballcatch = 0
@@ -1461,6 +1473,7 @@ while True:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
+                        play_promt = '0'
                         play = 0 
                         snap = 0  
                         ballcatch = 0
