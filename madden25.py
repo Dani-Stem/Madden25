@@ -18,6 +18,7 @@ white = pygame.Color(255, 255, 255)
 red = pygame.Color(255, 0, 0)
 green = pygame.Color(0, 255, 0)
 blue = pygame.Color(0, 0, 255)
+yellow = pygame.Color(255, 255, 0)
 
 pygame.init()
 
@@ -59,6 +60,18 @@ compx4_down = 0
 
 ball_body = [300, random.randrange(1, ((window_y - 50)//10)) * 10]
 ball_position = [300, random.randrange(1, ((window_y - 50)//10)) * 10]
+
+field_lines_blue_body = [[120, 60],
+                        [120, 70],
+                        [120, 80],
+                        [120, 90],
+                        [120, 100]]
+
+field_lines_yellow_body = [[1200, 60],
+                        [1200, 70],
+                        [1200, 80],
+                        [1200, 90],
+                        [1200, 100]]
 
 field_lines_body = [[120, 60],
                [120, 70],
@@ -634,7 +647,8 @@ while True:
                             pygame.Rect(pos[0] + 20, pos[1], 10, 10))
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
-                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))    
+                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))   
+            
         if direction == 'RIGHT':
             if selection_position[0] <= 624:
                 selection_position[0] += 93
@@ -888,7 +902,19 @@ while True:
                                 pygame.Rect(pos[0] + 100, pos[1], 10, 10))
             for pos in field_lines_body:
                 pygame.draw.rect(game_window, white,
-                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))   
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))
+            for pos in field_lines_blue_body:
+                pygame.draw.rect(game_window, blue,
+                                pygame.Rect(pos[0] + 100, pos[1], 10, 10))
+            for pos in field_lines_blue_body:
+                pygame.draw.rect(game_window, blue,
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))    
+            for pos in field_lines_yellow_body:
+                pygame.draw.rect(game_window, yellow,
+                                pygame.Rect(pos[0] + 100, pos[1], 10, 10))
+            for pos in field_lines_yellow_body:
+                pygame.draw.rect(game_window, yellow,
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))       
 
             for pos in player_body:
                 impplayer = pygame.image.load("madden25_imgs/playercenter.png").convert()
@@ -957,7 +983,19 @@ while True:
                                 pygame.Rect(pos[0] + 100, pos[1], 10, 10))
             for pos in field_lines_body:
                 pygame.draw.rect(game_window, white,
-                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))   
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
+            for pos in field_lines_blue_body:
+                pygame.draw.rect(game_window, blue,
+                                pygame.Rect(pos[0] + 100, pos[1], 10, 10))
+            for pos in field_lines_blue_body:
+                pygame.draw.rect(game_window, blue,
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
+            for pos in field_lines_yellow_body:
+                pygame.draw.rect(game_window, yellow,
+                                pygame.Rect(pos[0] + 100, pos[1], 10, 10))
+            for pos in field_lines_yellow_body:
+                pygame.draw.rect(game_window, yellow,
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
    
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
             if compx_dist < 10:
