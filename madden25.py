@@ -1326,6 +1326,7 @@ while True:
                         catch()
                         ballcatch = 1
                         direction = 'RIGHT'
+                        speedmeter = 0
                 if ballcatch != 1:
                     for pos in ball_body:
                         impball = pygame.image.load("madden25_imgs/football.png").convert()
@@ -1342,8 +1343,14 @@ while True:
                     
                     if ball_position[0] > 1300:
                         incompletion()
+                        play = 0
+                        snap = 0
+                        ballcatch = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
+                        gb_position[1] = 305
                         down = down + 1
-                        ball_position[0] = 200
+                        ball_position[0] = 0
 
                     if ball_position[1] < 50:
                         ball_position[1] = 50
