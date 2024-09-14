@@ -1054,6 +1054,7 @@ while True:
                 else:
                     compx_position[0] += random.randint(7,10)
                 compx_direction = 'RIGHT'
+                
             if compx_position[1] > player_position[1]:
                 if yardline < 50:
                     compx_position[1] -= random.randint(5,8)
@@ -1064,7 +1065,6 @@ while True:
                     compx_position[1] += random.randint(5,8)
                 else:
                     compx_position[1] += random.randint(7,10)
-
             if compx1_position[0] > player_position[0]:
                 if yardline < 50:
                     compx1_position[0] -= random.randint(5,8)
@@ -1131,7 +1131,6 @@ while True:
                     compx3_position[1] += random.randint(5,8)
                 else:
                     compx3_position[1] += random.randint(7,10)
-
             if compx4_position[0] > player_position[0]:
                 if yardline < 50:
                     compx4_position[0] -= random.randint(5,8)
@@ -1161,9 +1160,7 @@ while True:
                         impx = pygame.image.load("madden25_imgs/ramx.png").convert()
                     elif compx_direction == 'LEFT':
                         impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-
                     game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
-
             if compx1 == 1:
                 for pos in compx1_body:
                     if compx1_direction == 'RIGHT':
@@ -1355,9 +1352,12 @@ while True:
                         ball_position[1] = 500
 
                 if player_position[0] >= 1300:
-                    player_position[0] = 50
-                    snap = 2
-                    yardline += 10
+                    if ballcatch == 0:
+                        player_position[0] = 1300
+                    else:
+                        player_position[0] = 50
+                        snap = 2
+                        yardline += 10
                     
         if snap == 2 and ballcatch == 1:
 
