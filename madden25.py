@@ -12,13 +12,15 @@ player_speed = 15
 window_x = 1368
 window_y = 712
 
-# defining colors
-black = pygame.Color(0, 0, 0)
-white = pygame.Color(255, 255, 255)
-red = pygame.Color(255, 0, 0)
-green = pygame.Color(0, 255, 0)
-blue = pygame.Color(0, 71, 171)
-yellow = pygame.Color(255, 215, 0)
+# defining font colors
+# https://www.pygame.org/docs/ref/color_list.html
+black = pygame.Color("black")
+white = pygame.Color("white")
+red = pygame.Color("red")
+green = pygame.Color("lime green")
+blue = pygame.Color("deepskyblue")
+yellow = pygame.Color("gold")
+
 
 pygame.init()
 
@@ -27,33 +29,33 @@ game_window = pygame.display.set_mode((window_x, window_y))
 
 fps = pygame.time.Clock()
 
-compx_position = [random.randrange(1, (window_x//10)) * 10, 
+compx_position = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
-compx_body = [random.randrange(1, (window_x//10)) * 10, 
+compx_body = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
 compx = random.randint(0,1)
 compx_down = 0
-compx1_position = [random.randrange(1, (window_x//10)) * 10, 
+compx1_position = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
-compx1_body = [random.randrange(1, (window_x//10)) * 10, 
+compx1_body = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
 compx1 = random.randint(0,1)
 compx1_down = 0
-compx2_position = [random.randrange(1, (window_x//10)) * 10, 
+compx2_position = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
-compx2_body = [random.randrange(1, (window_x//10)) * 10, 
+compx2_body = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
 compx2 = random.randint(0,1)
 compx2_down = 0
-compx3_position = [random.randrange(1, (window_x//10)) * 10, 
+compx3_position = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
-compx3_body = [random.randrange(1, (window_x//10)) * 10, 
+compx3_body = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
 compx3 = random.randint(0,1)
 compx3_down = 0
-compx4_position = [random.randrange(1, (window_x//10)) * 10, 
+compx4_position = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
-compx4_body = [random.randrange(1, (window_x//10)) * 10, 
+compx4_body = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
 compx4 = random.randint(0,1)
 compx4_down = 0
@@ -372,7 +374,7 @@ direction = ''
 key = ''
 change_to = direction
 ball_direction = [1, 2, 3]
-score = [0, 0] 
+score = [0, 0]
 play = 0
 down = 1
 yardline = 10
@@ -380,7 +382,7 @@ yard = '0'
 field_goal = '0'
 play_promt = '0'
 speedmeter = 0
-play = 0 
+play = 0
 power = 0
 spacebar_count = 0
 snap = 0
@@ -397,7 +399,7 @@ def show_playoptions(choice, color, font, size):
     game_window.blit(score_surface, score_rect)
 
 def show_score(choice, color, font, size):
-  
+
     my_font = pygame.font.SysFont('Arial', 30)
     score_surface = my_font.render(
         'SCORE: ' + str(score[0]) + ' vs ' + str(score[1]), True, white)
@@ -407,7 +409,7 @@ def show_score(choice, color, font, size):
 
 
 def show_scorefieldgoal(choice, color, font, size):
-  
+
     my_font = pygame.font.SysFont('Arial', 30)
     score_surface = my_font.render(
         'SCORE: ' + str(score[0]) + ' vs ' + str(score[1]), True, white)
@@ -416,7 +418,7 @@ def show_scorefieldgoal(choice, color, font, size):
     game_window.blit(score_surface, score_rect)
 
 def show_downs(choice, color, font, size):
-  
+
     my_font = pygame.font.SysFont('Arial', 30)
     if down == 1:
         down_surface = my_font.render(str(down) + 'ST & ' + str(yard), True, white)
@@ -432,7 +434,7 @@ def show_downs(choice, color, font, size):
     game_window.blit(down_surface, down_rect)
 
 def show_downsfieldgoal(choice, color, font, size):
-  
+
     my_font = pygame.font.SysFont('Arial', 30)
     if down == 1:
         down_surface = my_font.render(str(down) + 'ST & ' + yard, True, white)
@@ -449,7 +451,7 @@ def show_downsfieldgoal(choice, color, font, size):
 
 
 def show_speed(choice, color, font, size):
-  
+
     my_font = pygame.font.SysFont('Arial', 30)
     speed_surface = my_font.render(
         'SPEED:' , True, white)
@@ -458,7 +460,7 @@ def show_speed(choice, color, font, size):
     game_window.blit(speed_surface, speed_rect)
 
 def show_fieldgoal(choice, color, font, size):
-  
+
     my_font = pygame.font.SysFont('Arial', 30)
     speed_surface = my_font.render(
         'QUICKLY & REPEATEDLY TAP THE SPACE BAR' , True, white)
@@ -467,7 +469,7 @@ def show_fieldgoal(choice, color, font, size):
     game_window.blit(speed_surface, speed_rect)
 
 def show_yardline(choice, color, font, size):
-  
+
     yardline_font = pygame.font.SysFont(font, size)
     yardline_surface = yardline_font.render(str(yardline), True, color)
     yardline_rect = yardline_surface.get_rect()
@@ -475,7 +477,7 @@ def show_yardline(choice, color, font, size):
     game_window.blit(yardline_surface, yardline_rect)
 
 def show_nextyardline(choice, color, font, size):
-  
+
     if yardline < 90:
 
         nextyardline_font = pygame.font.SysFont(font, size)
@@ -483,7 +485,7 @@ def show_nextyardline(choice, color, font, size):
         nextyardline_rect = nextyardline_surface.get_rect()
         nextyardline_rect.midtop = (1225, 300)
         game_window.blit(nextyardline_surface, nextyardline_rect)
-    
+
     else:
         #G
         goallineg_font = pygame.font.SysFont(font, size)
@@ -491,21 +493,21 @@ def show_nextyardline(choice, color, font, size):
         goallineg_rect =  goallineg_surface.get_rect()
         goallineg_rect.midtop = (1225, 160)
         game_window.blit( goallineg_surface,  goallineg_rect)
-        
+
         #O
         goallineo_font = pygame.font.SysFont(font, size)
         goallineo_surface =  goallineo_font.render('O', True, color)
         goallineo_rect =  goallineo_surface.get_rect()
         goallineo_rect.midtop = (1225, 260)
         game_window.blit( goallineo_surface,  goallineo_rect)
-        
+
         #A
         goallinea_font = pygame.font.SysFont(font, size)
         goallinea_surface =  goallinea_font.render('A', True, color)
         goallinea_rect =  goallinea_surface.get_rect()
         goallinea_rect.midtop = (1225, 360)
         game_window.blit( goallinea_surface,  goallinea_rect)
-        
+
         #L
         goallinel_font = pygame.font.SysFont(font, size)
         goallinel_surface =  goallinel_font.render('L', True, color)
@@ -524,7 +526,7 @@ def downs():
         downs_surface = my_font.render(str(down) + 'RD DOWN', True, red)
     elif down == 4:
         downs_surface = my_font.render(str(down) + 'TH DOWN', True, red)
-       
+
     downs_rect = downs_surface.get_rect()
     downs_rect.midtop = (window_x/2, 300)
     game_window.blit(downs_surface, downs_rect)
@@ -577,7 +579,7 @@ def kickoff():
     time.sleep(2)
 
 def game_over():
-  
+
     my_font = pygame.font.SysFont('times new roman', 50)
     game_over_surface = my_font.render(
         'Your Score is : ' + str(score), True, red)
@@ -610,7 +612,7 @@ def miss():
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
     time.sleep(2)
-   
+
 while True:
     game_window.fill(black)
 
@@ -652,21 +654,21 @@ while True:
             key = 'SPACE'
 
     if play_promt == '0':
-            
+
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1], 10, 10))
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
-                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))   
-            
+                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))
+
         if direction == 'RIGHT':
             if selection_position[0] <= 624:
                 selection_position[0] += 93
         if direction == 'LEFT':
                 if selection_position[0] > 325:
                     selection_position[0] -= 93
-        
+
         if key == 'ENTER' and selection_position[0] > 624:
             play_promt = '2'
         if key == 'ENTER' and selection_position[0] < 624:
@@ -675,12 +677,12 @@ while True:
         for pos in selection_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(selection_position[0], pos[1], 300, 10))
-        show_downs(1, white, 'Arial', 100)    
-        show_score(1, white, 'Arial', 100)    
+        show_downs(1, white, 'Arial', 100)
+        show_score(1, white, 'Arial', 100)
         show_playoptions(1, white, 'Arial', 100)
-            
+
     if play_promt == '1':
-            
+
             for pos in fieldgoal_body:
                 impgoal = pygame.image.load("madden25_imgs/fieldgoal.png").convert()
                 game_window.blit(impgoal, pygame.Rect(fieldgoal_position[0], fieldgoal_position[1], 10, 10))
@@ -692,29 +694,29 @@ while True:
                 if fieldgoalball_position[1] >= 300 and fieldgoalball_position[1] < 355:
                     impball = pygame.image.load("madden25_imgs/fieldgoalball.png").convert()
                 if fieldgoalball_position[1] > 355 and fieldgoalball_position[1] < 410:
-                    impball = pygame.image.load("madden25_imgs/fieldgoalball1.png").convert()  
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball1.png").convert()
                 if fieldgoalball_position[1] >= 410 and fieldgoalball_position[1] <= 465:
-                    impball = pygame.image.load("madden25_imgs/fieldgoalball2.png").convert()  
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball2.png").convert()
                 if fieldgoalball_position[1] >= 465 and fieldgoalball_position[1] <= 520:
-                    impball = pygame.image.load("madden25_imgs/fieldgoalball3.png").convert()  
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball3.png").convert()
                 if fieldgoalball_position[1] >= 520 and fieldgoalball_position[1] <= 575:
-                    impball = pygame.image.load("madden25_imgs/fieldgoalball4.png").convert()  
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball4.png").convert()
                 if fieldgoalball_position[1] >= 575 and fieldgoalball_position[1] <= 630:
-                    impball = pygame.image.load("madden25_imgs/fieldgoalball5.png").convert()  
+                    impball = pygame.image.load("madden25_imgs/fieldgoalball5.png").convert()
                 game_window.blit(impball, pygame.Rect(fieldgoalball_position[0], fieldgoalball_position[1], 10, 10))
 
             if speedmeter > -2:
                 for pos in speedmeter1_body:
                     pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
             if speedmeter > -1:
                 for pos in speedmeter2_body:
                     pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
             if speedmeter > 0:
                 for pos in speedmeter3_body:
                     pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))               
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
             if speedmeter > 1:
                 for pos in speedmeter4_body:
                     pygame.draw.rect(game_window, green,
@@ -746,17 +748,17 @@ while True:
             if speedmeter > 8:
                 for pos in speedmeter11_body:
                     pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10)) 
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
             if speedmeter > 9:
                 for pos in speedmeterMax_body:
                     pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))    
-                    
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+
             for pos in timer_body:
                 pygame.draw.rect(game_window, white,
-                                pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
+                                pygame.Rect(timer_position[0], timer_position[1], 10, 10))
 
-            timer_position[0] += 10      
+            timer_position[0] += 10
             if timer_position[0] > 1300:
                 if spacebar_count >= 7 and fieldgoalball_position[1] > 300:
                     fieldgoalball_position[1] -= 10
@@ -783,7 +785,7 @@ while True:
                     fieldgoalball_position[0] += 5
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 270:
-                        miss()  
+                        miss()
                         play_promt = '0'
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
@@ -802,7 +804,7 @@ while True:
             show_fieldgoal(1, white, 'Arial', 30)
             show_downsfieldgoal(1, white, 'Arial', 30)
             show_scorefieldgoal(1, white, 'Arial', 30)
-    
+
     if play_promt == '2':
 
         if player_position[0] < 0:
@@ -813,19 +815,19 @@ while True:
             if ballcatch == 1:
                 speedmeter = 0
                 compx = random.randint(0,1)
-                compx_position = [random.randrange(1, (window_x//10)) * 10, 
+                compx_position = [random.randrange(1, (window_x//10)) * 10,
                         random.randrange(1, (window_y//10)) * 10]
                 compx1 = random.randint(0,1)
-                compx1_position = [random.randrange(1, (window_x//10)) * 10, 
+                compx1_position = [random.randrange(1, (window_x//10)) * 10,
                         random.randrange(1, (window_y//10)) * 10]
                 compx2 = random.randint(0,1)
-                compx2_position = [random.randrange(1, (window_x//10)) * 10, 
+                compx2_position = [random.randrange(1, (window_x//10)) * 10,
                         random.randrange(1, (window_y//10)) * 10]
                 compx3 = random.randint(0,1)
-                compx3_position = [random.randrange(1, (window_x//10)) * 10, 
+                compx3_position = [random.randrange(1, (window_x//10)) * 10,
                         random.randrange(1, (window_y//10)) * 10]
                 compx4 = random.randint(0,1)
-                compx4_position = [random.randrange(1, (window_x//10)) * 10, 
+                compx4_position = [random.randrange(1, (window_x//10)) * 10,
                         random.randrange(1, (window_y//10)) * 10]
                 snap = 2
 
@@ -848,8 +850,8 @@ while True:
             if ballcatch == 1:
                 outofbounds()
                 play_promt = '0'
-                play = 0 
-                snap = 0  
+                play = 0
+                snap = 0
                 ballcatch = 0
                 player_position[0] = 50
                 player_position[1] = 205
@@ -864,8 +866,8 @@ while True:
             if ballcatch == 1:
                 outofbounds()
                 play_promt = '0'
-                play = 0 
-                snap = 0  
+                play = 0
+                snap = 0
                 ballcatch = 0
                 player_position[0] = 50
                 player_position[1] = 205
@@ -919,11 +921,11 @@ while True:
         if speedmeter > 2:
             for pos in speedmeter5_body:
                 pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))    
+                                pygame.Rect(pos[0], pos[1], 10, 10))
         if speedmeter > 3:
             for pos in speedmeter6_body:
                 pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10))   
+                                pygame.Rect(pos[0], pos[1], 10, 10))
         if speedmeter > 4:
             for pos in speedmeter7_body:
                 pygame.draw.rect(game_window, green,
@@ -931,7 +933,7 @@ while True:
         if speedmeter > 5:
             for pos in speedmeter8_body:
                 pygame.draw.rect(game_window, green,
-                                pygame.Rect(pos[0], pos[1], 10, 10)) 
+                                pygame.Rect(pos[0], pos[1], 10, 10))
         if speedmeter > 6:
             for pos in speedmeter9_body:
                 pygame.draw.rect(game_window, green,
@@ -946,7 +948,7 @@ while True:
                                 pygame.Rect(pos[0], pos[1], 10, 10))
 
         if snap == 0:
-            
+
             for pos in field_lines_body:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(pos[0] + 100, pos[1], 10, 10))
@@ -958,13 +960,13 @@ while True:
                                 pygame.Rect(pos[0] + 100, pos[1], 10, 10))
             for pos in field_lines_blue_body:
                 pygame.draw.rect(game_window, blue,
-                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))    
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))
             for pos in field_lines_yellow_body:
                 pygame.draw.rect(game_window, yellow,
                                 pygame.Rect(pos[0] + 100, pos[1], 10, 10))
             for pos in field_lines_yellow_body:
                 pygame.draw.rect(game_window, yellow,
-                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))       
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))
 
             for pos in player_body:
                 impplayer = pygame.image.load("madden25_imgs/playercenter.png").convert()
@@ -1010,15 +1012,15 @@ while True:
                 game_window.blit(impball, pygame.Rect(snapx6_position[0], snapx6_position[1], 10, 10))
             for pos in timer_body:
                 pygame.draw.rect(game_window, black,
-                                pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
+                                pygame.Rect(timer_position[0], timer_position[1], 10, 10))
 
-            timer_position[0] += 40 
+            timer_position[0] += 40
             if timer_position[0] > 1300:
                 snap = 1
 
         if snap == 1:
 
-            # Moving the player 
+            # Moving the player
             if direction == 'UP':
                 player_position[1] -= 10 + speedmeter
             if direction == 'DOWN':
@@ -1033,20 +1035,20 @@ while True:
                                 pygame.Rect(pos[0] + 100, pos[1], 10, 10))
             for pos in field_lines_body:
                 pygame.draw.rect(game_window, white,
-                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))
             for pos in field_lines_blue_body:
                 pygame.draw.rect(game_window, blue,
                                 pygame.Rect(pos[0] + 100, pos[1], 10, 10))
             for pos in field_lines_blue_body:
                 pygame.draw.rect(game_window, blue,
-                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))
             for pos in field_lines_yellow_body:
                 pygame.draw.rect(game_window, yellow,
                                 pygame.Rect(pos[0] + 100, pos[1], 10, 10))
             for pos in field_lines_yellow_body:
                 pygame.draw.rect(game_window, yellow,
-                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
-   
+                                pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))
+
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
             if compx_dist < 10:
                 if down <= 5:
@@ -1054,7 +1056,7 @@ while True:
                         downs()
                         play_promt = '0'
                         play = 0
-                        snap = 0  
+                        snap = 0
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
@@ -1064,7 +1066,7 @@ while True:
                         down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
-                    game_over()        
+                    game_over()
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10:
                 if down <= 5:
@@ -1072,7 +1074,7 @@ while True:
                         downs()
                         play_promt = '0'
                         play = 0
-                        snap = 0  
+                        snap = 0
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
@@ -1082,7 +1084,7 @@ while True:
                         down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
-                    game_over()      
+                    game_over()
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10:
                 if down <= 5:
@@ -1090,7 +1092,7 @@ while True:
                         downs()
                         play_promt = '0'
                         play = 0
-                        snap = 0  
+                        snap = 0
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
@@ -1100,7 +1102,7 @@ while True:
                         down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
-                    game_over()      
+                    game_over()
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
             if compx3_dist < 10:
                 if down <= 5:
@@ -1108,7 +1110,7 @@ while True:
                         downs()
                         play_promt = '0'
                         play = 0
-                        snap = 0  
+                        snap = 0
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
@@ -1118,7 +1120,7 @@ while True:
                         down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
-                    game_over()      
+                    game_over()
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
             if compx_dist < 10:
                 if down <= 5:
@@ -1126,7 +1128,7 @@ while True:
                         downs()
                         play_promt = '0'
                         play = 0
-                        snap = 0  
+                        snap = 0
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
@@ -1137,11 +1139,11 @@ while True:
                     change_to ='RIGHT'
                 else:
                     down = 1
-                    game_over()   
+                    game_over()
 
             player_body.insert(0, list(player_position))
-            player_body.pop() 
-            
+            player_body.pop()
+
             if compx_position[0] > player_position[0]:
                 if yardline < 50:
                     compx_position[0] -= random.randint(5,8)
@@ -1154,7 +1156,7 @@ while True:
                 else:
                     compx_position[0] += random.randint(7,10)
                 compx_direction = 'RIGHT'
-                
+
             if compx_position[1] > player_position[1]:
                 if yardline < 50:
                     compx_position[1] -= random.randint(5,8)
@@ -1356,61 +1358,61 @@ while True:
             for pos in snapx6_body:
                 impball = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
                 game_window.blit(impball, pygame.Rect(snapx6_position[0], snapx6_position[1], 10, 10))
-                
+
             timer_position[0] = 0
             if snapo1_position[0] < 170 and snapo1_position[0] >= 155:
-                snapo1_position[0] += 10 
+                snapo1_position[0] += 10
             elif snapo1_position[0] >= 170:
                 snapo1_position[0] -= 10
             if snapo2_position[0] < 170 and snapo1_position[0] >= 155:
-                snapo2_position[0] += 10 
+                snapo2_position[0] += 10
             elif snapo2_position[0] >= 170:
                 snapo2_position[0] -= 10
             if snapo3_position[0] < 170 and snapo1_position[0] >= 155:
-                snapo3_position[0] += 10 
+                snapo3_position[0] += 10
             elif snapo3_position[0] >= 170:
                 snapo3_position[0] -= 10
             if snapo4_position[0] < 170 and snapo1_position[0] >= 155:
-                snapo4_position[0] += 10 
+                snapo4_position[0] += 10
             elif snapo4_position[0] >= 170:
                 snapo4_position[0] -= 10
             if snapo5_position[0] < 170 and snapo1_position[0] >= 155:
-                snapo5_position[0] += 10 
+                snapo5_position[0] += 10
             elif snapo5_position[0] >= 170:
                 snapo5_position[0] -= 10
 
             if snapx1_position[0] > 200 and snapx1_position[0] <= 225:
-                snapx1_position[0] -= 10 
+                snapx1_position[0] -= 10
             elif snapx1_position[0] <= 200:
                 snapx1_position[0] += 10
             if snapx2_position[0] > 200 and snapx1_position[0] <= 225:
-                snapx2_position[0] -= 10 
+                snapx2_position[0] -= 10
             elif snapx2_position[0] <= 200:
                 snapx2_position[0] += 10
             if snapx3_position[0] > 200 and snapx1_position[0] <= 225:
-                snapx3_position[0] -= 10 
+                snapx3_position[0] -= 10
             elif snapx3_position[0] <= 200:
                 snapx3_position[0] += 10
             if snapx4_position[0] > 200 and snapx1_position[0] <= 225:
-                snapx4_position[0] -= 10 
+                snapx4_position[0] -= 10
             elif snapx4_position[0] <= 200:
                 snapx4_position[0] += 10
             if snapx5_position[0] > 200 and snapx1_position[0] <= 225:
-                snapx5_position[0] -= 10 
+                snapx5_position[0] -= 10
             elif snapx5_position[0] <= 200:
                 snapx5_position[0] += 10
             if snapx6_position[0] > 135 and snapx1_position[0] <= 225:
-                snapx6_position[0] -= 10 
+                snapx6_position[0] -= 10
             elif snapx6_position[0] <= 135:
                 snapx6_position[0] += 10
                 if center_position[0] < 100 and snapo1_position[0] >= 135:
-                    center_position[0] += 10 
+                    center_position[0] += 10
                 elif center_position[0] >= 100:
                     center_position[0] -= 10
 
             if play == 1:
 
-                # Moving the player 
+                # Moving the player
                 if direction == 'UP':
                     player_position[1] -= 10 + speedmeter
                 if direction == 'DOWN':
@@ -1433,14 +1435,14 @@ while True:
                         game_window.blit(impball, pygame.Rect(ball_position[0], ball_position[1], 10, 10))
 
                 ball_direction_start = random.choice(ball_direction)
-                ball_position[0] += 5 
-                
+                ball_position[0] += 5
+
                 if ballcatch != 1:
                     if ball_direction_start == 2:
-                        ball_position[1] += 5 
+                        ball_position[1] += 5
                     elif ball_direction_start == 3:
-                        ball_position[1] -= 5 
-                    
+                        ball_position[1] -= 5
+
                     if ball_position[0] > 1300:
                         incompletion()
                         play_promt = '0'
@@ -1466,10 +1468,10 @@ while True:
                         player_position[0] = 50
                         snap = 2
                         yardline += 10
-                    
+
         if snap == 2 and ballcatch == 1:
 
-            # Moving the player 
+            # Moving the player
             if direction == 'UP':
                 player_position[1] -= 10 + speedmeter
             if direction == 'DOWN':
@@ -1478,13 +1480,13 @@ while True:
                 player_position[0] -= 10 + speedmeter
             if direction == 'RIGHT':
                     player_position[0] += 10 + speedmeter
-            
+
             for pos in field_lines_body:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(pos[0] + 20, pos[1], 10, 10))
             for pos in field_lines_body:
                 pygame.draw.rect(game_window, white,
-                                pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))   
+                                pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))
 
             for pos in player_body:
                 if direction == 'LEFT':
@@ -1500,7 +1502,7 @@ while True:
                         downs()
                         play_promt = '0'
                         play = 0
-                        snap = 0  
+                        snap = 0
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
@@ -1510,7 +1512,7 @@ while True:
                         down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
-                    game_over()     
+                    game_over()
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10:
                 if down <= 5:
@@ -1528,7 +1530,7 @@ while True:
                         down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
-                    game_over()      
+                    game_over()
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10:
                 if down <= 5:
@@ -1546,7 +1548,7 @@ while True:
                         down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
-                    game_over()      
+                    game_over()
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
             if compx3_dist < 10:
                 if down <= 5:
@@ -1554,25 +1556,25 @@ while True:
                         downs()
                         play_promt = '0'
                         play = 0
-                        snap = 0  
+                        snap = 0
                         ballcatch = 0
                         player_position[0] = 50
-                        player_position[1] = 205   
-                        gb_position[1] = 305                     
+                        player_position[1] = 205
+                        gb_position[1] = 305
                         compx3_down = 1
                         down = down + 1
                         down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
-                    game_over()      
+                    game_over()
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
             if compx4_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         downs()
                         play_promt = '0'
-                        play = 0 
-                        snap = 0  
+                        play = 0
+                        snap = 0
                         ballcatch = 0
                         player_position[0] = 50
                         player_position[1] = 205
@@ -1583,10 +1585,10 @@ while True:
                     change_to ='RIGHT'
                 else:
                     down = 1
-                    game_over()   
+                    game_over()
 
             player_body.insert(0, list(player_position))
-            player_body.pop() 
+            player_body.pop()
             
             if compx_position[0] > player_position[0]:
                 if yardline < 50:
@@ -1750,4 +1752,5 @@ while True:
 
     fps.tick(player_speed)
 
-    
+
+
