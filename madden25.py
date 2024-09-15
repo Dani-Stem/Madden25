@@ -837,6 +837,14 @@ while True:
             if ballcatch == 1:
                 outofbounds()
                 play_promt = '0'
+                play = 0 
+                snap = 0  
+                ballcatch = 0
+                player_position[0] = 50
+                player_position[1] = 205
+                gb_position[1] = 305
+                compx4_down = 1
+                down = down + 1
             direction = 'RIGHT'
 
         if player_position[1] > 600:
@@ -844,6 +852,14 @@ while True:
             if ballcatch == 1:
                 outofbounds()
                 play_promt = '0'
+                play = 0 
+                snap = 0  
+                ballcatch = 0
+                player_position[0] = 50
+                player_position[1] = 205
+                gb_position[1] = 305
+                compx4_down = 1
+                down = down + 1
             direction = 'RIGHT'
 
         if speedmeter > 9:
