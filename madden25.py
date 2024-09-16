@@ -1388,33 +1388,33 @@ while True:
                 elif center_position[0] >= 100:
                     center_position[0] -= 10
 
-            if down_yard < field_line_9:
+            if down_yard <= field_line_10:
                 yard = 10
-            if down_yard < field_line_8 and down_yard > 9:
+            if down_yard < field_line_9 and down_yard >= field_line_10:
                 yard = 9
                 print("yard9")
-            if down_yard < field_line_7 and down_yard > 8:
+            if down_yard < field_line_8 and down_yard >= field_line_9:
                 yard = 8
                 print("yard8")
-            if down_yard < field_line_8 and down_yard > 7:
+            if down_yard < field_line_7 and down_yard >= field_line_8:
                 yard = 7
                 print("yard7")
-            if down_yard < field_line_8 and down_yard > 6:
+            if down_yard < field_line_6 and down_yard >= field_line_7:
                 yard = 6
                 print("yard6")
-            if down_yard < field_line_8 and down_yard > 5:
+            if down_yard < field_line_5 and down_yard >= field_line_6:
                 yard = 5
                 print("yard5")
-            if down_yard < field_line_8 and down_yard > 4:
+            if down_yard < field_line_4 and down_yard >= field_line_5:
                 yard = 4
                 print("yard4")
-            if down_yard < field_line_8 and down_yard > 3:
+            if down_yard < field_line_3 and down_yard >= field_line_4:
                 yard = 3
                 print("yard3")
-            if down_yard < field_line_8 and down_yard > 2:
+            if down_yard < field_line_2 and down_yard >= field_line_3:
                 yard = 2
                 print("yard2")
-            if down_yard < field_line_8 and down_yard > 1:
+            if down_yard < field_line_1 and down_yard >= field_line_2:
                 yard = 1
                 print("yard1")
             
