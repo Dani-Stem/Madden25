@@ -72,16 +72,16 @@ field_lines_yellow_body = [[1200, 60],
                         [1200, 80],
                         [1200, 90],
                         [1200, 100]]
-field_line_1 = 120
-field_line_2 = 240
-field_line_3 = 360
-field_line_4 = 480
-field_line_5 = 600
-field_line_6 = 720
-field_line_7 = 840
-field_line_8 = 960
-field_line_9 = 1080
-field_line_10 = 1200
+field_line_10 = 120
+field_line_9 = 240
+field_line_8 = 360
+field_line_7 = 480
+field_line_6 = 600
+field_line_5 = 720
+field_line_4 = 840
+field_line_3 = 960
+field_line_2 = 1080
+field_line_1 = 1200
 
 field_lines_body = [[120, 60],
                [120, 70],
@@ -435,13 +435,13 @@ def show_downsfieldgoal(choice, color, font, size):
   
     my_font = pygame.font.SysFont('Arial', 30)
     if down == 1:
-        down_surface = my_font.render(str(down) + 'ST & ' + yard, True, white)
+        down_surface = my_font.render(str(down) + 'ST & ' + str(yard), True, white)
     elif down == 2:
-        down_surface = my_font.render(str(down) + 'ND & ' + yard, True, white)
+        down_surface = my_font.render(str(down) + 'ND & ' + str(yard), True, white)
     elif down == 3:
-        down_surface = my_font.render(str(down) + 'RD & ' + yard, True, white)
+        down_surface = my_font.render(str(down) + 'RD & ' + str(yard), True, white)
     elif down == 4:
-        down_surface = my_font.render(str(down) + 'TH & ' + yard, True, white)
+        down_surface = my_font.render(str(down) + 'TH & ' + str(yard), True, white)
 
     down_rect = down_surface.get_rect()
     down_rect.midtop = (105, 655)
@@ -531,6 +531,7 @@ def downs():
     pygame.display.flip()
     player_position[0] = player_position[0]
     player_position[1] = 300
+    print("DOWN")
     time.sleep(2)
 
 def outofbounds():
@@ -846,6 +847,7 @@ while True:
         if player_position[1] < 50:
             player_position[1] = 50
             if ballcatch == 1:
+                down_yard = player_position[0]
                 outofbounds()
                 play_promt = '0'
                 play = 0 
@@ -856,12 +858,12 @@ while True:
                 gb_position[1] = 305
                 compx4_down = 1
                 down = down + 1
-                down_yard = player_position[1]
             direction = 'RIGHT'
 
         if player_position[1] > 600:
             player_position[1] = 600
             if ballcatch == 1:
+                down_yard = player_position[0]
                 outofbounds()
                 play_promt = '0'
                 play = 0 
@@ -872,29 +874,7 @@ while True:
                 gb_position[1] = 305
                 compx4_down = 1
                 down = down + 1
-                down_yard = player_position[1]
             direction = 'RIGHT'
-
-        if down_yard < field_line_1:
-            yard = yardline
-        if down_yard > field_line_1 and down_yard < field_line_2:
-            yard = 2
-        if down_yard > field_line_2 and down_yard < field_line_3:
-            yard = 3
-        if down_yard > field_line_3 and down_yard < field_line_4:
-            yard = 4
-        if down_yard > field_line_4 and down_yard < field_line_5:
-            yard = 5
-        if down_yard > field_line_5 and down_yard < field_line_6:
-            yard = 6
-        if down_yard > field_line_6 and down_yard < field_line_7:
-            yard = 7
-        if down_yard > field_line_7 and down_yard < field_line_8:
-            yard = 8
-        if down_yard > field_line_8 and down_yard < field_line_9:
-            yard = 9
-        if down_yard > field_line_9 and down_yard < field_line_10:
-            yard = yardline
 
         if speedmeter > 9:
             for pos in speedmeterMax_body:
@@ -1051,6 +1031,7 @@ while True:
             if compx_dist < 10:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1061,7 +1042,6 @@ while True:
                         gb_position[1] = 305
                         compx_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     game_over()        
@@ -1069,6 +1049,7 @@ while True:
             if compx1_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1079,7 +1060,6 @@ while True:
                         gb_position[1] = 305
                         compx1_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     game_over()      
@@ -1087,6 +1067,7 @@ while True:
             if compx2_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1097,7 +1078,6 @@ while True:
                         gb_position[1] = 305
                         compx2_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     game_over()      
@@ -1105,6 +1085,7 @@ while True:
             if compx3_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1115,7 +1096,6 @@ while True:
                         gb_position[1] = 305
                         compx3_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     game_over()      
@@ -1123,6 +1103,7 @@ while True:
             if compx_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1133,7 +1114,6 @@ while True:
                         gb_position[1] = 305
                         compx4_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     down = 1
@@ -1408,6 +1388,39 @@ while True:
                 elif center_position[0] >= 100:
                     center_position[0] -= 10
 
+            if down_yard < field_line_9:
+                yard = 10
+            if down_yard < field_line_8 and down_yard > 9:
+                yard = 9
+                print("yard9")
+            if down_yard < field_line_7 and down_yard > 8:
+                yard = 8
+                print("yard8")
+            if down_yard < field_line_8 and down_yard > 7:
+                yard = 7
+                print("yard7")
+            if down_yard < field_line_8 and down_yard > 6:
+                yard = 6
+                print("yard6")
+            if down_yard < field_line_8 and down_yard > 5:
+                yard = 5
+                print("yard5")
+            if down_yard < field_line_8 and down_yard > 4:
+                yard = 4
+                print("yard4")
+            if down_yard < field_line_8 and down_yard > 3:
+                yard = 3
+                print("yard3")
+            if down_yard < field_line_8 and down_yard > 2:
+                yard = 2
+                print("yard2")
+            if down_yard < field_line_8 and down_yard > 1:
+                yard = 1
+                print("yard1")
+            
+            print("player:" + str(player_position[0]))
+            print("downyard:" + str(down_yard))
+
             if play == 1:
 
                 # Moving the player 
@@ -1421,7 +1434,7 @@ while True:
                         player_position[0] += 10 + speedmeter
 
                 ball_dist = pygame.Vector2(player_position).distance_to(ball_position)
-                if ball_dist < 10:
+                if ball_dist < 50 and ballcatch != 1:
                     if ball_position[0] >= 200:
                         catch()
                         ballcatch = 1
@@ -1497,6 +1510,7 @@ while True:
             if compx_dist < 10:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1507,7 +1521,6 @@ while True:
                         gb_position[1] = 305
                         compx_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     game_over()     
@@ -1515,6 +1528,7 @@ while True:
             if compx1_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1525,7 +1539,6 @@ while True:
                         gb_position[1] = 305
                         compx1_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     game_over()      
@@ -1533,6 +1546,7 @@ while True:
             if compx2_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1543,7 +1557,6 @@ while True:
                         gb_position[1] = 305
                         compx2_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     game_over()      
@@ -1551,6 +1564,7 @@ while True:
             if compx3_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0
@@ -1561,7 +1575,6 @@ while True:
                         gb_position[1] = 305                     
                         compx3_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     game_over()      
@@ -1569,6 +1582,7 @@ while True:
             if compx4_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
+                        down_yard = player_position[0]
                         downs()
                         play_promt = '0'
                         play = 0 
@@ -1579,7 +1593,6 @@ while True:
                         gb_position[1] = 305
                         compx4_down = 1
                         down = down + 1
-                        down_yard = player_position[1]
                     change_to ='RIGHT'
                 else:
                     down = 1
