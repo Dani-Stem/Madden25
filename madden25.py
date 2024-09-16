@@ -651,7 +651,8 @@ while True:
             key = 'ENTER'
         if change_to == 'SPACE':
             key = 'SPACE'
-
+            
+    print(play_promt)
     if play_promt == '0':
             
         for pos in field_lines_body:
@@ -670,8 +671,12 @@ while True:
         
         if key == 'ENTER' and selection_position[0] > 624:
             play_promt = '2'
+            key = ''
         if key == 'ENTER' and selection_position[0] < 624:
             play_promt = '1'
+            key = ''
+
+        print(key)
 
         for pos in selection_body:
             pygame.draw.rect(game_window, white,
@@ -1026,7 +1031,7 @@ while True:
             for pos in field_lines_yellow_body:
                 pygame.draw.rect(game_window, yellow,
                                 pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
-   
+
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
             if compx_dist < 10:
                 if down <= 5:
@@ -1392,35 +1397,23 @@ while True:
                 yard = 10
             if down_yard < field_line_9 and down_yard >= field_line_10:
                 yard = 9
-                print("yard9")
             if down_yard < field_line_8 and down_yard >= field_line_9:
                 yard = 8
-                print("yard8")
             if down_yard < field_line_7 and down_yard >= field_line_8:
                 yard = 7
-                print("yard7")
             if down_yard < field_line_6 and down_yard >= field_line_7:
                 yard = 6
-                print("yard6")
             if down_yard < field_line_5 and down_yard >= field_line_6:
                 yard = 5
-                print("yard5")
             if down_yard < field_line_4 and down_yard >= field_line_5:
                 yard = 4
-                print("yard4")
             if down_yard < field_line_3 and down_yard >= field_line_4:
                 yard = 3
-                print("yard3")
             if down_yard < field_line_2 and down_yard >= field_line_3:
                 yard = 2
-                print("yard2")
             if down_yard < field_line_1 and down_yard >= field_line_2:
                 yard = 1
-                print("yard1")
             
-            print("player:" + str(player_position[0]))
-            print("downyard:" + str(down_yard))
-
             if play == 1:
 
                 # Moving the player 
