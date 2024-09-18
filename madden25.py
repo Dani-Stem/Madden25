@@ -368,8 +368,8 @@ snapx5_position = [225, 450]
 snapx6_body = [320, 300]
 snapx6_position = [320, 300]
 
-logo_body = [200, 200]
-logo_position = [200, 200]
+logo_body = [195, 200]
+logo_position = [195, 200]
 
 direction = ''
 key = ''
@@ -478,6 +478,15 @@ def show_startscreen(choice, color, font, size):
         'MADDEN25' , True, yellow)
     speed_rect = speed_surface.get_rect()
     speed_rect.midtop = (310, 480)
+    game_window.blit(speed_surface, speed_rect)
+
+def show_startscreensub(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 15)
+    speed_surface = my_font.render(
+        'A DN INDUSTRIES PRODUCT' , True, yellow)
+    speed_rect = speed_surface.get_rect()
+    speed_rect.midtop = (306, 515)
     game_window.blit(speed_surface, speed_rect)
 
 def show_nextyardline(choice, color, font, size):
@@ -760,8 +769,10 @@ while True:
                             pygame.Rect(pos[0] + 20, pos[1], 10, 10))
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
-                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))   
+                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10)) 
+              
         show_startscreen(1, white, 'Arial', 80)
+        show_startscreensub(1, white, 'Arial', 70)
 
         for pos in logo_body:   
             implogo = pygame.image.load("madden25_imgs/logo.png").convert()
@@ -790,8 +801,6 @@ while True:
         if key == 'ENTER' and selection_position[0] < 624:
             play_promt = '1'
             key = ''
-
-        print(key)
 
         for pos in selection_body:
             pygame.draw.rect(game_window, white,
