@@ -782,7 +782,11 @@ while True:
               
         show_startscreen(1, white, 'Arial', 80)
         show_startscreensub(1, white, 'Arial', 70)
-        show_startscreensub1(1, white, 'Arial', 70)
+        timer_position[0] += 75
+        if timer_position[0] > 1300:
+            timer_position[0] = 0
+        if timer_position[0] > 750:
+            show_startscreensub1(1, white, 'Arial', 70)
 
         for pos in logo_body:   
             implogo = pygame.image.load("madden25_imgs/logo.png").convert()
@@ -1887,3 +1891,5 @@ while True:
     pygame.display.update()
 
     fps.tick(player_speed)
+
+    
