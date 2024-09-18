@@ -371,6 +371,9 @@ snapx6_position = [320, 300]
 logo_body = [195, 200]
 logo_position = [195, 200]
 
+howto_body = [675, 180]
+howto_position = [675, 180]
+
 direction = ''
 key = ''
 change_to = direction
@@ -737,6 +740,8 @@ while True:
     # handling key events
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_s:
+                change_to = 's'
             if event.key == pygame.K_RETURN:
                 change_to = 'ENTER'
             if event.key == pygame.K_UP:
@@ -770,6 +775,8 @@ while True:
             key = 'ENTER'
         if change_to == 'SPACE':
             key = 'SPACE'
+        if change_to == 's':
+            key = 's'
             
     if play_promt == '0' and start_screen == 0:
 
@@ -792,6 +799,12 @@ while True:
             implogo = pygame.image.load("madden25_imgs/logo.png").convert()
             game_window.blit(implogo, pygame.Rect(logo_position[0], logo_position[1], 10, 10))
 
+        for pos in howto_body:   
+            impht = pygame.image.load("madden25_imgs/howtoplay.png").convert()
+            game_window.blit(impht, pygame.Rect(howto_position[0], howto_position[1], 10, 10))
+
+        if key == 's':
+            start_screen = 1
 
     if play_promt == '0' and start_screen == 1:
             
