@@ -481,7 +481,26 @@ def show_nextyardline(choice, color, font, size):
         nextyardline_font = pygame.font.SysFont(font, size)
         nextyardline_surface = nextyardline_font.render(str(yardline + 10), True, color)
         nextyardline_rect = nextyardline_surface.get_rect()
-        nextyardline_rect.midtop = (1225, 300)
+        if yard == 1:
+            nextyardline_rect.midtop = (120, 300)
+        if yard == 2:
+            nextyardline_rect.midtop = (240, 300)
+        if yard == 3:
+            nextyardline_rect.midtop = (360, 300)
+        if yard == 4:
+            nextyardline_rect.midtop = (480, 300)
+        if yard == 5:
+            nextyardline_rect.midtop = (600, 300)
+        if yard == 6:
+            nextyardline_rect.midtop = (720, 300)
+        if yard == 7:
+            nextyardline_rect.midtop = (840, 300)
+        if yard == 8:
+            nextyardline_rect.midtop = (960, 300)
+        if yard == 9:
+            nextyardline_rect.midtop = (1080, 300)
+        if yard == 10:
+            nextyardline_rect.midtop = (1225, 300)
         game_window.blit(nextyardline_surface, nextyardline_rect)
     
     else:
@@ -611,63 +630,7 @@ def miss():
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
     time.sleep(2)
-
-
-def speedmeter_bar():
-    left_position = 0
-    top_position = 0
-    bar_width = 10
-    bar_height = 10
-    if speedmeter > -2:
-        for pos in speedmeter1_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > -1:
-        for pos in speedmeter2_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 0:
-        for pos in speedmeter3_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 1:
-        for pos in speedmeter4_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 2:
-        for pos in speedmeter5_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 3:
-        for pos in speedmeter6_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 4:
-        for pos in speedmeter7_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 5:
-        for pos in speedmeter8_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 6:
-        for pos in speedmeter9_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 7:
-        for pos in speedmeter10_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 8:
-        for pos in speedmeter11_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-    if speedmeter > 9:
-        for pos in speedmeterMax_body:
-            pygame.draw.rect(game_window, green,
-                pygame.Rect(pos[0] + left_position, pos[1] + top_position, bar_width, bar_height))
-
-
+   
 while True:
     game_window.fill(black)
 
@@ -765,9 +728,55 @@ while True:
                     impball = pygame.image.load("madden25_imgs/fieldgoalball5.png").convert()  
                 game_window.blit(impball, pygame.Rect(fieldgoalball_position[0], fieldgoalball_position[1], 10, 10))
 
-            # Setup speedmeter bar
-            speedmeter_bar()
-
+            if speedmeter > -2:
+                for pos in speedmeter1_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
+            if speedmeter > -1:
+                for pos in speedmeter2_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
+            if speedmeter > 0:
+                for pos in speedmeter3_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))               
+            if speedmeter > 1:
+                for pos in speedmeter4_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 2:
+                for pos in speedmeter5_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 3:
+                for pos in speedmeter6_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 4:
+                for pos in speedmeter7_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 5:
+                for pos in speedmeter8_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 6:
+                for pos in speedmeter9_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 7:
+                for pos in speedmeter10_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+            if speedmeter > 8:
+                for pos in speedmeter11_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10)) 
+            if speedmeter > 9:
+                for pos in speedmeterMax_body:
+                    pygame.draw.rect(game_window, green,
+                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))    
+                    
             for pos in timer_body:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
@@ -891,8 +900,54 @@ while True:
                 down = down + 1
             direction = 'RIGHT'
 
-        # Setup speedmeter bar
-        speedmeter_bar()
+        if speedmeter > 9:
+            for pos in speedmeterMax_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
+        if speedmeter > -2:
+            for pos in speedmeter1_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
+        if speedmeter > -1:
+            for pos in speedmeter2_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
+        if speedmeter > 0:
+            for pos in speedmeter3_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
+        if speedmeter > 1:
+            for pos in speedmeter4_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
+        if speedmeter > 2:
+            for pos in speedmeter5_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))    
+        if speedmeter > 3:
+            for pos in speedmeter6_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))   
+        if speedmeter > 4:
+            for pos in speedmeter7_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
+        if speedmeter > 5:
+            for pos in speedmeter8_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10)) 
+        if speedmeter > 6:
+            for pos in speedmeter9_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
+        if speedmeter > 7:
+            for pos in speedmeter10_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
+        if speedmeter > 8:
+            for pos in speedmeter11_body:
+                pygame.draw.rect(game_window, green,
+                                pygame.Rect(pos[0], pos[1], 10, 10))
 
         if snap == 0:
             
@@ -1710,8 +1765,8 @@ while True:
                     game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
 
             show_yardline(1, white, 'Arial', 80)
-            show_nextyardline(1, white, 'Arial', 80)
-
+        
+        show_nextyardline(1, white, 'Arial', 80)
         show_speed(1, white, 'Arial', 30)
         show_downs(1, white, 'Arial', 30)
         show_score(1, white, 'Arial', 30)
