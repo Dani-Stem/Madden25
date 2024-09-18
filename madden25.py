@@ -376,7 +376,7 @@ score = [0, 0]
 play = 0
 down = 1
 yardline = 10
-yard = '0'
+yard = 10
 field_goal = '0'
 play_promt = '0'
 speedmeter = 0
@@ -501,25 +501,25 @@ def show_nextyardline(choice, color, font, size):
         goallineg_surface =  goallineg_font.render('G', True, color)
         goallineg_rect =  goallineg_surface.get_rect()
         if yard == 1:
-            goallineg_rect.midtop = (120, 300)
+            goallineg_rect.midtop = (120, 160)
         if yard == 2:
-            goallineg_rect.midtop = (240, 300)
+            goallineg_rect.midtop = (240, 160)
         if yard == 3:
-            goallineg_rect.midtop = (360, 300)
+            goallineg_rect.midtop = (360, 160)
         if yard == 4:
-            goallineg_rect.midtop = (480, 300)
+            goallineg_rect.midtop = (480, 160)
         if yard == 5:
-            goallineg_rect.midtop = (600, 300)
+            goallineg_rect.midtop = (600, 160)
         if yard == 6:
-            goallineg_rect.midtop = (720, 300)
+            goallineg_rect.midtop = (720, 160)
         if yard == 7:
-            goallineg_rect.midtop = (840, 300)
+            goallineg_rect.midtop = (840, 160)
         if yard == 8:
-            goallineg_rect.midtop = (960, 300)
+            goallineg_rect.midtop = (960, 160)
         if yard == 9:
-            goallineg_rect.midtop = (1080, 300)
+            goallineg_rect.midtop = (1080, 160)
         if yard == 10:
-            goallineg_rect.midtop = (1225, 300)
+            goallineg_rect.midtop = (1225, 160)
         game_window.blit( goallineg_surface,  goallineg_rect)
         
         #O
@@ -527,25 +527,25 @@ def show_nextyardline(choice, color, font, size):
         goallineo_surface =  goallineo_font.render('O', True, color)
         goallineo_rect =  goallineo_surface.get_rect()
         if yard == 1:
-            goallineg_rect.midtop = (120, 300)
+            goallineo_rect.midtop = (120, 260)
         if yard == 2:
-            goallineg_rect.midtop = (240, 300)
+            goallineo_rect.midtop = (240, 260)
         if yard == 3:
-            goallineg_rect.midtop = (360, 300)
+            goallineo_rect.midtop = (360, 260)
         if yard == 4:
-            goallineg_rect.midtop = (480, 300)
+            goallineo_rect.midtop = (480, 260)
         if yard == 5:
-            goallineg_rect.midtop = (600, 300)
+            goallineo_rect.midtop = (600, 260)
         if yard == 6:
-            goallineg_rect.midtop = (720, 300)
+            goallineo_rect.midtop = (720, 260)
         if yard == 7:
-            goallineg_rect.midtop = (840, 300)
+            goallineo_rect.midtop = (840, 260)
         if yard == 8:
-            goallineg_rect.midtop = (960, 300)
+            goallineo_rect.midtop = (960, 260)
         if yard == 9:
-            goallineg_rect.midtop = (1080, 300)
+            goallineo_rect.midtop = (1080, 260)
         if yard == 10:
-            goallineg_rect.midtop = (1225, 300)
+            goallineo_rect.midtop = (1225, 260)
         game_window.blit( goallineo_surface,  goallineo_rect)
         
         #A
@@ -553,25 +553,25 @@ def show_nextyardline(choice, color, font, size):
         goallinea_surface =  goallinea_font.render('A', True, color)
         goallinea_rect =  goallinea_surface.get_rect()
         if yard == 1:
-            goallineg_rect.midtop = (120, 300)
+            goallinea_rect.midtop = (120, 360)
         if yard == 2:
-            goallineg_rect.midtop = (240, 300)
+            goallinea_rect.midtop = (240, 360)
         if yard == 3:
-            goallineg_rect.midtop = (360, 300)
+            goallinea_rect.midtop = (360, 360)
         if yard == 4:
-            goallineg_rect.midtop = (480, 300)
+            goallinea_rect.midtop = (480, 360)
         if yard == 5:
-            goallineg_rect.midtop = (600, 300)
+            goallinea_rect.midtop = (600, 360)
         if yard == 6:
-            goallineg_rect.midtop = (720, 300)
+            goallinea_rect.midtop = (720, 360)
         if yard == 7:
-            goallineg_rect.midtop = (840, 300)
+            goallinea_rect.midtop = (840, 360)
         if yard == 8:
-            goallineg_rect.midtop = (960, 300)
+            goallinea_rect.midtop = (960, 360)
         if yard == 9:
-            goallineg_rect.midtop = (1080, 300)
+            goallinea_rect.midtop = (1080, 360)
         if yard == 10:
-            goallineg_rect.midtop = (1225, 300)
+            goallinea_rect.midtop = (1225, 360)
         game_window.blit( goallinea_surface,  goallinea_rect)
         
         #L
@@ -579,25 +579,25 @@ def show_nextyardline(choice, color, font, size):
         goallinel_surface =  goallinel_font.render('L', True, color)
         goallinel_rect =  goallinel_surface.get_rect()
         if yard == 1:
-            goallineg_rect.midtop = (120, 300)
+            goallinel_rect.midtop = (120, 460)
         if yard == 2:
-            goallineg_rect.midtop = (240, 300)
+            goallinel_rect.midtop = (240, 460)
         if yard == 3:
-            goallineg_rect.midtop = (360, 300)
+            goallinel_rect.midtop = (360, 460)
         if yard == 4:
-            goallineg_rect.midtop = (480, 300)
+            goallinel_rect.midtop = (480, 460)
         if yard == 5:
-            goallineg_rect.midtop = (600, 300)
+            goallinel_rect.midtop = (600, 460)
         if yard == 6:
-            goallineg_rect.midtop = (720, 300)
+            goallinel_rect.midtop = (720, 460)
         if yard == 7:
-            goallineg_rect.midtop = (840, 300)
+            goallinel_rect.midtop = (840, 460)
         if yard == 8:
-            goallineg_rect.midtop = (960, 300)
+            goallinel_rect.midtop = (960, 460)
         if yard == 9:
-            goallineg_rect.midtop = (1080, 300)
+            goallinel_rect.midtop = (1080, 460)
         if yard == 10:
-            goallineg_rect.midtop = (1225, 300)
+            goallinel_rect.midtop = (1225, 460)
         game_window.blit( goallinel_surface,  goallinel_rect)
 
 def downs():
