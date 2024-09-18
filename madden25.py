@@ -466,14 +466,6 @@ def show_fieldgoal(choice, color, font, size):
     speed_rect.midtop = (670, 25)
     game_window.blit(speed_surface, speed_rect)
 
-def show_yardline(choice, color, font, size):
-  
-    yardline_font = pygame.font.SysFont(font, size)
-    yardline_surface = yardline_font.render(str(yardline), True, color)
-    yardline_rect = yardline_surface.get_rect()
-    yardline_rect.midtop = (140, 300)
-    game_window.blit(yardline_surface, yardline_rect)
-
 def show_nextyardline(choice, color, font, size):
   
     if yardline < 90:
@@ -1763,8 +1755,6 @@ while True:
                     elif compx4_direction == 'LEFT':
                         impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
                     game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
-
-            show_yardline(1, white, 'Arial', 80)
         
         show_nextyardline(1, white, 'Arial', 80)
         show_speed(1, white, 'Arial', 30)
