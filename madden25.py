@@ -368,6 +368,9 @@ snapx5_position = [225, 450]
 snapx6_body = [320, 300]
 snapx6_position = [320, 300]
 
+logo_body = [200, 200]
+logo_position = [200, 200]
+
 direction = ''
 key = ''
 change_to = direction
@@ -386,6 +389,7 @@ spacebar_count = 0
 snap = 0
 ballcatch = 0
 down_yard = 10
+start_screen = 0
 
 def show_playoptions(choice, color, font, size):
 
@@ -464,6 +468,16 @@ def show_fieldgoal(choice, color, font, size):
         'QUICKLY & REPEATEDLY TAP THE SPACE BAR' , True, white)
     speed_rect = speed_surface.get_rect()
     speed_rect.midtop = (670, 25)
+    game_window.blit(speed_surface, speed_rect)
+
+
+def show_startscreen(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 30)
+    speed_surface = my_font.render(
+        'MADDEN25' , True, yellow)
+    speed_rect = speed_surface.get_rect()
+    speed_rect.midtop = (310, 480)
     game_window.blit(speed_surface, speed_rect)
 
 def show_nextyardline(choice, color, font, size):
@@ -739,15 +753,29 @@ while True:
         if change_to == 'SPACE':
             key = 'SPACE'
             
-    print(play_promt)
-    if play_promt == '0':
-            
+    if play_promt == '0' and start_screen == 0:
+
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1], 10, 10))
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))   
+        show_startscreen(1, white, 'Arial', 80)
+
+        for pos in logo_body:   
+            implogo = pygame.image.load("madden25_imgs/logo.png").convert()
+            game_window.blit(implogo, pygame.Rect(logo_position[0], logo_position[1], 10, 10))
+
+
+    if play_promt == '0' and start_screen == 1:
+            
+        for pos in field_lines_body:
+            pygame.draw.rect(game_window, white,
+                            pygame.Rect(pos[0] + 20, pos[1], 10, 10))
+        for pos in field_lines_body:
+            pygame.draw.rect(game_window, white,
+                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))  
             
         if direction == 'RIGHT':
             if selection_position[0] <= 624:
@@ -1840,5 +1868,3 @@ while True:
     pygame.display.update()
 
     fps.tick(player_speed)
-
-    
