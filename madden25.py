@@ -489,6 +489,15 @@ def show_startscreensub(choice, color, font, size):
     speed_rect.midtop = (306, 515)
     game_window.blit(speed_surface, speed_rect)
 
+def show_startscreensub1(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 35)
+    speed_surface = my_font.render(
+        'PRESS S TO START THE GAME', True, white)
+    speed_rect = speed_surface.get_rect()
+    speed_rect.midtop = (906, 525)
+    game_window.blit(speed_surface, speed_rect)
+
 def show_nextyardline(choice, color, font, size):
   
     if yardline < 90:
@@ -773,6 +782,7 @@ while True:
               
         show_startscreen(1, white, 'Arial', 80)
         show_startscreensub(1, white, 'Arial', 70)
+        show_startscreensub1(1, white, 'Arial', 70)
 
         for pos in logo_body:   
             implogo = pygame.image.load("madden25_imgs/logo.png").convert()
