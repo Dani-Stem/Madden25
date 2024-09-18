@@ -500,28 +500,104 @@ def show_nextyardline(choice, color, font, size):
         goallineg_font = pygame.font.SysFont(font, size)
         goallineg_surface =  goallineg_font.render('G', True, color)
         goallineg_rect =  goallineg_surface.get_rect()
-        goallineg_rect.midtop = (1225, 160)
+        if yard == 1:
+            goallineg_rect.midtop = (120, 300)
+        if yard == 2:
+            goallineg_rect.midtop = (240, 300)
+        if yard == 3:
+            goallineg_rect.midtop = (360, 300)
+        if yard == 4:
+            goallineg_rect.midtop = (480, 300)
+        if yard == 5:
+            goallineg_rect.midtop = (600, 300)
+        if yard == 6:
+            goallineg_rect.midtop = (720, 300)
+        if yard == 7:
+            goallineg_rect.midtop = (840, 300)
+        if yard == 8:
+            goallineg_rect.midtop = (960, 300)
+        if yard == 9:
+            goallineg_rect.midtop = (1080, 300)
+        if yard == 10:
+            goallineg_rect.midtop = (1225, 300)
         game_window.blit( goallineg_surface,  goallineg_rect)
         
         #O
         goallineo_font = pygame.font.SysFont(font, size)
         goallineo_surface =  goallineo_font.render('O', True, color)
         goallineo_rect =  goallineo_surface.get_rect()
-        goallineo_rect.midtop = (1225, 260)
+        if yard == 1:
+            goallineg_rect.midtop = (120, 300)
+        if yard == 2:
+            goallineg_rect.midtop = (240, 300)
+        if yard == 3:
+            goallineg_rect.midtop = (360, 300)
+        if yard == 4:
+            goallineg_rect.midtop = (480, 300)
+        if yard == 5:
+            goallineg_rect.midtop = (600, 300)
+        if yard == 6:
+            goallineg_rect.midtop = (720, 300)
+        if yard == 7:
+            goallineg_rect.midtop = (840, 300)
+        if yard == 8:
+            goallineg_rect.midtop = (960, 300)
+        if yard == 9:
+            goallineg_rect.midtop = (1080, 300)
+        if yard == 10:
+            goallineg_rect.midtop = (1225, 300)
         game_window.blit( goallineo_surface,  goallineo_rect)
         
         #A
         goallinea_font = pygame.font.SysFont(font, size)
         goallinea_surface =  goallinea_font.render('A', True, color)
         goallinea_rect =  goallinea_surface.get_rect()
-        goallinea_rect.midtop = (1225, 360)
+        if yard == 1:
+            goallineg_rect.midtop = (120, 300)
+        if yard == 2:
+            goallineg_rect.midtop = (240, 300)
+        if yard == 3:
+            goallineg_rect.midtop = (360, 300)
+        if yard == 4:
+            goallineg_rect.midtop = (480, 300)
+        if yard == 5:
+            goallineg_rect.midtop = (600, 300)
+        if yard == 6:
+            goallineg_rect.midtop = (720, 300)
+        if yard == 7:
+            goallineg_rect.midtop = (840, 300)
+        if yard == 8:
+            goallineg_rect.midtop = (960, 300)
+        if yard == 9:
+            goallineg_rect.midtop = (1080, 300)
+        if yard == 10:
+            goallineg_rect.midtop = (1225, 300)
         game_window.blit( goallinea_surface,  goallinea_rect)
         
         #L
         goallinel_font = pygame.font.SysFont(font, size)
         goallinel_surface =  goallinel_font.render('L', True, color)
         goallinel_rect =  goallinel_surface.get_rect()
-        goallinel_rect.midtop = (1225, 460)
+        if yard == 1:
+            goallineg_rect.midtop = (120, 300)
+        if yard == 2:
+            goallineg_rect.midtop = (240, 300)
+        if yard == 3:
+            goallineg_rect.midtop = (360, 300)
+        if yard == 4:
+            goallineg_rect.midtop = (480, 300)
+        if yard == 5:
+            goallineg_rect.midtop = (600, 300)
+        if yard == 6:
+            goallineg_rect.midtop = (720, 300)
+        if yard == 7:
+            goallineg_rect.midtop = (840, 300)
+        if yard == 8:
+            goallineg_rect.midtop = (960, 300)
+        if yard == 9:
+            goallineg_rect.midtop = (1080, 300)
+        if yard == 10:
+            goallineg_rect.midtop = (1225, 300)
         game_window.blit( goallinel_surface,  goallinel_rect)
 
 def downs():
