@@ -374,6 +374,9 @@ logo_position = [195, 200]
 howto_body = [675, 180]
 howto_position = [675, 180]
 
+quarter_body = [575, 250]
+quarter_position = [575, 250]
+
 direction = ''
 key = ''
 change_to = direction
@@ -393,6 +396,7 @@ snap = 0
 ballcatch = 0
 down_yard = 10
 start_screen = 0
+quarter = 'HEADS'
 
 def show_playoptions(choice, color, font, size):
 
@@ -455,6 +459,15 @@ def show_downsfieldgoal(choice, color, font, size):
     game_window.blit(down_surface, down_rect)
 
 
+def show_yardonstart(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 30)
+    speed_surface = my_font.render(
+        'YARD: ' + str(yard), True, white)
+    speed_rect = speed_surface.get_rect()
+    speed_rect.midtop = (100, 5)
+    game_window.blit(speed_surface, speed_rect)
+
 def show_speed(choice, color, font, size):
   
     my_font = pygame.font.SysFont('Arial', 30)
@@ -462,6 +475,16 @@ def show_speed(choice, color, font, size):
         'SPEED:' , True, white)
     speed_rect = speed_surface.get_rect()
     speed_rect.midtop = (100, 5)
+    game_window.blit(speed_surface, speed_rect)
+
+
+def show_quarter(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 80)
+    speed_surface = my_font.render(
+        quarter, True, white)
+    speed_rect = speed_surface.get_rect()
+    speed_rect.midtop = (600, 300)
     game_window.blit(speed_surface, speed_rect)
 
 def show_fieldgoal(choice, color, font, size):
@@ -805,6 +828,42 @@ while True:
 
         if key == 's':
             start_screen = 1
+            play_promt = 'coinflip'
+    
+    if play_promt == 'coinflip' and start_screen == 1:
+
+        for pos in field_lines_body:
+            pygame.draw.rect(game_window, white,
+                            pygame.Rect(pos[0] + 20, pos[1], 10, 10))
+        for pos in field_lines_body:
+            pygame.draw.rect(game_window, white,
+                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10)) 
+            
+        timer_position[0] += 225
+        if timer_position[0] > 1300  and key != 'SPACE':
+            timer_position[0] = 0
+            quarter = 'HEADS'
+        if timer_position[0] > 975 and timer_position[0] < 1300  and key != 'SPACE':
+            quarter = 'edge'
+        if timer_position[0] > 650 and timer_position[0] < 975  and key != 'SPACE':
+            quarter = 'TAILS'
+        if timer_position[0] > 325 and timer_position[0] < 650 and key != 'SPACE':
+            quarter = 'edge'
+            
+        if quarter != 'edge':
+            show_quarter(1, white, 'Arial', 100)
+
+
+        for pos in quarter_body:   
+            if quarter == 'HEADS':
+                impquarter = pygame.image.load("madden25_imgs/HEADS.jpg").convert()
+                game_window.blit(impquarter, pygame.Rect(quarter_position[0], quarter_position[1], 10, 10))
+            if quarter == 'edge':
+                impquarter = pygame.image.load("madden25_imgs/edge.jpg").convert()
+                game_window.blit(impquarter, pygame.Rect(quarter_position[0]+100, quarter_position[1], 10, 10))
+            if quarter == 'TAILS':
+                impquarter = pygame.image.load("madden25_imgs/TAILS.jpg").convert()
+                game_window.blit(impquarter, pygame.Rect(quarter_position[0], quarter_position[1], 10, 10))
 
     if play_promt == '0' and start_screen == 1:
             
@@ -834,6 +893,7 @@ while True:
                             pygame.Rect(selection_position[0], pos[1], 300, 10))
         show_downs(1, white, 'Arial', 100)    
         show_score(1, white, 'Arial', 100)    
+        show_yardonstart(1, white, 'Arial', 100)  
         show_playoptions(1, white, 'Arial', 100)
             
     if play_promt == '1':
@@ -924,6 +984,7 @@ while True:
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
                         timer_position[0] = 0
+                        score[0] += 3
 
                 elif spacebar_count < 7 and spacebar_count > 3 and fieldgoalball_position[1] > 250:
                     fieldgoalball_position[0] -= 5
