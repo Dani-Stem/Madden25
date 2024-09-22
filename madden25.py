@@ -374,8 +374,11 @@ logo_position = [195, 200]
 howto_body = [675, 180]
 howto_position = [675, 180]
 
-quarter_body = [575, 250]
-quarter_position = [575, 250]
+quarter_body = [975, 225]
+quarter_position = [975, 225]
+
+cfi_body = [100, 200]
+cfi_position = [100, 200]
 
 direction = ''
 key = ''
@@ -397,6 +400,7 @@ ballcatch = 0
 down_yard = 10
 start_screen = 0
 quarter = 'HEADS'
+teamquarter = ''
 
 def show_playoptions(choice, color, font, size):
 
@@ -480,11 +484,20 @@ def show_speed(choice, color, font, size):
 
 def show_quarter(choice, color, font, size):
   
-    my_font = pygame.font.SysFont('Arial', 80)
+    my_font = pygame.font.SysFont('Arial', 50)
     speed_surface = my_font.render(
         quarter, True, white)
     speed_rect = speed_surface.get_rect()
-    speed_rect.midtop = (600, 300)
+    speed_rect.midtop = (1070, 475)
+    game_window.blit(speed_surface, speed_rect)
+
+def show_teamquarter(choice, color, font, size):
+  
+    my_font = pygame.font.SysFont('Arial', 40)
+    speed_surface = my_font.render(
+        "YOUR TEAM CHOOSES " + teamquarter, True, yellow)
+    speed_rect = speed_surface.get_rect()
+    speed_rect.midtop = (430, 475)
     game_window.blit(speed_surface, speed_rect)
 
 def show_fieldgoal(choice, color, font, size):
@@ -495,7 +508,6 @@ def show_fieldgoal(choice, color, font, size):
     speed_rect = speed_surface.get_rect()
     speed_rect.midtop = (670, 25)
     game_window.blit(speed_surface, speed_rect)
-
 
 def show_startscreen(choice, color, font, size):
   
@@ -756,6 +768,26 @@ def miss():
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
     time.sleep(2)
+
+def urball():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('YOUR BALL', True, green)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (window_x/2, 600)
+    game_window.blit(downs_surface, downs_rect)
+    pygame.display.flip()
+    time.sleep(2)
+
+def oppsball():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('OPPONENTS BALL', True, red)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (window_x/2, 600)
+    game_window.blit(downs_surface, downs_rect)
+    pygame.display.flip()
+    time.sleep(2)
    
 while True:
     game_window.fill(black)
@@ -829,6 +861,8 @@ while True:
         if key == 's':
             start_screen = 1
             play_promt = 'coinflip'
+            teamquarteroptions = ['HEADS', 'TAILS']
+            teamquarter = random.choice(teamquarteroptions)
     
     if play_promt == 'coinflip' and start_screen == 1:
 
@@ -837,7 +871,7 @@ while True:
                             pygame.Rect(pos[0] + 20, pos[1], 10, 10))
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
-                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10)) 
+                            pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))
             
         timer_position[0] += 225
         if timer_position[0] > 1300  and key != 'SPACE':
@@ -849,9 +883,10 @@ while True:
             quarter = 'TAILS'
         if timer_position[0] > 325 and timer_position[0] < 650 and key != 'SPACE':
             quarter = 'edge'
-            
-        if quarter != 'edge':
-            show_quarter(1, white, 'Arial', 100)
+
+        if key == 'SPACE' and quarter == 'edge':
+            teamquarteroptions = ['HEADS', 'TAILS']
+            quarter = random.choice(teamquarteroptions)
 
 
         for pos in quarter_body:   
@@ -864,6 +899,20 @@ while True:
             if quarter == 'TAILS':
                 impquarter = pygame.image.load("madden25_imgs/TAILS.jpg").convert()
                 game_window.blit(impquarter, pygame.Rect(quarter_position[0], quarter_position[1], 10, 10))
+
+        for pos in cfi_body:
+                impcfi = pygame.image.load("madden25_imgs/constructions.png").convert()
+                game_window.blit(impcfi, pygame.Rect(cfi_position[0], cfi_position[1], 10, 10))
+
+        if key == 'SPACE':
+            time.sleep(2)
+            play_promt = '0'
+            start_screen = 1
+
+        show_teamquarter(1, white, 'Arial', 100)
+
+        if quarter != 'edge':
+            show_quarter(1, white, 'Arial', 100)
 
     if play_promt == '0' and start_screen == 1:
             
