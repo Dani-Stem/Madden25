@@ -291,6 +291,7 @@ speedmeterMax_body = [[160, 13],
               [260, 23],
               [270, 23]
               ]
+
 selection_body = [[325, 360],
                   [330, 360],
                   [340, 360],
@@ -380,6 +381,9 @@ quarter_position = [975, 225]
 cfi_body = [100, 200]
 cfi_position = [100, 200]
 
+callchoice_body = [380, 300]
+callchoice_position = [380, 300]
+
 direction = ''
 key = ''
 change_to = direction
@@ -390,7 +394,7 @@ down = 1
 yardline = 10
 yard = 10
 field_goal = '0'
-play_promt = '0'
+play_promt = 'win'
 speedmeter = 0
 play = 0 
 power = 0
@@ -398,7 +402,7 @@ spacebar_count = 0
 snap = 0
 ballcatch = 0
 down_yard = 10
-start_screen = 0
+start_screen = 1
 quarter = 'HEADS'
 teamquarter = ''
 
@@ -419,7 +423,6 @@ def show_score(choice, color, font, size):
     score_rect = score_surface.get_rect()
     score_rect.midtop = (1100, 5)
     game_window.blit(score_surface, score_rect)
-
 
 def show_scorefieldgoal(choice, color, font, size):
   
@@ -769,27 +772,28 @@ def miss():
     pygame.display.flip()
     time.sleep(2)
 
-def urball():
+def urcall():
 
     my_font = pygame.font.SysFont('Arial', 70)
-    downs_surface = my_font.render('YOUR BALL', True, green)
+    downs_surface = my_font.render('YOUR CALL', True, green)
     downs_rect = downs_surface.get_rect()
-    downs_rect.midtop = (window_x/2, 600)
+    downs_rect.midtop = (700, 100)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
     time.sleep(2)
 
-def oppsball():
+def oppscall():
 
     my_font = pygame.font.SysFont('Arial', 70)
-    downs_surface = my_font.render('OPPONENTS BALL', True, red)
+    downs_surface = my_font.render('OPPONENTS CALL', True, red)
     downs_rect = downs_surface.get_rect()
-    downs_rect.midtop = (window_x/2, 600)
+    downs_rect.midtop = (200, 600)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
     time.sleep(2)
    
 while True:
+
     game_window.fill(black)
 
     # handling key events
@@ -888,7 +892,6 @@ while True:
             teamquarteroptions = ['HEADS', 'TAILS']
             quarter = random.choice(teamquarteroptions)
 
-
         for pos in quarter_body:   
             if quarter == 'HEADS':
                 impquarter = pygame.image.load("madden25_imgs/HEADS.jpg").convert()
@@ -906,13 +909,40 @@ while True:
 
         if key == 'SPACE':
             time.sleep(2)
-            play_promt = '0'
+            if teamquarter != quarter:
+                play_promt = 'lose'
+            elif teamquarter == quarter:
+                play_promt = 'win'
             start_screen = 1
 
         show_teamquarter(1, white, 'Arial', 100)
+        print("quarter: " + str(quarter))
+        print("teamquarter: " + str(teamquarter))
+        print("playprompt: " + play_promt)
 
         if quarter != 'edge':
             show_quarter(1, white, 'Arial', 100)
+
+    if play_promt == 'lose' and start_screen == 1:
+        oppscall()
+
+    if play_promt == 'win' and start_screen == 1:
+            
+        if direction == 'RIGHT':
+            if selection_position[0] <= 824:
+                selection_position[0] += 200
+        if direction == 'LEFT':
+            if selection_position[0] > 35:
+                selection_position[0] -= 200
+
+        for pos in callchoice_body:
+            impcc = pygame.image.load("madden25_imgs/callchoice.png").convert()
+            game_window.blit(impcc, pygame.Rect(callchoice_position[0]-35, callchoice_position[1], 10, 10))
+
+        for pos in selection_body:
+            pygame.draw.rect(game_window, white, pygame.Rect(selection_position[0], pos[1], 300, 10))
+
+        urcall()
 
     if play_promt == '0' and start_screen == 1:
             
@@ -938,8 +968,8 @@ while True:
             key = ''
 
         for pos in selection_body:
-            pygame.draw.rect(game_window, white,
-                            pygame.Rect(selection_position[0], pos[1], 300, 10))
+            pygame.draw.rect(game_window, white, pygame.Rect(selection_position[0], pos[1], 300, 10))
+            
         show_downs(1, white, 'Arial', 100)    
         show_score(1, white, 'Arial', 100)    
         show_yardonstart(1, white, 'Arial', 100)  
@@ -1017,7 +1047,6 @@ while True:
                 for pos in speedmeterMax_body:
                     pygame.draw.rect(game_window, green,
                                     pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))    
-                    
             for pos in timer_body:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
