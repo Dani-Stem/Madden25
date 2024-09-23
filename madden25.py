@@ -780,7 +780,6 @@ def urcall():
     downs_rect.midtop = (700, 100)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
-    time.sleep(2)
 
 def oppscall():
 
@@ -790,7 +789,6 @@ def oppscall():
     downs_rect.midtop = (200, 600)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
-    time.sleep(2)
    
 while True:
 
@@ -929,11 +927,11 @@ while True:
     if play_promt == 'win' and start_screen == 1:
             
         if direction == 'RIGHT':
-            if selection_position[0] <= 824:
-                selection_position[0] += 200
+            if selection_position[0] <= 700:
+                selection_position[0] += 100
         if direction == 'LEFT':
-            if selection_position[0] > 35:
-                selection_position[0] -= 200
+            if selection_position[0] > 400:
+                selection_position[0] -= 100
 
         for pos in callchoice_body:
             impcc = pygame.image.load("madden25_imgs/callchoice.png").convert()
