@@ -394,7 +394,7 @@ down = 1
 yardline = 10
 yard = 10
 field_goal = '0'
-play_promt = 'win'
+play_promt = '0'
 speedmeter = 0
 play = 0 
 power = 0
@@ -402,7 +402,7 @@ spacebar_count = 0
 snap = 0
 ballcatch = 0
 down_yard = 10
-start_screen = 1
+start_screen = 0
 quarter = 'HEADS'
 teamquarter = ''
 
