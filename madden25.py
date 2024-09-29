@@ -929,9 +929,13 @@ while True:
         if direction == 'RIGHT':
             if selection_position[0] <= 700:
                 selection_position[0] += 100
+                if key == 'ENTER':
+                    play_promt = 2
         if direction == 'LEFT':
             if selection_position[0] > 400:
                 selection_position[0] -= 100
+                if key == 'ENTER':
+                    play_promt = 1
 
         for pos in callchoice_body:
             impcc = pygame.image.load("madden25_imgs/callchoice.png").convert()
