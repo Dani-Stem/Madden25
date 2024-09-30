@@ -918,25 +918,11 @@ while True:
         print("teamquarter: " + str(teamquarter))
         print("playprompt: " + play_promt)
 
-        if quarter != 'edge':
-            show_quarter(1, white, 'Arial', 100)
-
     if play_promt == 'lose' and start_screen == 1:
         oppscall()
 
     if play_promt == 'win' and start_screen == 1:
             
-        if direction == 'RIGHT':
-            if selection_position[0] <= 700:
-                selection_position[0] += 100
-                if key == 'ENTER':
-                    play_promt = 2
-        if direction == 'LEFT':
-            if selection_position[0] > 400:
-                selection_position[0] -= 100
-                if key == 'ENTER':
-                    play_promt = 1
-
         for pos in callchoice_body:
             impcc = pygame.image.load("madden25_imgs/callchoice.png").convert()
             game_window.blit(impcc, pygame.Rect(callchoice_position[0]-35, callchoice_position[1], 10, 10))
@@ -945,10 +931,12 @@ while True:
             pygame.draw.rect(game_window, white, pygame.Rect(selection_position[0], pos[1], 300, 10))
 
         if key == 'ENTER' and selection_position[0] > 624:
-            play_promt = '2'
+            play_promt = '0'
+            start_screen = 1
             key = ''
         if key == 'ENTER' and  selection_position[0] < 624:
-            play_promt = '1'
+            play_promt = '0'
+            start_screen = 1
             key = ''
 
         urcall()
