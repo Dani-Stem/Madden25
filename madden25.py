@@ -886,10 +886,6 @@ while True:
         if timer_position[0] > 325 and timer_position[0] < 650 and key != 'SPACE':
             quarter = 'edge'
 
-        if key == 'SPACE' and quarter == 'edge':
-            teamquarteroptions = ['HEADS', 'TAILS']
-            quarter = random.choice(teamquarteroptions)
-
         for pos in quarter_body:   
             if quarter == 'HEADS':
                 impquarter = pygame.image.load("madden25_imgs/HEADS.jpg").convert()
@@ -906,12 +902,17 @@ while True:
                 game_window.blit(impcfi, pygame.Rect(cfi_position[0], cfi_position[1], 10, 10))
 
         if key == 'SPACE':
-            time.sleep(2)
+            if quarter == 'edge':
+                quarteroptions = ['HEADS', 'TAILS']
+                quarter = random.choice(quarteroptions)
             if teamquarter != quarter:
                 play_promt = 'lose'
             elif teamquarter == quarter:
                 play_promt = 'win'
             start_screen = 1
+        
+        if key == 'SPACE' and quarter != 'edge':
+            time.sleep(2)
 
         show_teamquarter(1, white, 'Arial', 100)
         print("quarter: " + str(quarter))
