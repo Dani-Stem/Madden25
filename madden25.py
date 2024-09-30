@@ -333,6 +333,10 @@ fieldgoalball_position = [680, 630]
 
 timer_body = [0, 710]
 timer_position = [0, 710]
+timerfg_body = [0, 710]
+timerfg_position = [0, 710]
+timergoal_body = [0, 710]
+timergoal_position = [0, 710]
 
 gb_body = [10, 305]
 gb_position = [10, 305]
@@ -467,7 +471,6 @@ def show_downsfieldgoal(choice, color, font, size):
     down_rect.midtop = (105, 655)
     game_window.blit(down_surface, down_rect)
 
-
 def show_yardonstart(choice, color, font, size):
   
     my_font = pygame.font.SysFont('Arial', 30)
@@ -485,7 +488,6 @@ def show_speed(choice, color, font, size):
     speed_rect = speed_surface.get_rect()
     speed_rect.midtop = (100, 5)
     game_window.blit(speed_surface, speed_rect)
-
 
 def show_quarter(choice, color, font, size):
   
@@ -728,7 +730,6 @@ def catch():
     pygame.display.flip()
     time.sleep(2)
 
-
 def kickoff():
 
     my_font = pygame.font.SysFont('Arial', 70)
@@ -834,6 +835,8 @@ while True:
             if event.key != pygame.K_SPACE:
                 if speedmeter > -2:
                     speedmeter -= 1
+                    if yardline < 50:
+                        speedmeter -= 3
             if event.key == pygame.K_p:
                 play_promt = 'p'
 
@@ -1037,7 +1040,7 @@ while True:
         show_playoptions(1, white, 'Arial', 100)
             
     if play_promt == '1':
-            
+
             for pos in fieldgoal_body:
                 impgoal = pygame.image.load("madden25_imgs/fieldgoal.png").convert()
                 game_window.blit(impgoal, pygame.Rect(fieldgoal_position[0], fieldgoal_position[1], 10, 10))
@@ -1108,12 +1111,12 @@ while True:
                 for pos in speedmeterMax_body:
                     pygame.draw.rect(game_window, green,
                                     pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))    
-            for pos in timer_body:
+            for pos in timerfg_body:
                 pygame.draw.rect(game_window, white,
-                                pygame.Rect(timer_position[0], timer_position[1], 10, 10))       
+                                pygame.Rect(timerfg_position[0], timerfg_position[1], 10, 10))       
 
-            timer_position[0] += 10      
-            if timer_position[0] > 1300:
+            timerfg_position[0] += 10      
+            if timerfg_position[0] >= 1300:
                 if spacebar_count >= 7 and fieldgoalball_position[1] > 300:
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 300:
@@ -1122,7 +1125,7 @@ while True:
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
-                        timer_position[0] = 0
+                        timerfg_position[0] = 0
                         score[0] += 3
 
                 elif spacebar_count < 7 and spacebar_count > 3 and fieldgoalball_position[1] > 250:
@@ -1134,7 +1137,7 @@ while True:
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
-                        timer_position[0] = 0
+                        timerfg_position[0] = 0
 
                 elif spacebar_count < 4 and fieldgoalball_position[1] > 270:
                     fieldgoalball_position[0] += 5
@@ -1145,13 +1148,13 @@ while True:
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
-                        timer_position[0] = 0
+                        timerfg_position[0] = 0
 
             power_range = [0,0,1]
             power = random.choice(power_range)
 
             if power == 1:
-                if timer_position[0] < 1300:
+                if timerfg_position[0] < 1300:
                     if speedmeter > -2:
                         speedmeter -=1
                         spacebar_count -= 1
@@ -1187,9 +1190,17 @@ while True:
                 snap = 2
 
                 if yardline > 80:
+                    for pos in timergoal_body:
+                        pygame.draw.rect(game_window, white, pygame.Rect(timergoal_position[0], timergoal_position[1], 10, 10))   
+
+                    if timergoal_position[0] < 1300:
+                        timergoal_position[0] += 100
                     player_position[0] >= 1000
                     goal()
-                    score[0] += 6
+                    score[0] += 6 
+                    if timergoal_position[0] >= 1300:
+                        play_promt = '0' 
+                        start_screen = 1 
                 player_position[0] = 0
                 yardline = yardline + 10
                 down = 1
@@ -1823,6 +1834,7 @@ while True:
                         player_position[0] = 50
                         snap = 2
                         yardline += 10
+                        down = 1
                     
         if snap == 2 and ballcatch == 1:
 
