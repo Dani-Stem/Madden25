@@ -828,6 +828,15 @@ def defend1():
     downs_rect = downs_surface.get_rect()
     downs_rect.midtop = (700, 300)
     game_window.blit(downs_surface, downs_rect)
+
+
+def sack():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('NICE SACK', True, green)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (700, 300)
+    game_window.blit(downs_surface, downs_rect)    
    
 while True:
 
@@ -2201,35 +2210,9 @@ while True:
 
         if player_position[1] < 50:
             player_position[1] = 50
-            if ballcatch == 1:
-                down_yard = player_position[0]
-                outofbounds()
-                play_promt = '0'
-                play = 0 
-                snap = 0  
-                ballcatch = 0
-                player_position[0] = 50
-                player_position[1] = 205
-                gb_position[1] = 305
-                compx4_down = 1
-                down = down + 1
-            direction = 'RIGHT'
 
         if player_position[1] > 600:
             player_position[1] = 600
-            if ballcatch == 1:
-                down_yard = player_position[0]
-                outofbounds()
-                play_promt = '0'
-                play = 0 
-                snap = 0  
-                ballcatch = 0
-                player_position[0] = 50
-                player_position[1] = 205
-                gb_position[1] = 305
-                compx4_down = 1
-                down = down + 1
-            direction = 'RIGHT'
 
         if speedmeter > 9:
             for pos in speedmeterMax_body:
@@ -2354,7 +2337,7 @@ while True:
             if timersnap_position[0] < 1300:
                 defend()
                 defend1()
-                
+
         if snap == 1:
 
             # Moving the player 
@@ -2389,91 +2372,71 @@ while True:
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
             if compx_dist < 10 and compx > 0:
                 if down <= 5:
-                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0  
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                        
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     game_over()        
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10 and compx1 > 0:
                 if down <= 5:
-                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0  
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx1_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                        
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     game_over()      
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10 and compx2 > 0:
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0  
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx2_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                        
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     game_over()      
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
             if compx3_dist < 10 and compx3 > 0:
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0  
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx3_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                        
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     game_over()      
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
             if compx4_dist < 10 and compx4 > 0:
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0  
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx4_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                        
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     down = 1
                     game_over()   
@@ -2771,12 +2734,16 @@ while True:
                         player_position[0] += 10 + speedmeter
 
                 ball_dist = pygame.Vector2(player_position).distance_to(ball_position)
-                if ball_dist < 50 and ballcatch != 1:
+                if ball_dist < 10 and ballcatch != 1:
                     if ball_position[0] >= 200:
-                        catch()
-                        ballcatch = 1
-                        direction = 'RIGHT'
-                        speedmeter = 0
+                        sack()
+                        play_promt = '3'
+                        play = 0
+                        snap = 0
+                        player_position[0] = 50
+                        player_position[1] = 205
+                        gb_position[1] = 305
+                        ball_position[0] = 0
                 if ballcatch != 1:
                     for pos in ball_body:
                         impball = pygame.image.load("madden25_imgs/ram0.png").convert()
@@ -2792,7 +2759,7 @@ while True:
                         ball_position[1] -= 5 
                     
                     if ball_position[0] > 1300:
-                        incompletion()
+                        nosack()
                         play_promt = '0'
                         play = 0
                         snap = 0
@@ -2800,7 +2767,6 @@ while True:
                         player_position[0] = 50
                         player_position[1] = 205
                         gb_position[1] = 305
-                        down = down + 1
                         ball_position[0] = 0
 
                     if ball_position[1] < 50:
@@ -2818,7 +2784,7 @@ while True:
                         yardline += 10
                         down = 1
                     
-        if snap == 2 and ballcatch == 1:
+        if snap == 2:
 
             # Moving the player 
             if direction == 'UP':
@@ -2847,91 +2813,72 @@ while True:
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
             if compx_dist < 10:
                 if down <= 5:
-                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0  
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                        
+                        if direction == 'LEFT':
+                            player_position[0] += 15                       
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     game_over()     
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10:
                 if down <= 5:
-                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx1_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                      
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     game_over()      
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10:
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx2_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 :                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                      
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     game_over()      
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
             if compx3_dist < 10:
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0
-                        snap = 0  
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205   
-                        gb_position[1] = 305                     
-                        compx3_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                        
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
+
                 else:
                     game_over()      
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
             if compx4_dist < 10:
                 if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
-                        down_yard = player_position[0]
-                        downs()
-                        play_promt = '0'
-                        play = 0 
-                        snap = 0  
-                        ballcatch = 0
-                        player_position[0] = 50
-                        player_position[1] = 205
-                        gb_position[1] = 305
-                        compx4_down = 1
-                        down = down + 1
-                    change_to ='RIGHT'
+                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:                        
+                        if direction == 'RIGHT':
+                            player_position[0] -= 15                        
+                        if direction == 'LEFT':
+                            player_position[0] += 15                        
+                        if direction == 'UP':
+                            player_position[1] -= 15                        
+                        if direction == 'DOWN':
+                            player_position[1] += 15
                 else:
                     down = 1
                     game_over()   
@@ -3058,9 +3005,7 @@ while True:
                         impx = pygame.image.load("madden25_imgs/ramx.png").convert()
                     elif compx_direction == 'LEFT':
                         impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-
                     game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
-
             if compx1 == 1:
                 for pos in compx1_body:
                     if compx1_direction == 'RIGHT':
