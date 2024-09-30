@@ -405,6 +405,8 @@ down_yard = 10
 start_screen = 0
 quarter = 'HEADS'
 teamquarter = ''
+rand0oppscallball = [0, 1]
+oppscallball = random.choice(rand0oppscallball)
 
 def show_playoptions(choice, color, font, size):
 
@@ -786,9 +788,24 @@ def oppscall():
     my_font = pygame.font.SysFont('Arial', 70)
     downs_surface = my_font.render('OPPONENTS CALL', True, red)
     downs_rect = downs_surface.get_rect()
-    downs_rect.midtop = (200, 600)
+    downs_rect.midtop = (700, 200)
     game_window.blit(downs_surface, downs_rect)
-    pygame.display.flip()
+
+def oppscall1():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('THEIR BALL', True, yellow)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (700, 300)
+    game_window.blit(downs_surface, downs_rect)
+
+def oppscall2():
+
+    my_font = pygame.font.SysFont('Arial', 70)
+    downs_surface = my_font.render('YOUR BALL', True, yellow)
+    downs_rect = downs_surface.get_rect()
+    downs_rect.midtop = (700, 300)
+    game_window.blit(downs_surface, downs_rect)
    
 while True:
 
@@ -921,6 +938,10 @@ while True:
 
     if play_promt == 'lose' and start_screen == 1:
         oppscall()
+        if oppscallball == 0:
+            oppscall1()
+        if oppscallball == 1:
+            oppscall2()
 
     if play_promt == 'win' and start_screen == 1:
             
