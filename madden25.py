@@ -402,7 +402,7 @@ spacebar_count = 0
 snap = 0
 ballcatch = 0
 down_yard = 10
-start_screen = 0
+start_screen = 1
 quarter = 'HEADS'
 teamquarter = ''
 rand0oppscallball = [0, 1]
@@ -940,10 +940,25 @@ while True:
         oppscall()
         if oppscallball == 0:
             oppscall1()
+            time.sleep(2)
         if oppscallball == 1:
             oppscall2()
+            time.sleep(2)
+            play_promt = '0'
+            start_screen = '1'
 
     if play_promt == 'win' and start_screen == 1:
+
+        if direction == 'RIGHT':
+            if selection_position[0] <= 704:
+                selection_position[0] += 93
+            if selection_position[0] > 740:
+                selection_position[0] = 740
+        if direction == 'LEFT':
+                if selection_position[0] > 325:
+                    selection_position[0] -= 93
+                if selection_position[0] < 325:
+                    selection_position[0] = 325
             
         for pos in callchoice_body:
             impcc = pygame.image.load("madden25_imgs/callchoice.png").convert()
@@ -979,13 +994,12 @@ while True:
                 if selection_position[0] > 325:
                     selection_position[0] -= 93
 
-        if timer_position[0] > 1300:
-            if selection_position[0] > 624:
-                play_promt = '2'
-                key = ''
-            if selection_position[0] < 624:
-                play_promt = '1'
-                key = ''
+        if key == 'ENTER' and selection_position[0] < 624:
+            play_promt = '1'
+            key = ''
+        if key == 'ENTER' and  selection_position[0] > 325:
+            play_promt = '2'
+            key = ''
 
         for pos in selection_body:
             pygame.draw.rect(game_window, white, pygame.Rect(selection_position[0], pos[1], 300, 10))
