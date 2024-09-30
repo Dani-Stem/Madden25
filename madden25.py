@@ -989,12 +989,12 @@ while True:
             if timer_position[0] >= 1300:
                 play_promt = '0'
                 start_screen = 1
-            key = ''
+                key = ''
         if key == 'ENTER' and  selection_position[0] < 624:
             if timer_position[0] >= 1300:
                 play_promt = '0'
                 start_screen = 1
-            key = ''
+                key = ''
 
         urcall()
 
