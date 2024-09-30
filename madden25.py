@@ -402,11 +402,11 @@ spacebar_count = 0
 snap = 0
 ballcatch = 0
 down_yard = 10
-start_screen = 1
+start_screen = 0
 quarter = 'HEADS'
 teamquarter = ''
 rand0oppscallball = [0, 1]
-oppscallball = random.choice(rand0oppscallball)
+oppscallball = 3
 
 def show_playoptions(choice, color, font, size):
 
@@ -937,15 +937,26 @@ while True:
         print("playprompt: " + play_promt)
 
     if play_promt == 'lose' and start_screen == 1:
+        
+        for pos in timer_body:
+            pygame.draw.rect(game_window, white, pygame.Rect(timer_position[0], timer_position[1], 10, 10))   
+
+        if timer_position[0] < 1300:
+            timer_position[0] += 50
+
+        if oppscallball == 3:
+            oppscallball = random.choice(rand0oppscallball)
         oppscall()
         if oppscallball == 0:
             oppscall1()
-            time.sleep(2)
+            if timer_position[0] >= 1300:
+                play_promt = '0'
+                start_screen = 1
         if oppscallball == 1:
             oppscall2()
-            time.sleep(2)
-            play_promt = '0'
-            start_screen = '1'
+            if timer_position[0] >= 1300:
+                play_promt = '0'
+                start_screen = 1
 
     if play_promt == 'win' and start_screen == 1:
 
@@ -967,13 +978,22 @@ while True:
         for pos in selection_body:
             pygame.draw.rect(game_window, white, pygame.Rect(selection_position[0], pos[1], 300, 10))
 
+        for pos in timer_body:
+            pygame.draw.rect(game_window, white, pygame.Rect(timer_position[0], timer_position[1], 10, 10))   
+
+        if key == 'ENTER':    
+            if timer_position[0] < 1300:
+                timer_position[0] += 100
+
         if key == 'ENTER' and selection_position[0] > 624:
-            play_promt = '0'
-            start_screen = 1
+            if timer_position[0] >= 1300:
+                play_promt = '0'
+                start_screen = 1
             key = ''
         if key == 'ENTER' and  selection_position[0] < 624:
-            play_promt = '0'
-            start_screen = 1
+            if timer_position[0] >= 1300:
+                play_promt = '0'
+                start_screen = 1
             key = ''
 
         urcall()
