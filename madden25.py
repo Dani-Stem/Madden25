@@ -944,6 +944,13 @@ while True:
         for pos in selection_body:
             pygame.draw.rect(game_window, white, pygame.Rect(selection_position[0], pos[1], 300, 10))
 
+        if key == 'ENTER' and selection_position[0] > 624:
+            play_promt = '2'
+            key = ''
+        if key == 'ENTER' and  selection_position[0] < 624:
+            play_promt = '1'
+            key = ''
+
         urcall()
 
     if play_promt == '0' and start_screen == 1:
@@ -954,20 +961,21 @@ while True:
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))  
-            
+
         if direction == 'RIGHT':
             if selection_position[0] <= 624:
                 selection_position[0] += 93
         if direction == 'LEFT':
                 if selection_position[0] > 325:
                     selection_position[0] -= 93
-        
-        if key == 'ENTER' and selection_position[0] > 624:
-            play_promt = '2'
-            key = ''
-        if key == 'ENTER' and selection_position[0] < 624:
-            play_promt = '1'
-            key = ''
+
+        if timer_position[0] > 1300:
+            if selection_position[0] > 624:
+                play_promt = '2'
+                key = ''
+            if selection_position[0] < 624:
+                play_promt = '1'
+                key = ''
 
         for pos in selection_body:
             pygame.draw.rect(game_window, white, pygame.Rect(selection_position[0], pos[1], 300, 10))
