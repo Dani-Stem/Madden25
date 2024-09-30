@@ -1007,6 +1007,13 @@ while True:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))  
 
+        for pos in timer_body:
+            pygame.draw.rect(game_window, white, pygame.Rect(timer_position[0], timer_position[1], 10, 10))   
+
+        if key == 'ENTER':    
+            if timer_position[0] < 1300:
+                timer_position[0] += 100
+
         if direction == 'RIGHT':
             if selection_position[0] <= 624:
                 selection_position[0] += 93
@@ -1014,10 +1021,10 @@ while True:
                 if selection_position[0] > 325:
                     selection_position[0] -= 93
 
-        if key == 'ENTER' and selection_position[0] < 624:
+        if key == 'ENTER' and selection_position[0] < 624 and timer_position[0] >= 1300:
             play_promt = '1'
             key = ''
-        if key == 'ENTER' and  selection_position[0] > 325:
+        if key == 'ENTER' and  selection_position[0] > 325 and timer_position[0] >= 1300:
             play_promt = '2'
             key = ''
 
