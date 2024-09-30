@@ -1045,9 +1045,6 @@ while True:
                 impgoal = pygame.image.load("madden25_imgs/fieldgoal.png").convert()
                 game_window.blit(impgoal, pygame.Rect(fieldgoal_position[0], fieldgoal_position[1], 10, 10))
 
-            if key == 'SPACE':
-                direction = 'RIGHT'
-
             for pos in fieldgoalball_body:
                 if fieldgoalball_position[1] >= 300 and fieldgoalball_position[1] < 355:
                     impball = pygame.image.load("madden25_imgs/fieldgoalball.png").convert()
@@ -1063,61 +1060,69 @@ while True:
                     impball = pygame.image.load("madden25_imgs/fieldgoalball5.png").convert()  
                 game_window.blit(impball, pygame.Rect(fieldgoalball_position[0], fieldgoalball_position[1], 10, 10))
 
-            if speedmeter > -2:
-                for pos in speedmeter1_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
-            if speedmeter > -1:
-                for pos in speedmeter2_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
-            if speedmeter > 0:
-                for pos in speedmeter3_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))               
-            if speedmeter > 1:
-                for pos in speedmeter4_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
-            if speedmeter > 2:
-                for pos in speedmeter5_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
-            if speedmeter > 3:
-                for pos in speedmeter6_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
-            if speedmeter > 4:
-                for pos in speedmeter7_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
-            if speedmeter > 5:
-                for pos in speedmeter8_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
-            if speedmeter > 6:
-                for pos in speedmeter9_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
-            if speedmeter > 7:
-                for pos in speedmeter10_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
-            if speedmeter > 8:
-                for pos in speedmeter11_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10)) 
-            if speedmeter > 9:
-                for pos in speedmeterMax_body:
-                    pygame.draw.rect(game_window, green,
-                                    pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))    
             for pos in timerfg_body:
                 pygame.draw.rect(game_window, white,
                                 pygame.Rect(timerfg_position[0], timerfg_position[1], 10, 10))       
 
-            timerfg_position[0] += 10      
+            timerfg_position[0] += 10    
+
+            if key == 'SPACE' and timerfg_position[0] < 1300:
+                direction = 'RIGHT'
+            elif key == 'SPACE' and timerfg_position[0] >= 1300:
+                direction = ''
+
+            if timerfg_position[0] < 1300:
+                if speedmeter > -2:
+                    for pos in speedmeter1_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
+                if speedmeter > -1:
+                    for pos in speedmeter2_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))                 
+                if speedmeter > 0:
+                    for pos in speedmeter3_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))               
+                if speedmeter > 1:
+                    for pos in speedmeter4_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+                if speedmeter > 2:
+                    for pos in speedmeter5_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+                if speedmeter > 3:
+                    for pos in speedmeter6_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+                if speedmeter > 4:
+                    for pos in speedmeter7_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+                if speedmeter > 5:
+                    for pos in speedmeter8_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+                if speedmeter > 6:
+                    for pos in speedmeter9_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+                if speedmeter > 7:
+                    for pos in speedmeter10_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))
+                if speedmeter > 8:
+                    for pos in speedmeter11_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10)) 
+                if speedmeter > 9:
+                    for pos in speedmeterMax_body:
+                        pygame.draw.rect(game_window, green,
+                                        pygame.Rect(pos[0] + 465, pos[1] + 100, 10, 10))    
+
             if timerfg_position[0] >= 1300:
-                if spacebar_count >= 7 and fieldgoalball_position[1] > 300:
+                if spacebar_count >= 8 and fieldgoalball_position[1] > 300 and yardline >= 70:
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 300:
                         goal()
@@ -1128,7 +1133,18 @@ while True:
                         timerfg_position[0] = 0
                         score[0] += 3
 
-                elif spacebar_count < 7 and spacebar_count > 3 and fieldgoalball_position[1] > 250:
+                elif spacebar_count >= 8 and fieldgoalball_position[1] > 300 and yardline < 70:
+                    fieldgoalball_position[0] -= 5
+                    fieldgoalball_position[1] -= 10
+                    if fieldgoalball_position[1] <= 250:
+                        miss()
+                        play_promt = '0'
+                        fieldgoalball_position[0] = 680
+                        fieldgoalball_position[1] = 630
+                        spacebar_count = 0
+                        timerfg_position[0] = 0
+
+                elif spacebar_count < 8 and spacebar_count > 3 and fieldgoalball_position[1] > 250:
                     fieldgoalball_position[0] -= 5
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 250:
@@ -1395,7 +1411,7 @@ while True:
                                 pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
 
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
-            if compx_dist < 10:
+            if compx_dist < 10 and compx > 0:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1413,7 +1429,7 @@ while True:
                 else:
                     game_over()        
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
-            if compx1_dist < 10:
+            if compx1_dist < 10 and compx1 > 0:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1431,7 +1447,7 @@ while True:
                 else:
                     game_over()      
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
-            if compx2_dist < 10:
+            if compx2_dist < 10 and compx2 > 0:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1449,7 +1465,7 @@ while True:
                 else:
                     game_over()      
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
-            if compx3_dist < 10:
+            if compx3_dist < 10 and compx3 > 0:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1467,7 +1483,7 @@ while True:
                 else:
                     game_over()      
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
-            if compx_dist < 10:
+            if compx4_dist < 10 and compx4 > 0:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
