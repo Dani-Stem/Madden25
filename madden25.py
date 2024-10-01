@@ -2547,40 +2547,7 @@ while True:
                     compx4_position[1] += random.randint(7,10)
 
         
-            for pos in compx_body:
-                if compx_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
-        
-            for pos in compx1_body:
-                if compx1_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx1_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
-        
-            for pos in compx2_body:
-                if compx2_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx2_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
-        
-            for pos in compx3_body:
-                if compx3_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx3_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
-        
-            for pos in compx4_body:
-                if compx4_direction == 'RIGHT':
-                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                elif compx4_direction == 'LEFT':
-                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
+
 
             if gb_position[1] < ball_position[1] and play == 0:
                 gb_position[1] += 5
