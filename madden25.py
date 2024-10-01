@@ -333,6 +333,8 @@ fieldgoalball_position = [680, 630]
 
 timer_body = [0, 710]
 timer_position = [0, 710]
+timerpc_body = [0, 710]
+timerpc_position = [0, 710]
 timerfg_body = [0, 710]
 timerfg_position = [0, 710]
 timergoal_body = [0, 710]
@@ -343,9 +345,14 @@ timerpo_body = [0, 710]
 timerpo_position = [0, 710]
 timersack_body = [0, 710]
 timersack_position = [0, 710]
+timeroppsgoal_body = [0, 710]
+timeroppsgoal_position = [0, 710]
 
 gb_body = [10, 305]
 gb_position = [10, 305]
+
+pc_body = [380, 200]
+pc_position = [380, 200]
 
 center_body = [80, 305]
 center_position = [80, 305]
@@ -404,7 +411,7 @@ ball_direction = [1, 2, 3]
 score = [0, 0] 
 play = 0
 down = 1
-yardline = 10
+yardline = 90
 yard = 10
 field_goal = '0'
 play_promt = '0'
@@ -423,6 +430,18 @@ oppscallball = 3
 oppssnap = 0
 rand0oppgoall = [1, 2]
 oppsgoal = 1
+randpc = [1, 4]
+pc = 1
+yard1_position = 120
+yard2_position = 240
+yard3_position = 360
+yard4_position = 480
+yard5_position = 600
+yard6_position = 720
+yard7_position = 840
+yard8_position = 960
+yard9_position = 1080
+yard10_position = 1225
 
 def show_playoptions(choice, color, font, size):
 
@@ -862,6 +881,8 @@ while True:
 
     # handling key events
     for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
                 change_to = 's'
@@ -1048,6 +1069,7 @@ while True:
                 play_promt = '0'
                 start_screen = 1
                 key = ''
+
         urcall()
 
     if play_promt == '0' and start_screen == 1:
@@ -1176,7 +1198,8 @@ while True:
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 300:
                         goal()
-                        play_promt = '0'
+                        key = ''
+                        play_promt = 'pc'
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
@@ -1255,21 +1278,91 @@ while True:
                         random.randrange(1, (window_y//10)) * 10]
                 snap = 2
 
-                if yardline > 80:
-                    for pos in timergoal_body:
-                        pygame.draw.rect(game_window, white, pygame.Rect(timergoal_position[0], timergoal_position[1], 10, 10))   
-
-                    if timergoal_position[0] < 1300:
-                        timergoal_position[0] += 100
-                    player_position[0] >= 1000
-                    goal()
-                    score[0] += 6 
-                    if timergoal_position[0] >= 1300:
-                        play_promt = '0' 
-                        start_screen = 1 
                 player_position[0] = 0
                 yardline = yardline + 10
                 down = 1
+
+    
+        if yardline > 80:
+            if yard == 1 and player_position[0] >= yard1_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                pc = random.choice(randpc)
+                player_position[0] = 0
+                down = 1
+            if yard == 2 and player_position[0] >= yard2_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                pc = random.choice(randpc)
+                player_position[0] = 0
+                down = 1
+            if yard == 3 and player_position[0] >= yard3_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                pc = random.choice(randpc)
+                player_position[0] = 0
+                down = 1
+            if yard == 4 and player_position[0] >= yard4_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                pc = random.choice(randpc)
+                player_position[0] = 0
+                down = 1
+            if yard == 5 and player_position[0] >= yard5_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                pc = random.choice(randpc)
+                player_position[0] = 0
+                down = 1
+            if yard == 6 and player_position[0] >= yard6_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                pc = random.choice(randpc)
+                player_position[0] = 0
+                down = 1
+            if yard == 7 and player_position[0] >= yard7_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                pc = random.choice(randpc)
+                player_position[0] = 0
+                down = 1
+            if yard == 8 and player_position[0] >= yard8_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                player_position[0] = 0
+                down = 1
+            if yard == 9 and player_position[0] >= yard9_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                pc = random.choice(randpc)
+                player_position[0] = 0
+                down = 1
+            if yard == 10 and player_position[0] >= yard10_position:
+                goal()
+                key = ''
+                score[0] += 6 
+                play_promt = 'pc' 
+                player_position[0] = 0
+                down = 1
+
 
         if player_position[1] < 0:
             player_position[1] = 0
@@ -1477,12 +1570,8 @@ while True:
                         compx_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
+                else:
                     game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1
-
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10 and compx1 > 0:
                 if down <= 5:
@@ -1499,11 +1588,8 @@ while True:
                         compx1_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1   
+                else:
+                    game_over()      
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10 and compx2 > 0:
                 if down <= 5:
@@ -1520,11 +1606,8 @@ while True:
                         compx2_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1    
+                else:
+                    game_over()      
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
             if compx3_dist < 10 and compx3 > 0:
                 if down <= 5:
@@ -1541,11 +1624,8 @@ while True:
                         compx3_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1     
+                else:
+                    game_over()      
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
             if compx4_dist < 10 and compx4 > 0:
                 if down <= 5:
@@ -1562,11 +1642,9 @@ while True:
                         compx4_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1 
+                else:
+                    down = 1
+                    game_over()   
 
             player_body.insert(0, list(player_position))
             player_body.pop() 
@@ -1960,11 +2038,8 @@ while True:
                         compx_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1    
+                else:
+                    game_over()     
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10:
                 if down <= 5:
@@ -1981,11 +2056,8 @@ while True:
                         compx1_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1    
+                else:
+                    game_over()      
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10:
                 if down <= 5:
@@ -2002,11 +2074,8 @@ while True:
                         compx2_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1
+                else:
+                    game_over()      
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
             if compx3_dist < 10:
                 if down <= 5:
@@ -2023,11 +2092,8 @@ while True:
                         compx3_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1    
+                else:
+                    game_over()      
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
             if compx4_dist < 10:
                 if down <= 5:
@@ -2044,11 +2110,9 @@ while True:
                         compx4_down = 1
                         down = down + 1
                     change_to ='RIGHT'
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1   
+                else:
+                    down = 1
+                    game_over()   
 
             player_body.insert(0, list(player_position))
             player_body.pop() 
@@ -2397,12 +2461,8 @@ while True:
                             player_position[1] -= 15                        
                         if direction == 'DOWN':
                             player_position[1] += 15
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
+                else:
                     game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1
-
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10 and compx1 > 0:
                 if down <= 5:
@@ -2415,11 +2475,8 @@ while True:
                             player_position[1] -= 15                        
                         if direction == 'DOWN':
                             player_position[1] += 15
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1  
+                else:
+                    game_over()      
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10 and compx2 > 0:
                 if down <= 5:
@@ -2432,7 +2489,7 @@ while True:
                             player_position[1] -= 15                        
                         if direction == 'DOWN':
                             player_position[1] += 15
-                elif downs >= 5 and score[0] < 30 and score[1] < 30:
+                else:
                     game_over()      
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
             if compx3_dist < 10 and compx3 > 0:
@@ -2446,11 +2503,8 @@ while True:
                             player_position[1] -= 15                        
                         if direction == 'DOWN':
                             player_position[1] += 15
-                elif downs >= 5 and (score[0] >= 30 or score[1] >= 30):
-                    game_over()        
-                elif downs >= 5 and (score[0] < 30 or score[1] < 30):
-                    playpromt = '0'
-                    start_screen = 1   
+                else:
+                    game_over()      
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
             if compx4_dist < 10 and compx4 > 0:
                 if down <= 5:
@@ -2463,7 +2517,7 @@ while True:
                             player_position[1] -= 15                        
                         if direction == 'DOWN':
                             player_position[1] += 15
-                elif downs >= 5 and score[0] < 30 and score[1] < 30:
+                else:
                     down = 1
                     game_over()   
 
@@ -2583,40 +2637,40 @@ while True:
                     compx4_position[1] += random.randint(7,10)
 
         
-                for pos in compx_body:
-                    if compx_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
-            
-                for pos in compx1_body:
-                    if compx1_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx1_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
-            
-                for pos in compx2_body:
-                    if compx2_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx2_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
-            
-                for pos in compx3_body:
-                    if compx3_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx3_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
-            
-                for pos in compx4_body:
-                    if compx4_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx4_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
+            for pos in compx_body:
+                if compx_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
+        
+            for pos in compx1_body:
+                if compx1_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx1_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
+        
+            for pos in compx2_body:
+                if compx2_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx2_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
+        
+            for pos in compx3_body:
+                if compx3_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx3_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
+        
+            for pos in compx4_body:
+                if compx4_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx4_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
 
             if gb_position[1] < ball_position[1] and play == 0:
                 gb_position[1] += 5
@@ -2761,7 +2815,7 @@ while True:
 
                 ball_dist = pygame.Vector2(player_position).distance_to(ball_position)
                 if ball_dist < 50 and ballcatch != 1:
-                    if down < 5: 
+                    if down <= 4: 
                             
                         if ball_position[0] >= 200:
                             sack()
@@ -2774,9 +2828,14 @@ while True:
                             down += 1
                             play_promt = '3'
 
-                        elif down >= 5:
+                        if down >= 5:
                             play_promt = '0' 
                             start_screen = 1
+                            player_position[0] = 50
+                            player_position[1] = 205
+                            gb_position[1] = 305
+                            ball_position[0] = 0
+                            down = 1
 
                 if ballcatch != 1:
                     for pos in ball_body:
@@ -2794,6 +2853,8 @@ while True:
                     
                     if ball_position[0] > 1300:
                         play_promt = 'oppsgoal'
+                        key = ''
+                        oppsgoal_position[0] = 0
                         play = 0
                         snap = 0
                         ballcatch = 0
@@ -3014,6 +3075,46 @@ while True:
             elif oppsgoal == 2:
                 impog = pygame.image.load("madden25_imgs/oppsgoalnof.png").convert()
                 game_window.blit(impog, pygame.Rect(oppsgoal_position[0], oppsgoal_position[1], 10, 10))
+
+        for pos in timeroppsgoal_body:
+            pygame.draw.rect(game_window, white, pygame.Rect(timeroppsgoal_position[0], timeroppsgoal_position[1], 10, 10))   
+
+        if timeroppsgoal_position[0] < 1300:
+            timeroppsgoal_position[0] += 15
+
+        if timeroppsgoal_position[0] >= 1300:
+            play_promt = '0'
+            start_screen = 1
+
+    if play_promt == 'pc':
+
+        for pos in pc_body:
+            if pc == 1:
+                imppc = pygame.image.load("madden25_imgs/1ptw.png").convert()
+                game_window.blit(imppc, pygame.Rect(pc_position[0], pc_position[1], 10, 10))
+                score[0] += 1
+            elif pc == 2:
+                imppc = pygame.image.load("madden25_imgs/1ptl.png").convert()
+                game_window.blit(imppc, pygame.Rect(pc_position[0], pc_position[1], 10, 10))
+            if pc == 3:
+                imppc = pygame.image.load("madden25_imgs/2ptw.png").convert()
+                game_window.blit(imppc, pygame.Rect(pc_position[0], pc_position[1], 10, 10))
+                score[0] += 2
+            elif pc == 4:
+                imppc = pygame.image.load("madden25_imgs/2ptl.png").convert()
+                game_window.blit(imppc, pygame.Rect(pc_position[0], pc_position[1], 10, 10))
+
+        for pos in timerpc_body:
+            pygame.draw.rect(game_window, white, pygame.Rect(timerpc_position[0], timerpc_position[1], 10, 10))   
+
+        if timerpc_position[0] < 1300:
+            timerpc_position[0] += 15
+
+        if timerpc_position[0] >= 1300:
+            play_promt = '3'
+            snap = 0
+            start_screen = 1
+
 
     pygame.display.update()
 
