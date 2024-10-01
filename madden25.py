@@ -333,6 +333,8 @@ fieldgoalball_position = [680, 630]
 
 timer_body = [0, 710]
 timer_position = [0, 710]
+timergo_body = [0, 710]
+timergo_position = [0, 710]
 timerpc_body = [0, 710]
 timerpc_position = [0, 710]
 timerfg_body = [0, 710]
@@ -362,6 +364,9 @@ player_position = [50, 205]
 
 oppsgoal_body = [380, 200]
 oppsgoal_position = [380, 200]
+
+gameover_body = [380, 200]
+gameover_position = [380, 200]
 
 snapo1_body = [160, 160]
 snapo1_position = [160, 160]
@@ -1199,7 +1204,11 @@ while True:
                     if fieldgoalball_position[1] <= 300:
                         goal()
                         key = ''
-                        play_promt = 'pc'
+                        if score[0] or score[1] >= 30:
+                            play_promt = 'gameover'
+                        else:
+                            snap = 0
+                            start_screen = 1   
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
@@ -3083,8 +3092,11 @@ while True:
             timeroppsgoal_position[0] += 15
 
         if timeroppsgoal_position[0] >= 1300:
-            play_promt = '0'
-            start_screen = 1
+            if score[0] or score[1] >= 30:
+                play_promt = 'gameover'
+            else:
+                snap = 0
+                start_screen = 1   
 
     if play_promt == 'pc':
 
@@ -3111,9 +3123,31 @@ while True:
             timerpc_position[0] += 15
 
         if timerpc_position[0] >= 1300:
-            play_promt = '3'
-            snap = 0
-            start_screen = 1
+            if score[0] or score[1] >= 30:
+                play_promt = 'gameover'
+            else:
+                play_promt = '3'
+                snap = 0
+                start_screen = 1   
+    
+    if play_promt == 'gameover':
+
+        for pos in gameover_body:
+            if score[0] >= 30:
+                impgo = pygame.image.load("madden25_imgs/w.png").convert()
+                game_window.blit(impgo, pygame.Rect(gameover_position[0], gameover_position[1], 10, 10))
+            if score[1] >= 30:
+                impgo = pygame.image.load("madden25_imgs/l.png").convert()
+                game_window.blit(impgo, pygame.Rect(gameover_position[0], gameover_position[1], 10, 10))
+
+        for pos in timergo_body:
+            pygame.draw.rect(game_window, white, pygame.Rect(timergo_position[0], timergo_position[1], 10, 10))   
+
+        if timergo_position[0] < 1300:
+            timergo_position[0] += 15
+
+        if timergo_position[0] >= 1300:
+            quit()
 
 
     pygame.display.update()
