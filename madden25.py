@@ -838,7 +838,10 @@ def sack():
     downs_surface = my_font.render('HE DOWN', True, green)
     downs_rect = downs_surface.get_rect()
     downs_rect.midtop = (700, 300)
-    game_window.blit(downs_surface, downs_rect)    
+    game_window.blit(downs_surface, downs_rect)   
+    pygame.display.update()
+    time.sleep(2) 
+
 
 
 def show_urball(choice, color, font, size):
@@ -2718,26 +2721,22 @@ while True:
                 ball_dist = pygame.Vector2(player_position).distance_to(ball_position)
                 if ball_dist < 50 and ballcatch != 1:
                     if down < 5: 
+
+                        # for pos in timersack_body:
+                        #     pygame.draw.rect(game_window, white, pygame.Rect(timersack_position[0], timersack_position[1], 10, 10))   
+                        # if timersack_position[0] < 1300:
+                        #     timersack_position[0] += 50
+                            
                         if ball_position[0] >= 200:
                             sack()
-
-                            for pos in timersack_body:
-                                pygame.draw.rect(game_window, white, pygame.Rect(timersack_position[0], timersack_position[1], 10, 10))   
-
-                            if timersack_position[0] < 1300:
-                                timersack_position[0] += 50
-
-                            play = 0
+                            play = 0    
                             snap = 0
                             player_position[0] = 50
                             player_position[1] = 205
                             gb_position[1] = 305
                             ball_position[0] = 0
                             down += 1
-                            print(timersack_position[0])
-                            if timersack_position[0] >= 1300:
-                                play_promt = '3'
-                                print('timersack up')
+                            play_promt = '3'
 
                         elif down >= 5:
                             play_promt = '0' 
