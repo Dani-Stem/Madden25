@@ -343,6 +343,8 @@ timerpo_body = [0, 710]
 timerpo_position = [0, 710]
 timersack_body = [0, 710]
 timersack_position = [0, 710]
+timeroppsgoal_body = [0, 710]
+timeroppsgoal_position = [0, 710]
 
 gb_body = [10, 305]
 gb_position = [10, 305]
@@ -2725,7 +2727,7 @@ while True:
 
                 ball_dist = pygame.Vector2(player_position).distance_to(ball_position)
                 if ball_dist < 50 and ballcatch != 1:
-                    if down < 5: 
+                    if down <= 4: 
                             
                         if ball_position[0] >= 200:
                             sack()
@@ -2738,9 +2740,14 @@ while True:
                             down += 1
                             play_promt = '3'
 
-                        elif down >= 5:
+                        if down >= 5:
                             play_promt = '0' 
                             start_screen = 1
+                            player_position[0] = 50
+                            player_position[1] = 205
+                            gb_position[1] = 305
+                            ball_position[0] = 0
+                            down = 1
 
                 if ballcatch != 1:
                     for pos in ball_body:
@@ -2758,6 +2765,7 @@ while True:
                     
                     if ball_position[0] > 1300:
                         play_promt = 'oppsgoal'
+                        oppsgoal_position[0] = 0
                         play = 0
                         snap = 0
                         ballcatch = 0
@@ -2978,6 +2986,16 @@ while True:
             elif oppsgoal == 2:
                 impog = pygame.image.load("madden25_imgs/oppsgoalnof.png").convert()
                 game_window.blit(impog, pygame.Rect(oppsgoal_position[0], oppsgoal_position[1], 10, 10))
+
+        for pos in timeroppsgoal_body:
+            pygame.draw.rect(game_window, white, pygame.Rect(timeroppsgoal_position[0], timeroppsgoal_position[1], 10, 10))   
+
+        if timeroppsgoal_position[0] < 1300:
+            timeroppsgoal_position[0] += 15
+
+        if timeroppsgoal_position[0] >= 1300:
+            play_promt = '0'
+            start_screen = 1
 
     pygame.display.update()
 
