@@ -3098,18 +3098,15 @@ while True:
         if timeroppsgoal_position[0] < 1300:
             timeroppsgoal_position[0] += 15
 
-        if timeroppsgoal_position[0] >= 1300:
-            if score[0] >= 30 or score[1] >= 30:
-                play_promt = 'gameover'
-            else:
-                snap = 0
-                start_screen = 1   
+        if timeroppsgoal_position[0] >= 1000:
+            snap = 0
+            start_screen = 1   
 
     if play_promt == 'pc':
 
         ball_position[0] = 0
         snap = 0 
-        
+
         if pc == 1:
             for pos in pc_body:
                 imppc = pygame.image.load("madden25_imgs/1ptw.png").convert()
