@@ -2840,7 +2840,8 @@ while True:
                             player_position[0] = 50
                             player_position[1] = 205
                             gb_position[1] = 305
-                            ball_position[0] = 0
+                            ball_position[0] = 50
+                            ballcatch = 0
                             down += 1
                             play_promt = '3'
 
@@ -3136,7 +3137,9 @@ while True:
             else:
                 play_promt = '3'
                 snap = 0
-                start_screen = 1   
+                start_screen = 1  
+                ball_position[0] = 0
+                ball_position[1] = 0 
                 if pc == 1:
                     score[0] += 1
                     print('pc1')
