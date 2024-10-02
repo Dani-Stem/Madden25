@@ -356,6 +356,9 @@ gb_position = [10, 305]
 pc_body = [380, 200]
 pc_position = [380, 200]
 
+urball_body = [80, 305]
+urball_position = [80, 305]
+
 center_body = [80, 305]
 center_position = [80, 305]
 
@@ -1085,6 +1088,10 @@ while True:
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
                             pygame.Rect(pos[0] + 20, pos[1] + 550, 10, 10))  
+            
+        for pos in urball_body:
+            impgoal = pygame.image.load("madden25_imgs/urball.png").convert()
+            game_window.blit(impgoal, pygame.Rect(fieldgoal_position[0], fieldgoal_position[1], 10, 10))
 
         for pos in timerpo_body:
             pygame.draw.rect(game_window, white, pygame.Rect(timerpo_position[0], timerpo_position[1], 10, 10))   
