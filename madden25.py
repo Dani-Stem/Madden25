@@ -3105,8 +3105,9 @@ while True:
 
     if play_promt == 'pc':
 
-        ball_position[0] = 0
+        ball_position[0] = 50
         snap = 0 
+        ballcatch = 0
 
         if pc == 1:
             for pos in pc_body:
