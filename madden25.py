@@ -931,6 +931,12 @@ while True:
             
     if play_promt == '0' and start_screen == 0:
 
+        compx_down = 0
+        compx_down1 = 0
+        compx_down2 = 0
+        compx_down3 = 0
+        compx_down4 = 0
+
         if score[0] >= 30 or score[1] >=30:
             play_promt = 3
 
@@ -1277,7 +1283,6 @@ while True:
             player_position[0] = 0
 
         if player_position[0] > 1300:
-            player_position[0] = 1200
             if ballcatch == 1:
                 speedmeter = 0
                 compx = random.randint(0,1)
@@ -2153,7 +2158,7 @@ while True:
 
             player_body.insert(0, list(player_position))
             player_body.pop() 
-            
+            #increaseing computers speed randomly
             if compx_position[0] > player_position[0]:
                 if yardline < 50:
                     compx_position[0] -= random.randint(5,8)
@@ -3123,6 +3128,7 @@ while True:
         ball_position[0] = 50
         snap = 0 
         ballcatch = 0
+        yardline = 10
 
         if pc == 1:
             for pos in pc_body:
