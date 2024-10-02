@@ -416,7 +416,7 @@ ball_direction = [1, 2, 3]
 score = [0, 0] 
 play = 0
 down = 1
-yardline = 90
+yardline = 10
 yard = 10
 field_goal = '0'
 play_promt = '0'
@@ -3102,6 +3102,7 @@ while True:
         if timeroppsgoal_position[0] >= 1000:
             snap = 0
             start_screen = 1   
+            play_promt = '0'
 
     if play_promt == 'pc':
 
