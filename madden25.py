@@ -1589,6 +1589,7 @@ while True:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0  
@@ -1607,6 +1608,7 @@ while True:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0  
@@ -1625,6 +1627,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0  
@@ -1643,6 +1646,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0  
@@ -1661,6 +1665,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0  
@@ -2056,6 +2061,7 @@ while True:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0  
@@ -2074,6 +2080,7 @@ while True:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0
@@ -2092,6 +2099,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0
@@ -2110,6 +2118,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0
                         snap = 0  
@@ -2128,6 +2137,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        key = ''
                         play_promt = '0'
                         play = 0 
                         snap = 0  
