@@ -804,9 +804,9 @@ def goal():
 def miss():
 
     my_font = pygame.font.SysFont('Arial', 70)
-    downs_surface = my_font.render('NO GOOD', True, red)
+    downs_surface = my_font.render('NO GOOD. OPPS BALL', True, red)
     downs_rect = downs_surface.get_rect()
-    downs_rect.midtop = (window_x/2, 600)
+    downs_rect.midtop = ((window_x/2) - 70, 600)
     game_window.blit(downs_surface, downs_rect)
     pygame.display.flip()
     time.sleep(2)
@@ -1227,7 +1227,8 @@ while True:
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 250:
                         miss()
-                        play_promt = '0'
+                        play_promt = '3'
+                        print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
@@ -1238,7 +1239,8 @@ while True:
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 250:
                         miss()
-                        play_promt = '0'
+                        play_promt = '3'
+                        print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
@@ -1249,7 +1251,8 @@ while True:
                     fieldgoalball_position[1] -= 10
                     if fieldgoalball_position[1] <= 270:
                         miss()  
-                        play_promt = '0'
+                        play_promt = '3'
+                        print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
