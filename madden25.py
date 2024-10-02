@@ -2478,72 +2478,66 @@ while True:
 
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
             if compx_dist < 10 and compx > 0:
-                if down <= 5:
-                    if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:                        
-                        if direction == 'RIGHT':
-                            player_position[0] -= 15                        
-                        if direction == 'LEFT':
-                            player_position[0] += 15                        
-                        if direction == 'UP':
-                            player_position[1] -= 15                        
-                        if direction == 'DOWN':
-                            player_position[1] += 15
-                else:
-                    play_promt = 'gameover'        
+                if down <= 5:        
+                    if direction == 'RIGHT':
+                        player_position[0] -= 25                        
+                    if direction == 'LEFT':
+                        player_position[0] += 25                        
+                    if direction == 'UP':
+                        player_position[1] -= 25                        
+                    if direction == 'DOWN':
+                        player_position[1] += 25
+
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10 and compx1 > 0:
-                if down <= 5:
-                    if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1:                        
-                        if direction == 'RIGHT':
-                            player_position[0] -= 15                        
-                        if direction == 'LEFT':
-                            player_position[0] += 15                        
-                        if direction == 'UP':
-                            player_position[1] -= 15                        
-                        if direction == 'DOWN':
-                            player_position[1] += 15
-                else:
-                    play_promt = 'gameover'     
+                if down <= 5:   
+
+                    if direction == 'RIGHT':
+                        player_position[0] -= 35                        
+                    if direction == 'LEFT':
+                        player_position[0] += 35                        
+                    if direction == 'UP':
+                        player_position[1] -= 35                        
+                    if direction == 'DOWN':
+                        player_position[1] += 35
+
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10 and compx2 > 0:
-                if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1:                        
-                        if direction == 'RIGHT':
-                            player_position[0] -= 15                        
-                        if direction == 'LEFT':
-                            player_position[0] += 15                        
-                        if direction == 'UP':
-                            player_position[1] -= 15                        
-                        if direction == 'DOWN':
-                            player_position[1] += 15
+                if down <= 5:                      
+                    if direction == 'RIGHT':
+                        player_position[0] -= 15                        
+                    if direction == 'LEFT':
+                        player_position[0] += 15                        
+                    if direction == 'UP':
+                        player_position[1] -= 15                        
+                    if direction == 'DOWN':
+                        player_position[1] += 15
                 else:
                     play_promt = 'gameover'      
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
             if compx3_dist < 10 and compx3 > 0:
-                if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1:                        
-                        if direction == 'RIGHT':
-                            player_position[0] -= 15                        
-                        if direction == 'LEFT':
-                            player_position[0] += 15                        
-                        if direction == 'UP':
-                            player_position[1] -= 15                        
-                        if direction == 'DOWN':
-                            player_position[1] += 15
+                if down <= 5:                     
+                    if direction == 'RIGHT':
+                        player_position[0] -= 15                        
+                    if direction == 'LEFT':
+                        player_position[0] += 15                        
+                    if direction == 'UP':
+                        player_position[1] -= 15                        
+                    if direction == 'DOWN':
+                        player_position[1] += 15
                 else:
                     play_promt = 'gameover'      
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
             if compx4_dist < 10 and compx4 > 0:
-                if down <= 5:
-                    if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1:                        
-                        if direction == 'RIGHT':
-                            player_position[0] -= 15                        
-                        if direction == 'LEFT':
-                            player_position[0] += 15                        
-                        if direction == 'UP':
-                            player_position[1] -= 15                        
-                        if direction == 'DOWN':
-                            player_position[1] += 15
+                if down <= 5:                    
+                    if direction == 'RIGHT':
+                        player_position[0] -= 25                        
+                    if direction == 'LEFT':
+                        player_position[0] += 25                        
+                    if direction == 'UP':
+                        player_position[1] -= 25                        
+                    if direction == 'DOWN':
+                        player_position[1] += 25
                 else:
                     play_promt = 'gameover'  
 
@@ -2870,13 +2864,13 @@ while True:
                         game_window.blit(impball, pygame.Rect(ball_position[0], ball_position[1], 10, 10))
 
                 ball_direction_start = random.choice(ball_direction)
-                ball_position[0] += 5 
+                ball_position[0] += 15 
                 
                 if ballcatch != 1:
                     if ball_direction_start == 2:
-                        ball_position[1] += 5 
+                        ball_position[1] += 20 
                     elif ball_direction_start == 3:
-                        ball_position[1] -= 5 
+                        ball_position[1] -= 20 
                     
                     if ball_position[0] > 1300:
                         play_promt = 'oppsgoal'
@@ -2936,7 +2930,7 @@ while True:
                 game_window.blit(impplayer, pygame.Rect(player_position[0], player_position[1], 10, 10))
 
 
-            
+            #speed of the computers
             if compx_position[0] > player_position[0]:
                 if yardline < 50:
                     compx_position[0] -= random.randint(5,8)
@@ -3049,7 +3043,7 @@ while True:
                 else:
                     compx4_position[1] += random.randint(7,10)
 
-        
+                #drawing the computers 
                 for pos in compx_body:
                     if compx_direction == 'RIGHT':
                         impx = pygame.image.load("madden25_imgs/ramx.png").convert()
