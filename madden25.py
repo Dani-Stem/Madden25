@@ -1231,7 +1231,7 @@ while True:
                 elif spacebar_count >= 8 and fieldgoalball_position[1] > 300 and yardline < 70:
                     fieldgoalball_position[0] -= 5
                     fieldgoalball_position[1] -= 10
-                    if fieldgoalball_position[1] <= 250:
+                    if fieldgoalball_position[1] <= 300:
                         miss()
                         play_promt = '3'
                         print(play_promt)
