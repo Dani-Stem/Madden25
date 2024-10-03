@@ -938,7 +938,7 @@ while True:
         compx_down4 = 0
 
         if score[0] >= 30 or score[1] >=30:
-            play_promt = 3
+            play_promt = '3'
 
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
