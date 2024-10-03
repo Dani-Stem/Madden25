@@ -934,6 +934,7 @@ while True:
 
         if score[0] >= 30 or score[1] >=30:
             play_promt = '3'
+            timeroppsgoal_position[0] = 0
 
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
@@ -1036,6 +1037,7 @@ while True:
             oppscall1()
             if timer_position[0] >= 1300:
                 play_promt = '3'
+                timeroppsgoal_position[0] = 0
                 start_screen = 1
         if oppscallball == 1:
             oppscall2()
@@ -1073,6 +1075,7 @@ while True:
         if key == 'ENTER' and selection_position[0] > 624:
             if timer_position[0] >= 1300:
                 play_promt = '3'
+                timeroppsgoal_position[0] = 0
                 start_screen = 1
                 key = ''
         if key == 'ENTER' and  selection_position[0] < 624:
@@ -1224,6 +1227,7 @@ while True:
                             snap = 0
                             start_screen = 1  
                             play_promt = '3' 
+                            timeroppsgoal_position[0] = 0
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
@@ -1236,6 +1240,7 @@ while True:
                     if fieldgoalball_position[1] <= 300:
                         miss()
                         play_promt = '3'
+                        timeroppsgoal_position[0] = 0
                         print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
@@ -1248,6 +1253,7 @@ while True:
                     if fieldgoalball_position[1] <= 250:
                         miss()
                         play_promt = '3'
+                        timeroppsgoal_position[0] = 0
                         print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
@@ -1260,6 +1266,7 @@ while True:
                     if fieldgoalball_position[1] <= 270:
                         miss()  
                         play_promt = '3'
+                        timeroppsgoal_position[0] = 0
                         print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
@@ -2870,6 +2877,7 @@ while True:
                             ballcatch = 0
                             down += 1
                             play_promt = '3'
+                            timeroppsgoal_position[0] = 0
 
                         if down >= 5:
                             play_promt = '0' 
@@ -2906,9 +2914,9 @@ while True:
                         gb_position[1] = 305
                         ball_position[0] = 0
                         if oppsgoal == 1:
-                            score[1] = 7
+                            score[1] += 7
                         if oppsgoal == 2:
-                            score[1] = 6
+                            score[1] += 6
 
                     if ball_position[1] < 50:
                         ball_position[1] = 50
@@ -3108,8 +3116,10 @@ while True:
         show_score(1, white, 'Arial', 30)
                               
     if play_promt == 'oppsgoal':
+        yard = 1
+        yardline = 10 
 
-        oppgoall = random.choice(rand0oppgoall)
+        oppsgoall = random.choice(rand0oppgoall)
 
         for pos in oppsgoal_body:
             if oppsgoal == 1:
@@ -3119,6 +3129,9 @@ while True:
                 impog = pygame.image.load("madden25_imgs/oppsgoalnof.png").convert()
                 game_window.blit(impog, pygame.Rect(oppsgoal_position[0], oppsgoal_position[1], 10, 10))
 
+        if oppsgoal == 1:
+            score[1] += 1
+            
         for pos in timeroppsgoal_body:
             pygame.draw.rect(game_window, white, pygame.Rect(timeroppsgoal_position[0], timeroppsgoal_position[1], 10, 10))   
 
@@ -3137,6 +3150,7 @@ while True:
         snap = 0 
         ballcatch = 0
         yardline = 10
+        yard = 1
 
         if pc == 1:
             for pos in pc_body:
@@ -3166,6 +3180,7 @@ while True:
                 play_promt = 'gameover'
             else:
                 play_promt = '3'
+                timeroppsgoal_position[0] = 0
                 snap = 0
                 start_screen = 1  
                 down = 1
