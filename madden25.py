@@ -2029,6 +2029,11 @@ while True:
                         snap = 2
                         yardline += 10
                         down = 1
+                        compx_down = 0
+                        compx1_down = 0
+                        compx2_down = 0
+                        compx3_down = 0
+                        compx4_down = 0
                     
         if snap == 2 and ballcatch == 1:
 
