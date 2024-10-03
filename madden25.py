@@ -988,9 +988,12 @@ while True:
             if quarter == 'edge':
                 quarteroptions = ['HEADS', 'TAILS']
                 quarter = random.choice(quarteroptions)
+                timer_position[0] = 0
             if teamquarter != quarter:
                 play_promt = 'lose'
+                timer_position[0] = 0
             elif teamquarter == quarter:
+                timer_position[0] = 0
                 play_promt = 'win'
             start_screen = 1
 
@@ -1020,7 +1023,7 @@ while True:
         print("playprompt: " + play_promt)
 
     if play_promt == 'lose' and start_screen == 1:
-        
+        timer_position[0] = 0
         for pos in timer_body:
             pygame.draw.rect(game_window, white, pygame.Rect(timer_position[0], timer_position[1], 10, 10))   
 
@@ -3127,6 +3130,7 @@ while True:
             snap = 0
             start_screen = 1   
             play_promt = '0'
+            down = 1
 
     if play_promt == 'pc':
 
@@ -3165,6 +3169,7 @@ while True:
                 play_promt = '3'
                 snap = 0
                 start_screen = 1  
+                down = 1
                 ball_position[0] = 0
                 ball_position[1] = 0 
                 if pc == 1:
