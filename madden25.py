@@ -416,10 +416,10 @@ direction = ''
 key = ''
 change_to = direction
 ball_direction = [1, 2, 3]
-score = [0, 0] 
+score = [29, 0] 
 play = 0
 down = 1
-yardline = 10
+yardline = 90
 yard = 10
 field_goal = '0'
 play_promt = '0'
@@ -514,7 +514,7 @@ def show_yardonstart(choice, color, font, size):
   
     my_font = pygame.font.SysFont('Arial', 30)
     speed_surface = my_font.render(
-        'YARD: ' + str(yard), True, white)
+        'YARD: ' + str(yardline), True, white)
     speed_rect = speed_surface.get_rect()
     speed_rect.midtop = (100, 5)
     game_window.blit(speed_surface, speed_rect)
@@ -1087,6 +1087,10 @@ while True:
         urcall()
 
     if play_promt == '0' and start_screen == 1:
+
+        if score[0] >= 30 or score[1] >= 30:
+            start_screen = 0
+            play_promt = 'gameover'
             
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
@@ -1593,6 +1597,7 @@ while True:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
+                        print('down 1596')
                         downs()
                         key = ''
                         play_promt = '0'
@@ -1613,6 +1618,7 @@ while True:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 1617')
                         key = ''
                         play_promt = '0'
                         play = 0
@@ -1632,6 +1638,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 1637')
                         key = ''
                         play_promt = '0'
                         play = 0
@@ -1651,6 +1658,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 1657')
                         key = ''
                         play_promt = '0'
                         play = 0
@@ -1670,6 +1678,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 1677')
                         key = ''
                         play_promt = '0'
                         play = 0
@@ -2066,6 +2075,7 @@ while True:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 2074')
                         key = ''
                         play_promt = '0'
                         play = 0
@@ -2085,6 +2095,7 @@ while True:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 2094')
                         key = ''
                         play_promt = '0'
                         play = 0
@@ -2104,6 +2115,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 2114')
                         key = ''
                         play_promt = '0'
                         play = 0
@@ -2123,6 +2135,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 2134')
                         key = ''
                         play_promt = '0'
                         play = 0
@@ -2142,6 +2155,7 @@ while True:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
+                        print('down 2154')
                         key = ''
                         play_promt = '0'
                         play = 0 
