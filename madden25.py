@@ -1023,7 +1023,6 @@ while True:
         print("playprompt: " + play_promt)
 
     if play_promt == 'lose' and start_screen == 1:
-        timer_position[0] = 0
         for pos in timer_body:
             pygame.draw.rect(game_window, white, pygame.Rect(timer_position[0], timer_position[1], 10, 10))   
 
