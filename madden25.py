@@ -1225,7 +1225,8 @@ while True:
                             play_promt = 'gameover'
                         else:
                             snap = 0
-                            start_screen = 1   
+                            start_screen = 1  
+                            play_promt = '3' 
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
                         spacebar_count = 0
@@ -2330,6 +2331,10 @@ while True:
         show_score(1, white, 'Arial', 30)
 
     if play_promt == '3':
+
+        if score[0] >= 30 or score[1] >= 30:
+            start_screen = 0
+            play_promt = 'gameover'
 
         if player_position[0] < 0:
             player_position[0] = 0
