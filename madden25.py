@@ -31,31 +31,26 @@ compx_position = [random.randrange(1, (window_x//10)) * 10,
                   random.randrange(1, (window_y//10)) * 10]
 compx_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
-compx = random.randint(0,1)
 compx_down = 0
 compx1_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx1_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
-compx1 = random.randint(0,1)
 compx1_down = 0
 compx2_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx2_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
-compx2 = random.randint(0,1)
 compx2_down = 0
 compx3_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx3_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
-compx3 = random.randint(0,1)
 compx3_down = 0
 compx4_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx4_body = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
-compx4 = random.randint(0,1)
 compx4_down = 0
 
 ball_body = [300, random.randrange(1, ((window_y - 50)//10)) * 10]
@@ -1290,19 +1285,14 @@ while True:
         if player_position[0] > 1300:
             if ballcatch == 1:
                 speedmeter = 0
-                compx = random.randint(0,1)
                 compx_position = [random.randrange(1, (window_x//10)) * 10, 
                         random.randrange(1, (window_y//10)) * 10]
-                compx1 = random.randint(0,1)
                 compx1_position = [random.randrange(1, (window_x//10)) * 10, 
                         random.randrange(1, (window_y//10)) * 10]
-                compx2 = random.randint(0,1)
                 compx2_position = [random.randrange(1, (window_x//10)) * 10, 
                         random.randrange(1, (window_y//10)) * 10]
-                compx3 = random.randint(0,1)
                 compx3_position = [random.randrange(1, (window_x//10)) * 10, 
                         random.randrange(1, (window_y//10)) * 10]
-                compx4 = random.randint(0,1)
                 compx4_position = [random.randrange(1, (window_x//10)) * 10, 
                         random.randrange(1, (window_y//10)) * 10]
                 snap = 2
@@ -1594,7 +1584,7 @@ while True:
                                 pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
 
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
-            if compx_dist < 10 and compx > 0:
+            if compx_dist < 10:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1614,7 +1604,7 @@ while True:
                 else:
                     play_promt = 'gameover'        
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
-            if compx1_dist < 10 and compx1 > 0:
+            if compx1_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1634,7 +1624,7 @@ while True:
                 else:
                     play_promt = 'gameover'    
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
-            if compx2_dist < 10 and compx2 > 0:
+            if compx2_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1654,7 +1644,7 @@ while True:
                 else:
                     play_promt = 'gameover'   
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
-            if compx3_dist < 10 and compx3 > 0:
+            if compx3_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1674,7 +1664,7 @@ while True:
                 else:
                     play_promt = 'gameover'  
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
-            if compx4_dist < 10 and compx4 > 0:
+            if compx4_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -1809,41 +1799,37 @@ while True:
                 else:
                     compx4_position[1] += random.randint(7,10)
 
-            if compx == 1:
-                for pos in compx_body:
-                    if compx_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
-            if compx1 == 1:
-                for pos in compx1_body:
-                    if compx1_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx1_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
-            if compx2 == 1:
-                for pos in compx2_body:
-                    if compx2_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx2_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
-            if compx3 == 1:
-                for pos in compx3_body:
-                    if compx3_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx3_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
-            if compx4 == 1:
-                for pos in compx4_body:
-                    if compx4_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx4_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
+            
+            for pos in compx_body:
+                if compx_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
+            for pos in compx1_body:
+                if compx1_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx1_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
+            for pos in compx2_body:
+                if compx2_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx2_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
+            for pos in compx3_body:
+                if compx3_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx3_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
+            for pos in compx4_body:
+                if compx4_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx4_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
 
             if gb_position[1] < ball_position[1] and play == 0:
                 gb_position[1] += 5
@@ -2071,7 +2057,7 @@ while True:
                 game_window.blit(impplayer, pygame.Rect(player_position[0], player_position[1], 10, 10))
 
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
-            if compx_dist < 10 and compx != 0:
+            if compx_dist < 10:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2091,7 +2077,7 @@ while True:
                 else:
                     play_promt = 'gameover'    
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
-            if compx1_dist < 10 and compx1 != 0:
+            if compx1_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2111,7 +2097,7 @@ while True:
                 else:
                     play_promt = 'gameover'  
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
-            if compx2_dist < 10 and compx2 != 0:
+            if compx2_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2131,7 +2117,7 @@ while True:
                 else:
                     play_promt = 'gameover'    
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
-            if compx3_dist < 10 and compx3 != 0:
+            if compx3_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2151,7 +2137,7 @@ while True:
                 else:
                     play_promt = 'gameover'  
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
-            if compx4_dist < 10 and compx4 != 0:
+            if compx4_dist < 10:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2287,43 +2273,38 @@ while True:
                 else:
                     compx4_position[1] += random.randint(7,10)
 
-            if compx == 1:
-                for pos in compx_body:
-                    if compx_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
 
-                    game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
+            for pos in compx_body:
+                if compx_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
 
-            if compx1 == 1:
-                for pos in compx1_body:
-                    if compx1_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx1_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
-            if compx2 == 1:
-                for pos in compx2_body:
-                    if compx2_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx2_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
-            if compx3 == 1:
-                for pos in compx3_body:
-                    if compx3_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx3_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
-            if compx == 4:
-                for pos in compx4_body:
-                    if compx4_direction == 'RIGHT':
-                        impx = pygame.image.load("madden25_imgs/ramx.png").convert()
-                    elif compx4_direction == 'LEFT':
-                        impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
-                    game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
+                game_window.blit(impx, pygame.Rect(compx_position[0], compx_position[1], 10, 10))
+            for pos in compx1_body:
+                if compx1_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx1_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx1_position[0], compx1_position[1], 10, 10))
+            for pos in compx2_body:
+                if compx2_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx2_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx2_position[0], compx2_position[1], 10, 10))
+            for pos in compx3_body:
+                if compx3_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx3_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx3_position[0], compx3_position[1], 10, 10))
+            for pos in compx4_body:
+                if compx4_direction == 'RIGHT':
+                    impx = pygame.image.load("madden25_imgs/ramx.png").convert()
+                elif compx4_direction == 'LEFT':
+                    impx = pygame.image.load("madden25_imgs/ramx_flip.png").convert()
+                game_window.blit(impx, pygame.Rect(compx4_position[0], compx4_position[1], 10, 10))
         
         show_nextyardline(1, white, 'Arial', 80)
         show_speed(1, white, 'Arial', 30)
@@ -2511,7 +2492,7 @@ while True:
                                 pygame.Rect(pos[0] + 100, pos[1] + 550, 10, 10))  
 
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
-            if compx_dist < 10 and compx > 0:
+            if compx_dist < 10:
                 if down <= 5:        
                     if direction == 'RIGHT':
                         player_position[0] -= 25                        
@@ -2523,7 +2504,7 @@ while True:
                         player_position[1] += 25
 
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
-            if compx1_dist < 10 and compx1 > 0:
+            if compx1_dist < 10:
                 if down <= 5:   
 
                     if direction == 'RIGHT':
@@ -2536,7 +2517,7 @@ while True:
                         player_position[1] += 35
 
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
-            if compx2_dist < 10 and compx2 > 0:
+            if compx2_dist < 10:
                 if down <= 5:                      
                     if direction == 'RIGHT':
                         player_position[0] -= 15                        
@@ -2549,7 +2530,7 @@ while True:
                 else:
                     play_promt = 'gameover'      
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
-            if compx3_dist < 10 and compx3 > 0:
+            if compx3_dist < 10:
                 if down <= 5:                     
                     if direction == 'RIGHT':
                         player_position[0] -= 15                        
@@ -2562,7 +2543,7 @@ while True:
                 else:
                     play_promt = 'gameover'      
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
-            if compx4_dist < 10 and compx4 > 0:
+            if compx4_dist < 10:
                 if down <= 5:                    
                     if direction == 'RIGHT':
                         player_position[0] -= 25                        
@@ -3190,6 +3171,8 @@ while True:
                 pc = '0'
     
     if play_promt == 'gameover':
+
+        game_window.fill(black)
 
         if score[0] < 30 or score[1] < 30:
             play_promt = '0'
