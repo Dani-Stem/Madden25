@@ -2061,7 +2061,7 @@ while True:
                 game_window.blit(impplayer, pygame.Rect(player_position[0], player_position[1], 10, 10))
 
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
-            if compx_dist < 10:
+            if compx_dist < 10 and compx != 0:
                 if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2080,7 +2080,7 @@ while True:
                 else:
                     play_promt = 'gameover'    
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
-            if compx1_dist < 10:
+            if compx1_dist < 10 and compx1 != 0:
                 if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2099,7 +2099,7 @@ while True:
                 else:
                     play_promt = 'gameover'  
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
-            if compx2_dist < 10:
+            if compx2_dist < 10 and compx2 != 0:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2118,7 +2118,7 @@ while True:
                 else:
                     play_promt = 'gameover'    
             compx3_dist = pygame.Vector2(player_position).distance_to(compx3_position)
-            if compx3_dist < 10:
+            if compx3_dist < 10 and compx3 != 0:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
@@ -2137,7 +2137,7 @@ while True:
                 else:
                     play_promt = 'gameover'  
             compx4_dist = pygame.Vector2(player_position).distance_to(compx4_position)
-            if compx4_dist < 10:
+            if compx4_dist < 10 and compx4 != 0:
                 if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
