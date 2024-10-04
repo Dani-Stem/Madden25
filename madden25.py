@@ -6,7 +6,6 @@ import pygame.freetype
 from pygame.sprite import Sprite
 from pygame.rect import Rect
 
-player_speed = 15
 
 # Window size
 window_x = 1368
@@ -20,13 +19,13 @@ green = pygame.Color(0, 255, 0)
 blue = pygame.Color(0, 71, 171)
 yellow = pygame.Color(255, 215, 0)
 
+#window and fps settings 
 pygame.init()
-
 pygame.display.set_caption('MADDEN 2K25')
 game_window = pygame.display.set_mode((window_x, window_y))
-
 fps = pygame.time.Clock()
 
+#defining all coordanates 
 compx_position = [random.randrange(1, (window_x//10)) * 10, 
                   random.randrange(1, (window_y//10)) * 10]
 compx_body = [random.randrange(1, (window_x//10)) * 10, 
@@ -407,6 +406,9 @@ cfi_position = [100, 200]
 callchoice_body = [380, 300]
 callchoice_position = [380, 300]
 
+
+#decalring all variables
+player_speed = 15
 direction = ''
 key = ''
 change_to = direction
@@ -446,6 +448,7 @@ yard8_position = 960
 yard9_position = 1080
 yard10_position = 1225
 
+#functions
 def show_playoptions(choice, color, font, size):
 
     my_font = pygame.font.SysFont('Arial', 50)
@@ -875,6 +878,7 @@ def show_urball(choice, color, font, size):
     score_rect.midtop = (6500, 300)
     game_window.blit(score_surface, score_rect)
    
+#game start  
 while True:
 
     game_window.fill(black)
@@ -923,18 +927,9 @@ while True:
             key = 'SPACE'
         if change_to == 's':
             key = 's'
-            
+
+    #start the game screen
     if play_promt == '0' and start_screen == 0:
-
-        compx_down = 0
-        compx_down1 = 0
-        compx_down2 = 0
-        compx_down3 = 0
-        compx_down4 = 0
-
-        if score[0] >= 30 or score[1] >=30:
-            play_promt = '3'
-            timeroppsgoal_position[0] = 0
 
         for pos in field_lines_body:
             pygame.draw.rect(game_window, white,
@@ -964,7 +959,8 @@ while True:
             play_promt = 'coinflip'
             teamquarteroptions = ['HEADS', 'TAILS']
             teamquarter = random.choice(teamquarteroptions)
-    
+
+   #coin flip game play
     if play_promt == 'coinflip' and start_screen == 1:
 
         for pos in field_lines_body:
@@ -1023,6 +1019,7 @@ while True:
         print("teamquarter: " + str(teamquarter))
         print("playprompt: " + play_promt)
 
+    #if you lose the coin flip screen
     if play_promt == 'lose' and start_screen == 1:
         for pos in timer_body:
             pygame.draw.rect(game_window, white, pygame.Rect(timer_position[0], timer_position[1], 10, 10))   
@@ -1045,6 +1042,7 @@ while True:
                 play_promt = '0'
                 start_screen = 1
 
+    #if you win the coin flip screen
     if play_promt == 'win' and start_screen == 1:
 
         if direction == 'RIGHT':
@@ -1086,7 +1084,14 @@ while True:
 
         urcall()
 
+    #your ball choose to kick or run screen
     if play_promt == '0' and start_screen == 1:
+
+        compx_down = 0
+        compx_down1 = 0
+        compx_down2 = 0
+        compx_down3 = 0
+        compx_down4 = 0
 
         if score[0] >= 30 or score[1] >= 30:
             start_screen = 0
@@ -1133,6 +1138,7 @@ while True:
         show_playoptions(1, white, 'Arial', 100)
         show_urball(1, green, 'Arial', 100)
             
+    #if kick was chosen game play 
     if play_promt == '1':
 
             for pos in fieldgoal_body:
@@ -1226,7 +1232,9 @@ while True:
                         else:
                             snap = 0
                             start_screen = 1  
-                            play_promt = '3' 
+                            play_promt = '3'  
+                            yard = 10
+                            yardline = 10
                             timeroppsgoal_position[0] = 0
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
@@ -1240,7 +1248,9 @@ while True:
                     if fieldgoalball_position[1] <= 300:
                         miss()
                         play_promt = '3'
-                        timeroppsgoal_position[0] = 0
+                        timeroppsgoal_position[0] = 0 
+                        yard = 10
+                        yardline = 10
                         print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
@@ -1253,7 +1263,9 @@ while True:
                     if fieldgoalball_position[1] <= 250:
                         miss()
                         play_promt = '3'
-                        timeroppsgoal_position[0] = 0
+                        timeroppsgoal_position[0] = 0 
+                        yard = 10
+                        yardline = 10
                         print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
@@ -1266,7 +1278,9 @@ while True:
                     if fieldgoalball_position[1] <= 270:
                         miss()  
                         play_promt = '3'
-                        timeroppsgoal_position[0] = 0
+                        timeroppsgoal_position[0] = 0 
+                        yard = 10
+                        yardline = 10
                         print(play_promt)
                         fieldgoalball_position[0] = 680
                         fieldgoalball_position[1] = 630
@@ -1286,6 +1300,7 @@ while True:
             show_downsfieldgoal(1, white, 'Arial', 30)
             show_scorefieldgoal(1, white, 'Arial', 30)
     
+    #if run was chosen game play
     if play_promt == '2':
 
         if player_position[0] < 0:
@@ -1400,7 +1415,6 @@ while True:
                 play_promt = 'pc' 
                 player_position[0] = 0
                 down = 1
-
 
         if player_position[1] < 0:
             player_position[1] = 0
@@ -2325,6 +2339,7 @@ while True:
         show_downs(1, white, 'Arial', 30)
         show_score(1, white, 'Arial', 30)
 
+    #opps ball tackle the reciver game play
     if play_promt == '3':
 
         if score[0] >= 30 or score[1] >= 30:
@@ -2685,7 +2700,6 @@ while True:
                 else:
                     compx4_position[1] += random.randint(7,10)
 
-        
             for pos in compx_body:
                 if compx_direction == 'RIGHT':
                     impx = pygame.image.load("madden25_imgs/ramx.png").convert()
@@ -2913,10 +2927,6 @@ while True:
                         player_position[1] = 205
                         gb_position[1] = 305
                         ball_position[0] = 0
-                        if oppsgoal == 1:
-                            score[1] += 7
-                        if oppsgoal == 2:
-                            score[1] += 6
 
                     if ball_position[1] < 50:
                         ball_position[1] = 50
@@ -3114,7 +3124,8 @@ while True:
         show_speed(1, white, 'Arial', 30)
         show_downs(1, white, 'Arial', 30)
         show_score(1, white, 'Arial', 30)
-                              
+        
+    #after opps score screen                          
     if play_promt == 'oppsgoal':
         yard = 1
         yardline = 10 
@@ -3129,9 +3140,6 @@ while True:
                 impog = pygame.image.load("madden25_imgs/oppsgoalnof.png").convert()
                 game_window.blit(impog, pygame.Rect(oppsgoal_position[0], oppsgoal_position[1], 10, 10))
 
-        if oppsgoal == 1:
-            score[1] += 1
-            
         for pos in timeroppsgoal_body:
             pygame.draw.rect(game_window, white, pygame.Rect(timeroppsgoal_position[0], timeroppsgoal_position[1], 10, 10))   
 
@@ -3143,7 +3151,12 @@ while True:
             start_screen = 1   
             play_promt = '0'
             down = 1
+            if oppsgoal == 1:
+                score[1] += 7
+            if oppsgoal == 2:
+                score[1] += 6
 
+    #point conversion screen
     if play_promt == 'pc':
 
         ball_position[0] = 50
@@ -3194,6 +3207,7 @@ while True:
                     print('pc2')
                 pc = '0'
     
+    #gamer over screen
     if play_promt == 'gameover':
 
         game_window.fill(black)
