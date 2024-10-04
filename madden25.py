@@ -1329,6 +1329,8 @@ while True:
         if yardline > 80:
             if yard == 1 and player_position[0] >= yard1_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('1')
@@ -1338,6 +1340,8 @@ while True:
                 down = 1
             if yard == 2 and player_position[0] >= yard2_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('2')
@@ -1347,6 +1351,8 @@ while True:
                 down = 1
             if yard == 3 and player_position[0] >= yard3_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('3')
@@ -1356,6 +1362,8 @@ while True:
                 down = 1
             if yard == 4 and player_position[0] >= yard4_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('4')
@@ -1365,6 +1373,8 @@ while True:
                 down = 1
             if yard == 5 and player_position[0] >= yard5_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('5')
@@ -1374,6 +1384,8 @@ while True:
                 down = 1
             if yard == 6 and player_position[0] >= yard6_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('6')
@@ -1383,6 +1395,8 @@ while True:
                 down = 1
             if yard == 7 and player_position[0] >= yard7_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('7')
@@ -1392,6 +1406,8 @@ while True:
                 down = 1
             if yard == 8 and player_position[0] >= yard8_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('8')
@@ -1400,6 +1416,8 @@ while True:
                 down = 1
             if yard == 9 and player_position[0] >= yard9_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('9')
@@ -1409,6 +1427,8 @@ while True:
                 down = 1
             if yard == 10 and player_position[0] >= yard10_position:
                 goal()
+                yard = 10
+                yardline = 10
                 key = ''
                 score[0] += 6 
                 print('10')
@@ -1434,8 +1454,7 @@ while True:
                 player_position[0] = 50
                 player_position[1] = 205
                 gb_position[1] = 305
-                compx4_down = 1
-                down = down + 1
+                down += 1
             direction = 'RIGHT'
 
         if player_position[1] > 600:
@@ -1450,8 +1469,7 @@ while True:
                 player_position[0] = 50
                 player_position[1] = 205
                 gb_position[1] = 305
-                compx4_down = 1
-                down = down + 1
+                down += 1
             direction = 'RIGHT'
 
         if speedmeter > 9:
@@ -1608,7 +1626,7 @@ while True:
 
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
             if compx_dist < 10:
-                if down <= 5:
+                if down < 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         print('down 1596')
@@ -1622,13 +1640,13 @@ while True:
                         player_position[1] = 205
                         gb_position[1] = 305
                         compx_down = 1
-                        down = down + 1
+                        down += 1
                     change_to ='RIGHT'
                 else:
                     play_promt = 'gameover'        
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10:
-                if down <= 5:
+                if down < 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
@@ -1642,13 +1660,13 @@ while True:
                         player_position[1] = 205
                         gb_position[1] = 305
                         compx1_down = 1
-                        down = down + 1
+                        down += 1
                     change_to ='RIGHT'
                 else:
                     play_promt = 'gameover'    
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10:
-                if down <= 5:
+                if down < 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
@@ -1682,7 +1700,7 @@ while True:
                         player_position[1] = 205
                         gb_position[1] = 305
                         compx3_down = 1
-                        down = down + 1
+                        down += 1
                     change_to ='RIGHT'
                 else:
                     play_promt = 'gameover'  
@@ -1702,7 +1720,7 @@ while True:
                         player_position[1] = 205
                         gb_position[1] = 305
                         compx4_down = 1
-                        down = down + 1
+                        down += 1
                     change_to ='RIGHT'
                 else:
                     play_promt = 'gameover'  
@@ -1822,7 +1840,6 @@ while True:
                 else:
                     compx4_position[1] += random.randint(7,10)
 
-            
             for pos in compx_body:
                 if compx_direction == 'RIGHT':
                     impx = pygame.image.load("madden25_imgs/ramx.png").convert()
@@ -2140,7 +2157,7 @@ while True:
                         player_position[1] = 205
                         gb_position[1] = 305
                         compx2_down = 1
-                        down = down + 1
+                        down += 1
                     change_to ='RIGHT'
                 else:
                     play_promt = 'gameover'    
@@ -2160,7 +2177,7 @@ while True:
                         player_position[1] = 205   
                         gb_position[1] = 305                     
                         compx3_down = 1
-                        down = down + 1
+                        down += 1
                     change_to ='RIGHT'
                 else:
                     play_promt = 'gameover'  
@@ -2843,26 +2860,26 @@ while True:
                 elif center_position[0] >= 100:
                     center_position[0] -= 10
 
-            if down_yard <= field_line_10:
-                yard = 10
-            if down_yard < field_line_9 and down_yard >= field_line_10:
-                yard = 9
-            if down_yard < field_line_8 and down_yard >= field_line_9:
-                yard = 8
-            if down_yard < field_line_7 and down_yard >= field_line_8:
-                yard = 7
-            if down_yard < field_line_6 and down_yard >= field_line_7:
-                yard = 6
-            if down_yard < field_line_5 and down_yard >= field_line_6:
-                yard = 5
-            if down_yard < field_line_4 and down_yard >= field_line_5:
-                yard = 4
-            if down_yard < field_line_3 and down_yard >= field_line_4:
-                yard = 3
-            if down_yard < field_line_2 and down_yard >= field_line_3:
-                yard = 2
-            if down_yard < field_line_1 and down_yard >= field_line_2:
-                yard = 1
+            # if down_yard <= field_line_10:
+            #     yard = 10
+            # if down_yard < field_line_9 and down_yard >= field_line_10:
+            #     yard = 9
+            # if down_yard < field_line_8 and down_yard >= field_line_9:
+            #     yard = 8
+            # if down_yard < field_line_7 and down_yard >= field_line_8:
+            #     yard = 7
+            # if down_yard < field_line_6 and down_yard >= field_line_7:
+            #     yard = 6
+            # if down_yard < field_line_5 and down_yard >= field_line_6:
+            #     yard = 5
+            # if down_yard < field_line_4 and down_yard >= field_line_5:
+            #     yard = 4
+            # if down_yard < field_line_3 and down_yard >= field_line_4:
+            #     yard = 3
+            # if down_yard < field_line_2 and down_yard >= field_line_3:
+            #     yard = 2
+            # if down_yard < field_line_1 and down_yard >= field_line_2:
+            #     yard = 1
             
             if play == 1:
 
@@ -3124,7 +3141,7 @@ while True:
         show_speed(1, white, 'Arial', 30)
         show_downs(1, white, 'Arial', 30)
         show_score(1, white, 'Arial', 30)
-        
+
     #after opps score screen                          
     if play_promt == 'oppsgoal':
         yard = 1
