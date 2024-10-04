@@ -1991,23 +1991,23 @@ while True:
 
             if down_yard <= field_line_10:
                 yard = 10
-            if down_yard < field_line_9 and down_yard >= field_line_10:
+            if down_yard <= field_line_9 and down_yard >= field_line_10:
                 yard = 9
-            if down_yard < field_line_8 and down_yard >= field_line_9:
+            if down_yard <= field_line_8 and down_yard >= field_line_9:
                 yard = 8
-            if down_yard < field_line_7 and down_yard >= field_line_8:
+            if down_yard <= field_line_7 and down_yard >= field_line_8:
                 yard = 7
-            if down_yard < field_line_6 and down_yard >= field_line_7:
+            if down_yard <= field_line_6 and down_yard >= field_line_7:
                 yard = 6
-            if down_yard < field_line_5 and down_yard >= field_line_6:
+            if down_yard <= field_line_5 and down_yard >= field_line_6:
                 yard = 5
-            if down_yard < field_line_4 and down_yard >= field_line_5:
+            if down_yard <= field_line_4 and down_yard >= field_line_5:
                 yard = 4
-            if down_yard < field_line_3 and down_yard >= field_line_4:
+            if down_yard <= field_line_3 and down_yard >= field_line_4:
                 yard = 3
-            if down_yard < field_line_2 and down_yard >= field_line_3:
+            if down_yard <= field_line_2 and down_yard >= field_line_3:
                 yard = 2
-            if down_yard < field_line_1 and down_yard >= field_line_2:
+            if down_yard <= field_line_1 and down_yard >= field_line_2:
                 yard = 1
             
             if play == 1:
