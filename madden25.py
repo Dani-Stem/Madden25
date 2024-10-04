@@ -487,6 +487,8 @@ def show_downs(choice, color, font, size):
         down_surface = my_font.render(str(down) + 'RD & ' + str(yard), True, white)
     elif down == 4:
         down_surface = my_font.render(str(down) + 'TH & ' + str(yard), True, white)
+    elif down > 4:
+        down_surface = my_font.render('1ST & 10' , True, white)
 
     down_rect = down_surface.get_rect()
     down_rect.midtop = (600, 5)
@@ -503,6 +505,9 @@ def show_downsfieldgoal(choice, color, font, size):
         down_surface = my_font.render(str(down) + 'RD & ' + str(yard), True, white)
     elif down == 4:
         down_surface = my_font.render(str(down) + 'TH & ' + str(yard), True, white)
+    elif down > 4:
+        down_surface = my_font.render('1ST & 10' , True, white)
+
 
     down_rect = down_surface.get_rect()
     down_rect.midtop = (105, 655)
@@ -1087,6 +1092,12 @@ while True:
     #your ball choose to kick or run screen
     if play_promt == '0' and start_screen == 1:
 
+        if yard == 10:
+            down
+
+        if yard == 1:
+            yard = 10
+
         compx_down = 0
         compx_down1 = 0
         compx_down2 = 0
@@ -1626,7 +1637,7 @@ while True:
 
             compx_dist = pygame.Vector2(player_position).distance_to(compx_position)
             if compx_dist < 10:
-                if down < 5:
+                if down <= 5:
                     if compx1_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         print('down 1596')
@@ -1646,7 +1657,7 @@ while True:
                     play_promt = 'gameover'        
             compx1_dist = pygame.Vector2(player_position).distance_to(compx1_position)
             if compx1_dist < 10:
-                if down < 5:
+                if down <= 5:
                     if compx_down != 1 and compx2_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
@@ -1666,7 +1677,7 @@ while True:
                     play_promt = 'gameover'    
             compx2_dist = pygame.Vector2(player_position).distance_to(compx2_position)
             if compx2_dist < 10:
-                if down < 5:
+                if down <= 5:
                     if compx_down != 1 and compx1_down != 1 and compx3_down != 1 and compx4_down != 1 and ballcatch == 1:
                         down_yard = player_position[0]
                         downs()
@@ -2201,6 +2212,27 @@ while True:
                     change_to ='RIGHT'
                 else:
                     play_promt = 'gameover'   
+
+            if down_yard <= field_line_10:
+                yard = 10
+            if down_yard <= field_line_9 and down_yard >= field_line_10:
+                yard = 9
+            if down_yard <= field_line_8 and down_yard >= field_line_9:
+                yard = 8
+            if down_yard <= field_line_7 and down_yard >= field_line_8:
+                yard = 7
+            if down_yard <= field_line_6 and down_yard >= field_line_7:
+                yard = 6
+            if down_yard <= field_line_5 and down_yard >= field_line_6:
+                yard = 5
+            if down_yard <= field_line_4 and down_yard >= field_line_5:
+                yard = 4
+            if down_yard <= field_line_3 and down_yard >= field_line_4:
+                yard = 3
+            if down_yard <= field_line_2 and down_yard >= field_line_3:
+                yard = 2
+            if down_yard <= field_line_1 and down_yard >= field_line_2:
+                yard = 1
 
             player_body.insert(0, list(player_position))
             player_body.pop() 
