@@ -47,21 +47,25 @@ Before running the game, make sure you have the following installed:
 ### Setup Instructions
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/Madden25.git
    ```
 
 2. **Navigate to the Project Directory**:
+
    ```bash
    cd Madden25
    ```
 
 3. **Make the Script Executable on macOS/Linux**:
+
    ```bash
    chmod +x setup.sh
    ```
 
 4. **Run the Setup Script**:
+
    - On macOS/Linux:
      ```bash
      ./setup.sh
@@ -73,6 +77,7 @@ Before running the game, make sure you have the following installed:
      ```
 
 5. **Install `pygame`**:
+
    - If not already installed, you can install it using:
      ```bash
      pip install pygame
@@ -80,6 +85,7 @@ Before running the game, make sure you have the following installed:
 
 6. **Run the Game**:
    ```bash
+   cd code
    python3 madden25.py
    ```
 
@@ -99,14 +105,7 @@ The game objective is to score as many touchdowns as possible while playing agai
 
 - **Movement**: Arrow Keys
 - **Sprint**: Spacebar
-- **Pause**: P
-- **Exit**: Esc
-
----
-
-## Screenshots
-
-![Gameplay Screenshot Coming Soon](madden25_imgs/gameplay_screenshot.png)
+- **Pause**: Esc
 
 ---
 
